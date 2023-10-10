@@ -45,3 +45,6 @@ dist/
 #Src Dir
 src/**/*.js
 src/**/*.js.map
+
+#LICENSE
+LICENSE
