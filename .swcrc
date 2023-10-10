@@ -2,17 +2,11 @@
     "$schema": "https://json.schemastore.org/swcrc",
     "jsc": {
       "parser": {
-        "syntax": "ecmascript",
-        "jsx": true,
-        "dynamicImport": false,
-        "privateMethod": false,
-        "functionBind": false,
-        "exportDefaultFrom": false,
-        "exportNamespaceFrom": false,
+        "syntax": "typescript",
+        "tsx": true,
         "decorators": false,
-        "decoratorsBeforeExport": false,
-        "topLevelAwait": false,
-        "importMeta": false
+        "dynamicImport": true
+
       },
       "transform": {
         "react":{
@@ -21,11 +15,11 @@
           "refresh": true,
         }
       },
-      "target": "es5",
+      "target": "es2015",
       "loose": false,
       "externalHelpers": false,
       // Requires v1.2.50 or upper and requires target to be es2016 or upper.
       "keepClassNames": false
     },
-    "minify": false
+    "minify": true
   }

@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "outDir": "./dist/",
+      "noImplicitAny": true,
+      "module": "commonjs",
+      "sourceMap": true,
+      "jsx": "react-jsx",
+      "allowJs": true,
+      "allowSyntheticDefaultImports": true
+    }
+  }

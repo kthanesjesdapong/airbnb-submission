@@ -11,7 +11,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.m?js$/,
+                test: /\.(ts|tsx)$/,
                 exclude: /(node_modules)/,
                 use: {
                     // `.swcrc` can be used to configure swc
@@ -19,6 +19,9 @@ module.exports = {
                 }
             }
         ]
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
     },
     externals: [
         { '@swc/core': 'swc' },
