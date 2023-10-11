@@ -1,9 +1,9 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { ProgressPlugin } = require('webpack');
 
 
 const { resolve } = path;
@@ -66,9 +66,9 @@ module.exports = {
         { '@swc/core': 'swc' },
     ],
     plugins: [
-        new webpack.ProgressPlugin(),
+        new ProgressPlugin(),
         new HTMLWebpackPlugin({
-            template: resolve(__dirname, '..', './src/index.html')
+            template: resolve(__dirname, '..', 'public/index.html')
         }),
         new CopyPlugin({
             patterns: [{ from: 'src', to: 'dist' }]
