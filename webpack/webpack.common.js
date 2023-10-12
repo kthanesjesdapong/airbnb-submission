@@ -69,13 +69,13 @@ module.exports = {
     ],
     plugins: [
         new ProgressPlugin(),
-        new HTMLWebpackPlugin({
-            template: resolve(__dirname, '..', 'public/index.html')
-        }),
+        new CleanWebpackPlugin(),
         new CopyPlugin({
             patterns: [{ from: 'src', to: 'dist' }]
         }),
+        new HTMLWebpackPlugin({
+            template: resolve(__dirname, '..', 'public/index.html')
+        }),
         new MiniCssExtractPlugin({ filename: '[name].bundle.css' }),
-        new CleanWebpackPlugin(),
     ],
 };
