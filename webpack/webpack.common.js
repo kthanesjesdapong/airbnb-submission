@@ -4,12 +4,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { ProgressPlugin } = require('webpack');
-
-
 const { resolve } = path;
 
 module.exports = {
-    entry: resolve(__dirname, '..', './src/index.tsx'),
+    entry: resolve(__dirname, '..', './src/app/index.tsx'),
     resolve: {
         extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
     },
@@ -30,15 +28,19 @@ module.exports = {
                         loader: MiniCssExtractPlugin.loader,
                     },
                     {
+                        loader: 'style-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    },
+                    {
                         loader: 'css-loader',
-
                         options: {
                             sourceMap: true,
                         },
                     },
                     {
                         loader: 'sass-loader',
-
                         options: {
                             sourceMap: true,
                         },

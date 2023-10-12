@@ -1,10 +1,39 @@
 {
     "compilerOptions": {
-      "noImplicitAny": true,
-      "outDir": "./dist/",
-      "jsx": "react-jsx",
-      "sourceMap": true,
+
+      /*Dynamic Imports*/
+      "baseUrl": "./src",
+      "paths": {
+        "@app": ["./app"],
+        "@app/*": ["./app/*"],
+
+        "@pages": ["./pages"],
+        "@pages/*": ["./pages/*"],
+
+        "@widgets": ["./widgets"],
+        "@widgets/*": ["./widgets/*"],
+
+        "@features": ["./features"],
+        "@features/*": ["./features/*"],
+
+        "@entities": ["./entities"],
+        "@entities/*": ["./entities/*"],
+
+        "@shared": ["./shared"],
+        "@shared/*": ["./shared/*"],
+      },
+
+      /*Linting*/
       "strict": true,
+      "noImplicitAny": true,
+      "noUnusedParameters": true,
+      "noFallthroughCasesInSwitch": true,
+
+      /*UMD Global*/
+      "jsx": "react-jsx",
+
+      "outDir": "./dist/",
+      "sourceMap": true,
       "target": "ESNext",
       "useDefineForClassFields": true,
       "lib": ["DOM", "DOM.Iterable", "ESNext"],

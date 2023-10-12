@@ -1,7 +1,6 @@
 const { merge } = require('webpack-merge');
 const webpackConfig = require('./webpack.config');
 const path = require('path');
-
 const { resolve } = path;
 
 module.exports = merge(webpackConfig, {
@@ -9,7 +8,10 @@ module.exports = merge(webpackConfig, {
     //Unsure of what to do with source-map
     // devtool: 'inline-source-map',
     devServer: {
-        static: resolve(__dirname, '..', 'dist'),
+        static: {
+            directory: resolve(__dirname, '..', 'dist'),
+            watch: true
+        },
         open: true,
         hot: true,
         setupExitSignals: true,
