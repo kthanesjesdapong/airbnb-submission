@@ -51,6 +51,7 @@
     "include": [
       "src/*",
       "src/**/*",
-      "types/*.d.ts"
+      "types/*.d.ts",
+      "./eslintrc.cjs",
     ],
   }
