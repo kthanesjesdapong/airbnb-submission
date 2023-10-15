@@ -52,6 +52,5 @@
       "src/*",
       "src/**/*",
       "types/*.d.ts",
-      "./eslintrc.cjs",
     ],
   }
