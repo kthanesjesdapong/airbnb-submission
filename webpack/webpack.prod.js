@@ -5,6 +5,7 @@ const webpackConfig = require('./webpack.config');
 module.exports = merge(webpackConfig, {
     mode: 'production',
     optimization: {
+        minimize: true,
         minimizer: [new TerserPlugin()],
     }
 });

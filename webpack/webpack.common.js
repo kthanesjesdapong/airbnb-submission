@@ -80,12 +80,18 @@ module.exports = {
     ],
     plugins: [
         new ProgressPlugin(),
-        new CleanWebpackPlugin(),
+        new CleanWebpackPlugin({
+            cleanAfterEveryBuildPatterns: ['!**/favicon.ico'],
+        }),
         new CopyPlugin({
-            patterns: [{ from: 'src', to: 'dist' }]
+            patterns: [
+                { from: 'src', to: 'dist' },
+                { from: './public/favicon/favicon.ico', to: '' }
+            ]
         }),
         new HTMLWebpackPlugin({
-            template: resolve(__dirname, '..', 'public/index.html')
+            template: resolve(__dirname, '..', 'public/index.html'),
+            favicon: resolve(__dirname, '..', 'public/favicon/favicon.ico')
         }),
         new MiniCssExtractPlugin({ filename: '[name].bundle.css' }),
         new ReactRefreshWebpackPlugin()
