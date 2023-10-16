@@ -6,6 +6,9 @@
       "paths": {
         "@app": ["./app"],
         "@app/*": ["./app/*"],
+        
+        "@assets": ["./assets"],
+        "@assets/*": ["./assets/*"],
 
         "@pages": ["./pages"],
         "@pages/*": ["./pages/*"],
@@ -51,6 +54,6 @@
     "include": [
       "src/*",
       "src/**/*",
-      "types/*.d.ts"
+      "types/*.d.ts",
     ],
   }

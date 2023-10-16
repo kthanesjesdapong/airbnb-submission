@@ -4,11 +4,22 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { ProgressPlugin } = require('webpack');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+
+
 const { resolve } = path;
+const envVarArr = process.env.npm_lifecycle_script.split(' ',).join('').split('=');
+const envVar = envVarArr[envVarArr.length - 1];
+const isDevelopment = envVar !== 'prod';
 
 module.exports = {
+    mode: isDevelopment ? 'development' : 'production',
     entry: resolve(__dirname, '..', './src/app/index.tsx'),
     resolve: {
+        plugins: [new TsconfigPathsPlugin({
+            configFile: './tsconfig.json'
+        })],
         extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
     },
     module: {
@@ -69,13 +80,14 @@ module.exports = {
     ],
     plugins: [
         new ProgressPlugin(),
-        new HTMLWebpackPlugin({
-            template: resolve(__dirname, '..', 'public/index.html')
-        }),
+        new CleanWebpackPlugin(),
         new CopyPlugin({
             patterns: [{ from: 'src', to: 'dist' }]
         }),
+        new HTMLWebpackPlugin({
+            template: resolve(__dirname, '..', 'public/index.html')
+        }),
         new MiniCssExtractPlugin({ filename: '[name].bundle.css' }),
-        new CleanWebpackPlugin(),
+        new ReactRefreshWebpackPlugin()
     ],
 };
