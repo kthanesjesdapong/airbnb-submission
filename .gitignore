@@ -46,5 +46,7 @@ dist/
 src/**/*.js
 src/**/*.js.map
 
+.yarnrc.yml
+
 #LICENSE
 LICENSE
