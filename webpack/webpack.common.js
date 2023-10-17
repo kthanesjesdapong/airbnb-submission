@@ -7,13 +7,9 @@ const { ProgressPlugin } = require('webpack');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
-
 const { resolve } = path;
 const envVar = process.env.npm_lifecycle_event;
 const isDevelopment = envVar === 'dev';
-
-
-console.log({ isDevelopment }, envVar);
 
 module.exports = {
     mode: isDevelopment ? 'development' : 'production',
@@ -83,7 +79,7 @@ module.exports = {
     plugins: [
         new ProgressPlugin(),
         new CleanWebpackPlugin({
-            cleanAfterEveryBuildPatterns: ['!**/favicon.ico'],
+            //Favicon is currently also being deleted from ./dist
         }),
         new CopyPlugin({
             patterns: [
