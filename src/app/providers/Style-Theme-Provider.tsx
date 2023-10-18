@@ -3,8 +3,6 @@ import { ThemeProvider } from 'styled-components';
 import { ReactNode } from 'react';
 import { GlobalStyle, theme } from '@shared/styles';
 
-
-
 type StyledThemeProviderProps = {
     children: ReactNode;
 };
