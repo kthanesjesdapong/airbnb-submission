@@ -8,6 +8,9 @@ module.exports = merge(webpackConfig, {
     //Unsure of what to do with source-map
     // devtool: 'inline-source-map',
     devServer: {
+        client: {
+            progress: true
+        },
         static: {
             directory: resolve(__dirname, '..', 'dist'),
             watch: true

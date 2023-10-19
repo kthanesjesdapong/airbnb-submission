@@ -9,6 +9,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 
 const { resolve } = path;
 const envVar = process.env.npm_lifecycle_event;
+console.log({ envVar });
 const isDevelopment = envVar === 'dev';
 
 module.exports = {
