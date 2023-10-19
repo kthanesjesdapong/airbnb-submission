@@ -8,6 +8,7 @@ module.exports = merge(webpackConfig, {
     //Unsure of what to do with source-map
     // devtool: 'inline-source-map',
     devServer: {
+        historyApiFallback: true,
         client: {
             progress: true
         },
