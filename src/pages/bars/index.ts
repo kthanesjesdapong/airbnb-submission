@@ -1,0 +1,1 @@
+export { BarsPage } from './ui';
