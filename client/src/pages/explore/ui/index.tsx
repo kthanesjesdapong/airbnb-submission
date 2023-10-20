@@ -1,5 +1,10 @@
+import { Outlet } from "react-router-dom";
+
+
 export const ExplorePage = () => {
     return (
-        <div>ExplorePage</div>
+        <div>
+            <Outlet />
+        </div>
     );
 };

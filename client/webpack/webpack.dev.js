@@ -23,4 +23,7 @@ module.exports = merge(webpackConfig, {
     optimization: {
         minimize: false
     },
+    // output: {
+    //     publicPath: '/'
+    // }
 });

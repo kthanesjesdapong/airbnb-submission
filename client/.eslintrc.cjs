@@ -2,7 +2,7 @@ module.exports = {
     root: true,
     parser: '@typescript-eslint/parser',
     parserOptions: {
-        project: ['./tsconfig.json'],
+        project: './tsconfig.json',
         ecmaVersion: 2022,
         sourceType: 'module',
     },
@@ -36,7 +36,16 @@ module.exports = {
     env: {
         browser: true, es2020: true, "node": true
     },
-    extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:react-hooks/recommended', 'plugin:import/typescript', 'plugin:import/errors', 'plugin:import/warnings', 'plugin:@typescript-eslint/recommended', 'plugin:@typescript-eslint/recommended-requiring-type-checking'],
+    extends: [
+        'eslint:recommended',
+        'plugin:react/recommended',
+        'plugin:react-hooks/recommended',
+        'plugin:import/typescript',
+        'plugin:import/errors',
+        'plugin:import/warnings',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking'
+    ],
     plugins: ["@typescript-eslint"],
     overrides: [
         {

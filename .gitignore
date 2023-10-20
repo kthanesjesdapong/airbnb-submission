@@ -1,0 +1,52 @@
+# Logs
+logs
+.tscache
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.yarn
+
+# Dependency directories
+node_modules
+dist-ssr
+*.local
+
+# dotenv environment variable files
+*.env
+*.env.development.local
+*.env.test.local
+*.env.production.local
+*.env.local
+
+*.test.ts.snap
+yarn-error.log/
+vendor/
+tmp/
+.DS_Store
+.idea
+tmp-resolvers
+package-lock.json
+yarn.lock
+javascript/**/migrations/
+typescript/**/migrations/
+misc/**/migrations/
+server/**/migrations/
+experimental/**/*.db
+dev.db
+*.env*
+
+# Yarn Integrity file
+.yarn-integrity
+
+# Distribution directories
+dist/
+
+#Src Dir
+src/**/*.js
+src/**/*.js.map
+
+.yarnrc.yml
+
+#LICENSE
+LICENSE

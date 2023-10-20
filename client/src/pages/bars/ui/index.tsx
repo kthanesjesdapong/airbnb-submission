@@ -1,5 +1,5 @@
 export const BarsPage = () => {
     return (
-        <div>BarsPage</div>
+        <div>THIS IS MY BARS PAGE LIKE REALLY IT</div>
     );
 };
