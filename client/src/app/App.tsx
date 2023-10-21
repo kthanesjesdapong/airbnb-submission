@@ -1,22 +1,26 @@
 // Root LayOut
-import { Outlet } from 'react-router-dom';
-import { AppContainer } from './App.styled';
+// import { AppContainer } from './App.styled';
+import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouterComponent } from '@shared/router/BrowserRouterComponent';
+
+
 
 const App = () => {
 
     return (
-        <AppContainer>
+        // <AppContainer>
+        <BrowserRouter>
             <header>
                 nav goes here
             </header>
             <main>
-                main content goes here
-                <Outlet />
+                <BrowserRouterComponent />
             </main>
             <footer>
                 footer goes here
             </footer>
-        </AppContainer>
+        </BrowserRouter>
+        // </AppContainer>
     );
 };
 
