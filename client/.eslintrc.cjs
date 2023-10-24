@@ -36,16 +36,7 @@ module.exports = {
     env: {
         browser: true, es2020: true, "node": true
     },
-    extends: [
-        'eslint:recommended',
-        'plugin:react/recommended',
-        'plugin:react-hooks/recommended',
-        'plugin:import/typescript',
-        'plugin:import/errors',
-        'plugin:import/warnings',
-        'plugin:@typescript-eslint/recommended',
-        'plugin:@typescript-eslint/recommended-requiring-type-checking'
-    ],
+    extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:react-hooks/recommended', 'plugin:import/typescript', 'plugin:import/errors', 'plugin:import/warnings', 'plugin:@typescript-eslint/recommended', 'plugin:@typescript-eslint/recommended-requiring-type-checking', 'plugin:storybook/recommended'],
     plugins: ["@typescript-eslint"],
     overrides: [
         {
