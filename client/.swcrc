@@ -8,19 +8,33 @@
         "dynamicImport": true
 
       },
+      "baseUrl": "./src",
+      "paths":{
+        "@app": ["./app"],
+        "@app/*": ["./app/*"],
+        "@assets": ["./assets"],
+        "@assets/*": ["./assets/*"],
+        "@pages": ["./pages"],
+        "@pages/*": ["./pages/*"],
+        "@widgets": ["./widgets"],
+        "@widgets/*": ["./widgets/*"],
+        "@features": ["./features"],
+        "@features/*": ["./features/*"],
+        "@entities": ["./entities"],
+        "@entities/*": ["./entities/*"],
+        "@shared": ["./shared"],
+        "@shared/*": ["./shared/*"]
+      },
       "transform": {
         "react":{
           "runtime": "automatic",
-          // related transform. Defaults to false as it's considered experimental.
-          "refresh": true,
+          "refresh": true
         }
       },
       "target": "es2015",
       "loose": false,
       "externalHelpers": false,
-      // Requires v1.2.50 or upper and requires target to be es2016 or upper.
       "keepClassNames": false
     },
-    
     "minify": true
   }
