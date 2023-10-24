@@ -7,6 +7,7 @@ const { ProgressPlugin } = require('webpack');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
+
 const { resolve } = path;
 const envVar = process.env.npm_lifecycle_event;
 console.log({ envVar });
