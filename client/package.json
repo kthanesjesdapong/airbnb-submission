@@ -9,11 +9,11 @@
     "build": "webpack --config webpack/webpack.config.js --env env=prod",
     "build:dev": "webpack --config webpack/webpack.config.js --env env=dev",
     "dev": "webpack-dev-server --config webpack/webpack.config.js --env env=dev",
-    "prod": "webpack-dev-server --config webpack/webpack.config.js env=prod",
+    "prod": "webpack-dev-server --config webpack/webpack.config.js --env=prod",
     "coverage": "jest --collect-coverage",
     "test": "jest --watchAll",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook": "storybook dev -p 6006 env=dev",
+    "build-storybook": "storybook build env=prod"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
