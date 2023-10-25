@@ -1,21 +1,21 @@
 {
     "compilerOptions": {
-      "baseUrl": "./src",
+      "baseUrl": ".",
       "paths": {
-        "@app": ["./app"],
-        "@app/*": ["./app/*"],
-        "@assets": ["./assets"],
-        "@assets/*": ["./assets/*"],
-        "@pages": ["./pages"],
-        "@pages/*": ["./pages/*"],
-        "@widgets": ["./widgets"],
-        "@widgets/*": ["./widgets/*"],
-        "@features": ["./features"],
-        "@features/*": ["./features/*"],
-        "@entities": ["./entities"],
-        "@entities/*": ["./entities/*"],
-        "@shared": ["./shared"],
-        "@shared/*": ["./shared/*"]
+        "@app": ["./src/app"],
+        "@app/*": ["./src/app/*"],
+        "@assets": ["./src/assets"],
+        "@assets/*": ["./src/assets/*"],
+        "@pages": ["./src/pages"],
+        "@pages/*": ["./src/pages/*"],
+        "@widgets": ["./src/widgets"],
+        "@widgets/*": ["./src/widgets/*"],
+        "@features": ["./src/features"],
+        "@features/*": ["./src/features/*"],
+        "@entities": ["./src/entities"],
+        "@entities/*": ["./src/entities/*"],
+        "@shared": ["./src/shared"],
+        "@shared/*": ["./src/shared/*"]
       },
       "strict": true,
       "noImplicitAny": true,
@@ -32,8 +32,8 @@
       "esModuleInterop": false,
       "allowSyntheticDefaultImports": true,
       "forceConsistentCasingInFileNames": true,
-      "module": "ESNext",
-      "moduleResolution": "node",
+      "module": "NodeNext",
+      "moduleResolution": "NodeNext",
       "resolveJsonModule": true,
       "isolatedModules": true,
       "noEmit": true 
@@ -41,6 +41,7 @@
     "include": [
       "src/*",
       "src/**/*",
-      "types/*.d.ts"
+      "types/*.d.ts",
+      "storybook"
     ]
   }

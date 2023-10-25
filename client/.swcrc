@@ -36,5 +36,6 @@
       "externalHelpers": false,
       "keepClassNames": false
     },
-    "minify": true
+    "minify": true,
+    
   }
