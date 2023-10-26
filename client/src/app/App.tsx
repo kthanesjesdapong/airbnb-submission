@@ -2,6 +2,7 @@
 // import { AppContainer } from './App.styled';
 import { BrowserRouter } from 'react-router-dom';
 import { BrowserRouterComponent } from '@shared/router/BrowserRouterComponent';
+import { LocationDisplay } from '@shared/lib/hooks';
 
 
 
@@ -19,6 +20,7 @@ const App = () => {
             <footer>
                 footer goes here
             </footer>
+            <LocationDisplay />
         </BrowserRouter>
         // </AppContainer>
     );

@@ -42,7 +42,8 @@ export const AllTheProviders = ({ children }: { children: ReactNode; }) => {
 
 
 
-export const RenderWithProviders = ({ children, ...options }: RenderThemeProps) => {
+
+export const renderWithProviders = ({ children, ...options }: RenderThemeProps) => {
     const Wrapper = ({ children }: PropsWithChildren) => {
         return <StyledThemeProvider>
             <App />
@@ -50,7 +51,20 @@ export const RenderWithProviders = ({ children, ...options }: RenderThemeProps) 
         </StyledThemeProvider>;
     };
     return render(children, { wrapper: Wrapper, ...options }) as RenderResult;
-
 };
 
+
+/*
+render({children: <JSX/>})
+No Need to call App because if you pass app in here it will never page twice.
+*/
+
+export const renderWithThemeProvider = ({ children, ...options }: RenderThemeProps) => {
+    const Wrapper = ({ children }: PropsWithChildren) => {
+        return <StyledThemeProvider>
+            {children}
+        </StyledThemeProvider>;
+    };
+    return render(children, { wrapper: Wrapper, ...options }) as RenderResult;
+};
 // export renderWithProviders;
