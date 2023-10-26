@@ -35,7 +35,7 @@ export const GlobalStyle = createGlobalStyle`
         min-height: 100%;
     }
 
-    a{  
+    a{  font-size: clamp(1em,1.2em,1.5em);
         text-decoration: none;
         transition: 0.3s ease-in-out;
         &:visited{

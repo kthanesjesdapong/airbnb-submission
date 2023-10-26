@@ -1,5 +1,9 @@
+import { Navigation } from '@features/navigation';
 export const HomePage = () => {
     return (
-        <div>HomePage</div>
+        <div>
+            <Navigation />
+
+        </div>
     );
 };
