@@ -15,27 +15,47 @@ export const GlobalStyle = createGlobalStyle`
         font-family: ${theme.fonts.primary};
     }
     html,body {
-        /* overflow: hidden; */
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         width: 100%;
         height: 100%;
-        padding: 0em 1em;
         background:${props => props.theme.colors.oliveMainBg};
         color: ${props => props.theme.colors.textMain}
+        /* overflow: hidden; */
+        /* padding: 0em 1em; */
 
     /* overflow: hidden; */
     }
 
-    h1,h2,h3,h4,h5,h6{
+    h1,h2,h3,h4,h5,h6,p{
         font-weight: normal;
+        margin-bottom: 1em;
     }
+
+
 
     body{
         min-height: 100%;
     }
 
-    a{  font-size: clamp(1em,1.2em,1.5em);
+    .text-center {
+        text-align: center;
+    }
+    
+    .container {
+        padding: 0 1em;
+    }
+
+    header,section {
+        padding: 4rem 0;
+    }
+
+
+
+
+
+    a {  
+        font-size: clamp(1em,1.2em,1.5em);
         text-decoration: none;
         transition: 0.3s ease-in-out;
         &:visited{
@@ -46,8 +66,23 @@ export const GlobalStyle = createGlobalStyle`
         color: #55554b;
         }
     }
-    
-    
+
+    #root {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .flex-row-center {
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .flex-column-center {
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
 `;
 

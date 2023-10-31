@@ -1,8 +1,8 @@
-import { Navigation } from '@features/navigation';
+
 export const HomePage = () => {
     return (
         <div>
-            <Navigation />
+            THIS IS THE HOME PAGE
 
         </div>
     );
