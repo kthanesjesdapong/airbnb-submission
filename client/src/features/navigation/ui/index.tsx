@@ -1,6 +1,7 @@
+import { navigationLinks, logo } from '@shared/constants';
 import { LinkElement, Logo } from "@shared/ui";
 
-import { NavigationContainer, LogoContainer, LinksContainer } from "./Navigation.styled";
+import { NavigationContainer, LogoContainer, LinksContainer, LinkWrapper } from "./Navigation.styled";
 
 
 
@@ -9,14 +10,24 @@ export const Navigation = () => {
     return (
         <NavigationContainer>
             <LogoContainer>
-                <Logo>
+                <Logo to={'/'} content={logo}>
                     DISCLOSE LV
                 </Logo>
             </LogoContainer>
-            <LinksContainer>
-                <LinkElement to={'./about'}>
-                    about
-                </LinkElement>
+            <LinksContainer className='flex-row-center'>
+                {navigationLinks.map((link) => (
+                    <LinkWrapper
+                        key={link + ' key'}
+                    >
+                        <LinkElement
+
+                            to={'.' + link}
+                        >
+                            {link}
+                        </LinkElement>
+
+                    </LinkWrapper>
+                ))}
             </LinksContainer>
         </NavigationContainer>
     );

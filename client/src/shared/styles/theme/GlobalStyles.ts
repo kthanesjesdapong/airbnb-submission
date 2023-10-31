@@ -2,7 +2,7 @@ import { normalize } from 'polished';
 import { createGlobalStyle } from 'styled-components';
 import { theme } from './theme';
 import { fonts } from './fonts';
-// import { media } from '@utils/index';
+import { media } from '@shared/lib';
 
 export const GlobalStyle = createGlobalStyle`
     ${normalize()};
@@ -20,9 +20,9 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         height: 100%;
         background:${props => props.theme.colors.oliveMainBg};
-        color: ${props => props.theme.colors.textMain}
+        color: ${props => props.theme.colors.textMain};
+        padding: 0em 1em;
         /* overflow: hidden; */
-        /* padding: 0em 1em; */
 
     /* overflow: hidden; */
     }
@@ -34,7 +34,7 @@ export const GlobalStyle = createGlobalStyle`
 
 
 
-    body{
+    body {
         min-height: 100%;
     }
 
@@ -54,7 +54,8 @@ export const GlobalStyle = createGlobalStyle`
 
 
 
-    a {  
+    a 
+    {  
         font-size: clamp(1em,1.2em,1.5em);
         text-decoration: none;
         transition: 0.3s ease-in-out;
@@ -82,6 +83,24 @@ export const GlobalStyle = createGlobalStyle`
         display:flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    ${media.tablet} {
+
+    }
+
+    ${media.desktop} {
+        html,body {
+            padding: 0  2.5rem;
+            background-color: black;
+        }
+    }
+
+    ${media.uhd} {
+        html,body {
+            padding: 0  4em;
+            background-color: black;
+        }
     }
 
 `;
