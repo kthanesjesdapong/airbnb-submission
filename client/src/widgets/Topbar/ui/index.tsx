@@ -40,8 +40,8 @@ export const Topbar = ({ linkTitles, links, menuItems }: TopbarProps) => {
                     key={linkTitle + ' key'}
                     state={expand}
                     callBack={toggleExpand}
-                    start={6}
-                    end={6.2}
+                    start={5.7}
+                    end={6}
                     fontSize={1.2}
                 />
 

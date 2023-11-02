@@ -7,13 +7,16 @@ import { SidebarConfig } from "..";
 
 interface SideBarProps {
     linkTitles: string[];
+    // links: string[];
     links?: string[];
     menuItems?: string[];
     role?: string;
 }
 
+// , links, menuItems, <-- Add this back in later
+
 //Add in Links and MenuItems for SideBar
-export const Sidebar = ({ linkTitles, links, menuItems, role }: SideBarProps) => {
+export const Sidebar = ({ linkTitles, role }: SideBarProps) => {
 
     const { start, end, marginRight, top, width, fontSize, color } = SidebarConfig;
 

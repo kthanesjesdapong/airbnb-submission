@@ -30,9 +30,9 @@ const UnorderedList = styled.ul<ULProps>`
     animation: ${drop(props.$start, props.$end)} 0.4s ease-in-out;
     `}
     ${media.widescreen} {
-      top: ${props => `calc(${props.$end}em - .4em)`};
+      top: ${props => `calc(${props.$end}em + .4em)`};
       ${props => props.$visible && css`
-    animation: ${drop(props.$start, props.$end - .4)} 0.4s ease-in-out;
+    animation: ${drop(props.$start, props.$end + .4)} 0.4s ease-in-out;
     `}
     }
 
