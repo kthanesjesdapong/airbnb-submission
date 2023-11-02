@@ -3,8 +3,13 @@ import { render, RenderResult } from "@testing-library/react";
 import type { RenderOptions } from "@testing-library/react";
 import App from "@app/App";
 import { StyledThemeProvider } from "@app/providers/Style-Theme-Provider";
+
 import { MemoryRouter } from "react-router-dom";
 import { GlobalStyle } from "@shared/styles";
+
+import { Provider } from "react-redux";
+import { store } from "@shared/store";
+
 
 interface RenderThemeProps {
     children: ReactElement;
@@ -31,12 +36,14 @@ interface RenderThemeProps {
 export const AllTheProviders = ({ children }: { children: ReactNode; }) => {
 
     return (
-        <StyledThemeProvider>
-            <GlobalStyle />
-            <MemoryRouter>
-                {children}
-            </ MemoryRouter>
-        </StyledThemeProvider>
+        <Provider store={store}>
+            <StyledThemeProvider>
+                <GlobalStyle />
+                <MemoryRouter>
+                    {children}
+                </ MemoryRouter>
+            </StyledThemeProvider>
+        </Provider>
     );
 };
 
