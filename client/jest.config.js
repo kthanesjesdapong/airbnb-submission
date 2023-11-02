@@ -13,18 +13,16 @@ module.exports = {
     moduleNameMapper:
         pathsToModuleNameMapper(compilerOptions.paths),
     ...{
-
         '^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
             '<rootDir>/jest-config/file-mock.js',
         '\\.(css|scss|sass|less)$': 'identity-obj-proxy',
-        '^(\\.{1,2}/.*)\\.js$': '$1',
+        '^(\\.{1,2}/.*)\\.js$': '$1'
     },
-
     transform: {
         "^.+\\.(t|j)sx?$": [
             "@swc/jest",
             config
-        ],
+        ]
     },
-    extensionsToTreatAsEsm: ['.ts', '.tsx'],
+    extensionsToTreatAsEsm: ['.ts', '.tsx']
 };

@@ -7,6 +7,9 @@ import { BarsPage } from "@pages/bars";
 import { AboutPage } from "@pages/about";
 import { ContactPage } from "@pages/contact";
 
+export const NoMatch = () => <div>No match</div>;
+
+
 export const BrowserRouterComponent = () => {
     return (
         <Routes>
@@ -19,6 +22,8 @@ export const BrowserRouterComponent = () => {
                 </Route>
                 <Route path='about' element={<AboutPage />} />
                 <Route path='contact' element={<ContactPage />} />
+                <Route path="*" element={<NoMatch />} />
+
             </Route>
         </Routes>
     );
