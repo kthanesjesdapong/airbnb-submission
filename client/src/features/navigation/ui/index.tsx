@@ -1,34 +1,35 @@
-import { navigationLinks, logo } from '@shared/constants';
-import { LinkElement, Logo } from "@shared/ui";
+import { navigationLinks, logo, navLinkTitles, exploreLinks } from '@shared/constants';
+import { Logo } from "@shared/ui";
 
-import { NavigationContainer, LogoContainer, LinksContainer, LinkWrapper } from "./Navigation.styled";
+import { NavigationContainer, LogoContainer } from "./Navigation.styled";
 
+import { Topbar } from '@widgets/Topbar';
+import { Sidebar } from '@widgets/Sidebar';
+
+type NavigationProps = {
+    className?: string;
+};
 
 
 //MAP THROUGH ARRAY OF LINKS FOR LINK ELEMENT.
-export const Navigation = () => {
+export const Navigation = ({ className }: NavigationProps) => {
     return (
-        <NavigationContainer>
+
+        <NavigationContainer className={className}>
             <LogoContainer>
                 <Logo to={'/'} content={logo}>
                     DISCLOSE LV
                 </Logo>
             </LogoContainer>
-            <LinksContainer className='flex-row-center'>
-                {navigationLinks.map((link) => (
-                    <LinkWrapper
-                        key={link + ' key'}
-                    >
-                        <LinkElement
-
-                            to={'.' + link}
-                        >
-                            {link}
-                        </LinkElement>
-
-                    </LinkWrapper>
-                ))}
-            </LinksContainer>
+            <Topbar
+                linkTitles={navLinkTitles}
+                links={navigationLinks}
+                menuItems={exploreLinks}
+            />
+            <Sidebar
+                linkTitles={navLinkTitles}
+                links={navigationLinks}
+                menuItems={exploreLinks} />
         </NavigationContainer>
     );
 };

@@ -16,6 +16,10 @@
     "build-storybook": "storybook build env=prod"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/free-regular-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@heroicons/react": "^2.0.18",
     "@reduxjs/toolkit": "^1.9.7",
     "eslint-plugin-prettier": "^5.0.1",
     "polished": "^4.2.2",

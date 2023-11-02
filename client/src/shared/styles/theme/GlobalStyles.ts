@@ -56,7 +56,7 @@ export const GlobalStyle = createGlobalStyle`
 
     a 
     {  
-        font-size: clamp(1em,1.2em,1.5em);
+        font-size: clamp(1.2em,1.5em,2vw);
         text-decoration: none;
         transition: 0.3s ease-in-out;
         &:visited{
