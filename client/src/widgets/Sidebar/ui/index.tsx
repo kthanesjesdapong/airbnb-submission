@@ -1,32 +1,33 @@
 import { Bars3Icon } from "@heroicons/react/24/solid";
-import { StyledSideBarContainer, StyledSideBarWrapper } from "./Sidebar.styled";
-import { SideUnorderedList, ListItem } from "@shared/ui";
+import { SidebarContainer, SidebarWrapper } from "./Sidebar.styled";
+import { SideUnorderedList, ListItem, LinkElement } from "@shared/ui";
 import { useToggle } from "@shared/lib/hooks";
 import { SidebarConfig } from "..";
 
 
-interface SideBarProps {
+
+type SideBarProps = {
     linkTitles: string[];
     // links: string[];
     links?: string[];
     menuItems?: string[];
     role?: string;
-}
+};
 
 // , links, menuItems, <-- Add this back in later
 
 //Add in Links and MenuItems for SideBar
-export const Sidebar = ({ linkTitles, role }: SideBarProps) => {
+export const Sidebar = ({ linkTitles, links, role }: SideBarProps) => {
 
     const { start, end, marginRight, top, width, fontSize, color } = SidebarConfig;
 
     const { status: expand, toggleStatus: toggleExpand } = useToggle();
 
     return (
-        <StyledSideBarContainer onClick={toggleExpand}
+        <SidebarContainer onClick={toggleExpand}
             role={role}
         >
-            <StyledSideBarWrapper>
+            <SidebarWrapper>
                 <Bars3Icon />
                 <SideUnorderedList
                     $visible={expand ? true : false}
@@ -36,18 +37,23 @@ export const Sidebar = ({ linkTitles, role }: SideBarProps) => {
                     $top={top}
                     $width={width}
                 >
-                    {linkTitles.map((link) => (
+                    {links && linkTitles.map((linkTitle, i) => (
                         <ListItem
-                            key={'key' + link}
+                            key={'key' + linkTitle}
                             fontSize={fontSize}
                             color={color}
-                        >{link}
+                        >
+                            <LinkElement
+                                to={'/' + links[i]}
+                            >
+                                {linkTitle}
+                            </LinkElement>
                         </ListItem>
                     ))}
                 </SideUnorderedList>
-            </StyledSideBarWrapper>
+            </SidebarWrapper>
 
-        </StyledSideBarContainer>
+        </SidebarContainer>
     );
 };
 

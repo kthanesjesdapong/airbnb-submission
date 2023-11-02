@@ -6,7 +6,7 @@ interface StyledBarContainerProps extends HTMLAttributes<HTMLDivElement> {
   role?: string;
 }
 
-const StyledSideBarContainer = styled.div<StyledBarContainerProps>`
+const SidebarContainer = styled.div<StyledBarContainerProps>`
   display:flex;
   transition: all 0.4s ease-in-out;
   flex-direction: column;
@@ -18,7 +18,7 @@ const StyledSideBarContainer = styled.div<StyledBarContainerProps>`
     } 
   `;
 
-const StyledSideBarWrapper = styled.div`
+const SidebarWrapper = styled.div`
   display:flex;
   transition: all 0.4s ease-in-out;
   justify-content: center;
@@ -32,4 +32,4 @@ const StyledSideBarWrapper = styled.div`
     opacity: 0;
     }
 `;
-export { StyledSideBarContainer, StyledSideBarWrapper };
+export { SidebarContainer, SidebarWrapper };
