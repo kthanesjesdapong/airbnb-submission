@@ -13,10 +13,16 @@ import type { AppStore } from "./setUpStore";
 
 
 
-interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
+// interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
+//     preloadedState?: PreloadedState<RootState>;
+//     store?: AppStore;
+// }
+
+
+type ExtendedRenderOptions = Omit<RenderOptions, 'queries'> & {
     preloadedState?: PreloadedState<RootState>;
     store?: AppStore;
-}
+};
 
 
 export const renderWithProviders = (children: ReactElement, {

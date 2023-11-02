@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-export interface SelectedFeature {
+export type SelectedFeature = {
   selected: string;
   prevSelected: string;
-}
+};
 
 const initialState: SelectedFeature = {
   selected: 'Events',

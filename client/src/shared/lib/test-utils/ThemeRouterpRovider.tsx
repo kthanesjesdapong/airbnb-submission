@@ -11,10 +11,15 @@ import { Provider } from "react-redux";
 import { store } from "@shared/store";
 
 
-interface RenderThemeProps {
+// interface RenderThemeProps {
+//     children: ReactElement;
+//     options?: Omit<RenderOptions, "queries">;
+// }
+
+type RenderThemeProps = {
     children: ReactElement;
     options?: Omit<RenderOptions, "queries">;
-}
+};
 
 // export const renderWithProviders = ({ children,
 //     ...options
