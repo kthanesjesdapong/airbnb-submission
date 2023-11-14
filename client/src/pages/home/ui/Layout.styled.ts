@@ -3,22 +3,20 @@ import { media } from "@shared/lib";
 
 
 const HomeLayoutContainer = styled.div`
-
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  /* align-items: center; */
-
 `;
 
 const FirstRowContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
+  align-items: center;
   
   ${media.tablet} {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding-left: 3em;
 
   }
 `;
