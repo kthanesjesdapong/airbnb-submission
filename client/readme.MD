@@ -47,7 +47,12 @@ Pages
 
 ## Features
 Features
-: user interactions, actions that bring business value to the user (e.g) SendComment, AddToCart, UsersSearch
+: user interactions, actions that bring business value to the user (e.g)[ SendComment, AddToCart, UsersSearch, navigation, slider, categoryselector]
+
+## Widgets
+Widgets
+: compositional layer to combine entities and features into meaningfulblocks [ footer, herosection, sidebar, slideritem, cardselect]
+
 
 ## Entities
 Entities
@@ -56,3 +61,5 @@ Entities
 ## Shared
 Shared
 :reusable functionality, detached from the specifics of the project/business.(e.g. UIKit, libs, APIS)
+
+[ constants, libs, router, store, styles, ui]
