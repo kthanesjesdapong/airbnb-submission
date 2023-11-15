@@ -7,19 +7,23 @@
 
 ## Installation
 
-Download to your project directory, add `README.md`, and commit:
 
-delete .yarnrc.yml
 
+1.delete .yarnrc.yml
+
+2. 
 ```sh
 corepack enable
 yarn set version berry
 ```
+
+3.
 Withing your .yarnrc.yml
 make sure you have the following lines:
 ```nodeLinker: node-modules
 yarnPath: .yarn/releases/yarn-berry.cjs
 ```
+4.
 Then run
 ```
 yarn install
