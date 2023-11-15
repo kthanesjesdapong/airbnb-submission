@@ -6,3 +6,4 @@ export * from './Ul';
 export * from './SideUl';
 export * from './SectionParagraph';
 export * from './Header';
+export * from './Card';

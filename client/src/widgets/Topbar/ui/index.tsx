@@ -31,8 +31,7 @@ export const Topbar = ({ linkTitles, links, menuItems }: TopbarProps) => {
                     >
                         <LinkElement
                             to={'/' + links[i]}
-                        >
-                            {linkTitle}
+                        >{linkTitle}
                         </LinkElement>
                     </LinkWrapper>
                 ) : <DropDown

@@ -7,13 +7,12 @@ const NavigationContainer = styled.header`
 `;
 
 const LogoContainer = styled.div`
-
 `;
 
 
 
 const LinkWrapper = styled.div`
-  margin: 0.4rem;
+  margin: 0.3rem;
 `;
 
 export { LogoContainer, NavigationContainer, LinkWrapper };
