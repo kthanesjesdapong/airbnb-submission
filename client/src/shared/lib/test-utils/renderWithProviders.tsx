@@ -4,20 +4,10 @@ import type { RenderOptions } from "@testing-library/react";
 import { configureStore } from "@reduxjs/toolkit";
 import type { PreloadedState } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import type { RootState } from "@shared/store";
+import { featureReducer, type RootState } from "@shared/store";
 import { StyledThemeProvider } from "@app/providers/Style-Theme-Provider";
 import { GlobalStyle } from "@shared/styles";
-import { MemoryRouter } from "react-router-dom";
 import type { AppStore } from "./setUpStore";
-// import { featureReducer } from '@shared/store';
-
-
-
-// interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
-//     preloadedState?: PreloadedState<RootState>;
-//     store?: AppStore;
-// }
-
 
 type ExtendedRenderOptions = Omit<RenderOptions, 'queries'> & {
     preloadedState?: PreloadedState<RootState>;
@@ -27,7 +17,7 @@ type ExtendedRenderOptions = Omit<RenderOptions, 'queries'> & {
 
 export const renderWithProviders = (children: ReactElement, {
     preloadedState = {},
-    store = configureStore({ reducer: {}, preloadedState }), // Provide an empty reducer here
+    store = configureStore({ reducer: { feature: featureReducer }, preloadedState }), // Provide an empty reducer here
     ...options
 }: ExtendedRenderOptions = {}) => {
     const Wrapper = ({ children }: PropsWithChildren<{ children: ReactNode; }>) => {
@@ -36,12 +26,12 @@ export const renderWithProviders = (children: ReactElement, {
             <Provider store={store}>
                 <StyledThemeProvider>
                     <GlobalStyle />
-                    <MemoryRouter>
-                        {children}
-                    </MemoryRouter>
+                    {children}
                 </StyledThemeProvider>
             </Provider>);
     };
     return { store, ...render(children, { wrapper: Wrapper, ...options }) };
 };
+
+
 

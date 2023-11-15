@@ -1,8 +1,9 @@
 import { configureStore, combineReducers, PreloadedState } from '@reduxjs/toolkit';
 import { RootState } from '@shared/store/store';
-
+import { featureReducer } from '@shared/store';
 
 const rootReducer = combineReducers({
+  feature: featureReducer
 
 });
 
