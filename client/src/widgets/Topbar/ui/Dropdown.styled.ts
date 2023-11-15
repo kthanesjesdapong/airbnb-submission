@@ -2,9 +2,13 @@ import styled, { keyframes, css } from 'styled-components';
 import { HTMLAttributes } from 'react';
 
 
-interface PreviewWrapperProps extends HTMLAttributes<HTMLDivElement> {
+// interface PreviewWrapperProps extends HTMLAttributes<HTMLDivElement> {
+//   $visible: boolean;
+// }
+
+type PreviewWrapperProps = {
   $visible: boolean;
-}
+} & HTMLAttributes<HTMLDivElement>;
 
 const rotate = keyframes`
   from {

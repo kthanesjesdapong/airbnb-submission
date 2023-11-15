@@ -2,10 +2,15 @@ import { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { media } from '@shared/lib';
 
-interface ListItemProps extends HTMLAttributes<HTMLLIElement> {
+// interface ListItemProps extends HTMLAttributes<HTMLLIElement> {
+//   fontSize: number;
+//   color: string;
+// }
+
+type ListItemProps = {
   fontSize: number;
   color: string;
-}
+} & HTMLAttributes<HTMLLIElement>;
 
 const ListItem = styled.li<ListItemProps>`
   cursor: pointer;

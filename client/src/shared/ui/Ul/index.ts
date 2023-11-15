@@ -3,13 +3,22 @@ import { HTMLAttributes } from 'react';
 import { media } from '@shared/lib';
 
 
-export interface ULProps extends HTMLAttributes<HTMLUListElement> {
+// export interface ULProps extends HTMLAttributes<HTMLUListElement> {
+//   $visible: boolean;
+//   $start: number;
+//   $end: number;
+//   $marginRight?: number;
+//   $width?: number;
+// }
+
+export type ULProps = {
   $visible: boolean;
   $start: number;
   $end: number;
   $marginRight?: number;
   $width?: number;
-}
+} & HTMLAttributes<HTMLUListElement>;
+
 
 const drop = (start: number, end: number) => keyframes`
   from {

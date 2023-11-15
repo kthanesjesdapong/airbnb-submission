@@ -3,23 +3,33 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '@app/App';
 import { MemoryRouter } from 'react-router-dom';
-import { renderWithThemeProvider } from '@shared/lib/test-utils';
+import { renderWithThemeProvider, renderWithProviders } from '@shared/lib/test-utils';
 import { BrowserRouterComponent } from '../BrowserRouterComponent';
 import { LocationDisplay } from '@shared/lib/hooks';
 
 const render = renderWithThemeProvider;
 
 test('full app rendering/navigating', async () => {
-  render({ children: <App /> });
+  const initialFeature = {
+    selected: 'Events',
+    prevSelected: 'Events'
+  };
+  renderWithProviders(<App />, {
+    preloadedState: {
+      feature: initialFeature
+    }
+  });
+
   const user = userEvent.setup();
   expect(screen.getByText(/DISCLOSE LV/i)).toBeInTheDocument();
-  await user.click(screen.getByText(/about/i));
-  expect(screen.getByText(/about/i)).toBeInTheDocument();
+  await user.click(screen.getAllByText(/about/i)[0]);
+  expect(screen.getAllByText(/about/i)[0]).toBeInTheDocument();
 
 });
 
 test('landing on a bad page', () => {
   const badRoute = '/theresnopath';
+
   render(
     {
       children:
@@ -36,7 +46,6 @@ test('landing on a bad page', () => {
 test('rendering a component that uses useLocation', () => {
   const route = '/some-route';
 
-  // use <MemoryRouter> when you want to manually control the history
   render(
     {
       children: <MemoryRouter initialEntries={[route]}>
