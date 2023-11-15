@@ -9,19 +9,19 @@
 
 
 
-1.delete .yarnrc.yml
+1. Delete your .yarnrc.yml
 
-2.Then run the following:
+2. Then run the following:
 ```sh
 corepack enable
 yarn set version berry
 ```
 
-3.Withing your .yarnrc.yml, make sure you have the following lines:
+3. Withing your .yarnrc.yml, make sure you have the following lines:
 ```nodeLinker: node-modules
 yarnPath: .yarn/releases/yarn-berry.cjs
 ```
-4.Then run
+4. Then run
 ```
 yarn install
 ```
