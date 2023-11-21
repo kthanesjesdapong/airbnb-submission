@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Card } from '@shared/ui';
 import { HTMLAttributes } from 'react';
+import { media } from '@shared/lib';
 
 type StyledCardProps = {
   $maxwidth: number;
@@ -12,12 +13,11 @@ const StyledCard = styled(Card) <StyledCardProps>`
   position: relative;
   overflow: hidden;
   transition: width 0.4s ease-out;
-  
-  &:hover {
-    width: ${props => props.$maxwidth}px;
-  }
-  .card-container {
-    transform: rotate(0);
+  width: ${props => props.$maxwidth - 50}px;
+  height: 165px;
+
+  & a {
+    text-align: end;
   }
 
   &:hover .card-container a {
@@ -27,11 +27,11 @@ const StyledCard = styled(Card) <StyledCardProps>`
   &:hover .card-container p  {
     opacity: 1;
     transform: translateY(0);
-    transition: transform 1s, opacity 0.4s linear 0.3s;
+    transition: transform 0,4s, opacity 0.4s linear 0.3s;
   }
 
   &:hover::before {
-    transform: scale(1.3);
+    transform: scale(1.15);
   }
 
   &::before {
@@ -50,23 +50,16 @@ const StyledCard = styled(Card) <StyledCardProps>`
   & .card-container {
     position: absolute;
     left: 50%;
-    bottom: 15%;
+    bottom: 5%;
     transform: translateX(-50%);
-    text-align: center;
-    font: 900 1rem helvetica,sans-serif;
+    font: 900 1.2rem helvetica,sans-serif;
     color: white;
-    & p {
-      position: relative;
-      width: var(--width);
-      font-size: 0.75rem;
-      font-weight: 100;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.75);
-      margin-top: 0.5rem;
-      padding: 0 1.2rem;
-      transform: translateY(2rem);
-      opacity: 0;
-    }
+  }
+
+  ${media.tablet} {
+    height: 250px;
+    width: ${props => props.$maxwidth}px;
+
   }
 
 `;

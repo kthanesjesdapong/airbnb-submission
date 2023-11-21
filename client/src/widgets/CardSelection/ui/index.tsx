@@ -5,12 +5,10 @@ import { LinkElement } from "@shared/ui";
 type CardSelectionProps = {
     header: string;
     href: string;
-    description: string;
     url: string;
-
 };
 
-export const CardSelection = ({ header, href, description, url }: CardSelectionProps) => {
+export const CardSelection = ({ header, href, url }: CardSelectionProps) => {
     const { $width, $height, $maxwidth } = cardSelectionConfig;
     return (
         <StyledCard
@@ -22,13 +20,9 @@ export const CardSelection = ({ header, href, description, url }: CardSelectionP
             <div className="card-container">
                 <LinkElement
                     to={href}
-                // fontSize={}
                 >
                     {header}
                 </LinkElement>
-                <p>
-                    {description}
-                </p>
             </div>
         </StyledCard>
     );

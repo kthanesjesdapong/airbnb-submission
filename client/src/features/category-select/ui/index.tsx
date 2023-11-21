@@ -10,7 +10,6 @@ export const CategorySelect = () => {
                 <CardSelection
                     header={category.header}
                     href={category.href}
-                    description={category.description}
                     url={category.url}
                     key={category.header + 'key'}
                 />
