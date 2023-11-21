@@ -2,15 +2,6 @@ import styled, { keyframes, css } from 'styled-components';
 import { HTMLAttributes } from 'react';
 import { media } from '@shared/lib';
 
-
-// export interface ULProps extends HTMLAttributes<HTMLUListElement> {
-//   $visible: boolean;
-//   $start: number;
-//   $end: number;
-//   $marginRight?: number;
-//   $width?: number;
-// }
-
 export type ULProps = {
   $visible: boolean;
   $start: number;
@@ -30,6 +21,8 @@ const drop = (start: number, end: number) => keyframes`
 `;
 
 const UnorderedList = styled.ul<ULProps>`
+  display: flex;
+  flex-direction: column;
   position: absolute;
   transition: all 0.4s ease-in-out;
   opacity: ${props => props.$visible ? '1' : '0'};

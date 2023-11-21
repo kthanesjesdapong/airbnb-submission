@@ -2,10 +2,6 @@ import styled, { keyframes, css } from 'styled-components';
 import { HTMLAttributes } from 'react';
 
 
-// interface PreviewWrapperProps extends HTMLAttributes<HTMLDivElement> {
-//   $visible: boolean;
-// }
-
 type PreviewWrapperProps = {
   $visible: boolean;
 } & HTMLAttributes<HTMLDivElement>;
@@ -27,7 +23,6 @@ const DropDownWrapper = styled.div<PreviewWrapperProps>`
   
     padding: 0 10px;
   
-
   svg {
     background: transparent;
     width: 1.2rem;

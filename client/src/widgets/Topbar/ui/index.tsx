@@ -16,7 +16,7 @@ export const Topbar = ({ linkTitles, links, menuItems }: TopbarProps) => {
 
     const { status: expand, toggleStatus: toggleExpand } = useToggle();
 
-    const { start, end, fontSize } = TopbarConfig;
+    const { start, end } = TopbarConfig;
 
 
     //In between Links Container You essentially need to map through linkTitles and pass in the titles and links
@@ -44,7 +44,6 @@ export const Topbar = ({ linkTitles, links, menuItems }: TopbarProps) => {
                     callBack={toggleExpand}
                     start={start}
                     end={end}
-                    fontSize={fontSize}
                 />
 
             ))}

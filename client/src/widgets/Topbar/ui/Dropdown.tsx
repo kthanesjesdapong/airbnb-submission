@@ -1,5 +1,5 @@
 import { FC, MouseEventHandler } from 'react';
-import { UnorderedList, ListItem, LinkElement } from '@shared/ui';
+import { UnorderedList, ListItemLink, LinkElement, } from '@shared/ui';
 import { DropDownWrapper } from './Dropdown.styled';
 import { type ChevronDownIcon } from '@heroicons/react/20/solid';
 
@@ -15,10 +15,9 @@ type DropDownProps = {
     state: boolean;
     start: number;
     end: number;
-    fontSize: number;
 };
 
-export const DropDown: FC<DropDownProps> = ({ title, to, menuItems, callBack, IconSVG, state, start, end, fontSize }) => {
+export const DropDown: FC<DropDownProps> = ({ title, to, menuItems, callBack, IconSVG, state, start, end, }) => {
     return (
         <DropDownWrapper
             $visible={state}
@@ -33,13 +32,15 @@ export const DropDown: FC<DropDownProps> = ({ title, to, menuItems, callBack, Ic
                 $end={end}
             >
                 {menuItems.map((menuItem, mIKey) => (
-                    <ListItem
+
+                    <ListItemLink
                         key={mIKey.toString()}
-                        fontSize={fontSize}
-                        color={''}
+                        to={`/explore/${menuItem.toLowerCase()}`}
                     >
                         {menuItem}
-                    </ListItem>))}
+                    </ListItemLink>
+
+                ))}
             </UnorderedList>
         </DropDownWrapper>);
 };
