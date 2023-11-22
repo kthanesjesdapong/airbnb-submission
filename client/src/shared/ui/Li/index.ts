@@ -1,7 +1,6 @@
 import { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { media } from '@shared/lib';
-// import { type LinkProps } from '..';
 import { Link } from 'react-router-dom';
 
 
@@ -33,12 +32,12 @@ const ListItem = styled.li<ListItemProps>`
 `;
 
 
-export type LinkProps = HTMLAttributes<HTMLLinkElement> & {
+export type ListItemLinkProps = HTMLAttributes<HTMLLinkElement> & {
   content: string;
   href: string;
 };
 
-const ListItemLink = styled(Link) <LinkProps>`
+const ListItemLink = styled(Link) <ListItemLinkProps>`
   cursor: pointer;
   transition: color 0.4s ease-in-out;
   font-size: 1.25em;

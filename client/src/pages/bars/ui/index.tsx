@@ -5,6 +5,7 @@ import { dummyData } from "@shared/constants";
 
 
 
+
 const barsPageConfig = {
     $width: 320,
     $height: 150
@@ -12,6 +13,7 @@ const barsPageConfig = {
 
 
 export const BarsPage = () => {
+
     return (
         <>
             <h2>{'B A R S'}</h2>
