@@ -8,14 +8,12 @@ type StyledCardProps = {
   $url: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-
 const StyledCard = styled(Card) <StyledCardProps>`
   position: relative;
   overflow: hidden;
   transition: width 0.4s ease-out;
   width: ${props => props.$maxwidth - 50}px;
   height: 165px;
-
   & a {
     text-align: end;
   }
@@ -59,9 +57,7 @@ const StyledCard = styled(Card) <StyledCardProps>`
   ${media.tablet} {
     height: 250px;
     width: ${props => props.$maxwidth}px;
-
   }
-
 `;
 
 export { StyledCard };

@@ -9,7 +9,6 @@ import { ContactPage } from "@pages/contact";
 
 export const NoMatch = () => <div>No match</div>;
 
-
 export const BrowserRouterComponent = () => {
     return (
         <Routes>
