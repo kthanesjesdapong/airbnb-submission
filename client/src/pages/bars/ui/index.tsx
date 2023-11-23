@@ -1,10 +1,6 @@
 import { Venue } from "@features/venue";
 import { ExploreCards } from "@widgets/ExploreCards";
 import { dummyData } from "@shared/constants";
-//import filter here is as well
-
-
-
 
 const barsPageConfig = {
     $width: 320,
