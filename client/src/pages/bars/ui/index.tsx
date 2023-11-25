@@ -3,10 +3,9 @@ import { ExploreCards } from "@widgets/ExploreCards";
 import { dummyData } from "@shared/constants";
 
 const barsPageConfig = {
-    $width: 320,
+    $width: 300,
     $height: 150
 };
-
 
 export const BarsPage = () => {
 
