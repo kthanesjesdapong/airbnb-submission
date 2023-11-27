@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { HTMLAttributes } from 'react';
 
-type LinkProps = HTMLAttributes<HTMLLinkElement> & {
+export type LinkProps = HTMLAttributes<HTMLLinkElement> & {
   content: string;
   href: string;
   fontSize?: number;

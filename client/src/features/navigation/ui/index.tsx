@@ -3,8 +3,8 @@ import { Logo } from "@shared/ui";
 
 import { NavigationContainer, LogoContainer } from "./Navigation.styled";
 
-import { Topbar } from '@widgets/Topbar';
-import { Sidebar } from '@widgets/Sidebar';
+import { Topbar } from '@shared/ui/top-bar';
+import { Sidebar } from '@shared/ui/side-bar';
 
 type NavigationProps = {
     className?: string;

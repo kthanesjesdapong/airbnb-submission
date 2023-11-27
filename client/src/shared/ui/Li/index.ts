@@ -1,11 +1,8 @@
 import { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { media } from '@shared/lib';
+import { Link } from 'react-router-dom';
 
-// interface ListItemProps extends HTMLAttributes<HTMLLIElement> {
-//   fontSize: number;
-//   color: string;
-// }
 
 type ListItemProps = {
   fontSize: number;
@@ -35,4 +32,36 @@ const ListItem = styled.li<ListItemProps>`
 `;
 
 
-export { ListItem };
+export type ListItemLinkProps = HTMLAttributes<HTMLLinkElement> & {
+  content: string;
+  href: string;
+};
+
+const ListItemLink = styled(Link) <ListItemLinkProps>`
+  cursor: pointer;
+  transition: color 0.4s ease-in-out;
+  font-size: 1.25em;
+  color: ${props => props.color ? props.color : props.theme.colors.categorySub} !important;
+  color: red;
+  margin:.25em 0;
+  padding: .2em .5em;
+  text-align: start;
+
+  &:active, 
+  &:hover {
+    color: blue !important;
+
+  }
+
+  ${media.tablet} {
+    margin: 0rem 0;
+    padding: 0;
+  }
+  ${media.widescreen} {
+    font-size: 1.45em;
+  }
+
+`;
+
+
+export { ListItem, ListItemLink };
