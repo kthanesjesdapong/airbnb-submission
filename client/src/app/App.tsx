@@ -5,12 +5,7 @@ import { BrowserRouterComponent } from '@shared/router/BrowserRouterComponent';
 import { LocationDisplay } from '@shared/lib/hooks';
 import { Footer } from '@features/footer';
 
-
-
-
-
 const App = () => {
-
     return (
         <BrowserRouter >
             <Navigation />
