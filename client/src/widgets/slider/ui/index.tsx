@@ -1,11 +1,11 @@
 import { Header } from "@shared/ui";
 import { SliderContainer } from "./Slider.styled";
-import { SliderItem } from "@features/slider-item";
-import { SliderProgressBar } from "@features/slider-progress";
+import { SliderItem } from "@entities/slider-item";
+import { SliderProgressBar } from "@entities/slider-progress";
 import { useAppSelector, useNavigatePages } from "@shared/lib/hooks";
 import { featuredCollections } from "@shared/constants";
 import { imageContainerConfigs } from "..";
-import { AnchorTag } from "@features/slider-item/ui/SliderItem.styled";
+import { AnchorTag } from "@entities/slider-item/ui/SliderItem.styled";
 import { useEffect } from "react";
 // import { SelectedFeature } from "@shared/store/feature";
 

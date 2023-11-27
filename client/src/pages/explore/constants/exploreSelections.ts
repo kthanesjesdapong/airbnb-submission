@@ -1,4 +1,4 @@
-export const categorySelections = [
+export const exploreSelections = [
   {
     header: 'EVENTS',
     href: 'events',

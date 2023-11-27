@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { media } from '@shared/lib';
-const CategorySelectContainer = styled.div`
+
+const ExplorePageContainer = styled.div`
   
   display:flex;
   flex-direction: column;
@@ -18,4 +19,4 @@ const CategorySelectContainer = styled.div`
   }
 `;
 
-export { CategorySelectContainer };
+export { ExplorePageContainer };

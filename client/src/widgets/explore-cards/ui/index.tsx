@@ -1,7 +1,7 @@
 import { ExploreCardsContainer, ExploreCardWrapper, ExploreCard } from "./ExploreCards.styled";
 import { exploreData } from "..";
 import { useState, useMemo } from "react";
-import { Pagination } from "@features/pagination/";
+import { Pagination } from "@features/pagination";
 
 type PageSizeT = number;
 const PageSize: PageSizeT = 6;

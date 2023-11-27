@@ -1,5 +1,5 @@
-import { Venue } from "@widgets/venue";
-import { ExploreCards } from "@features/explore-cards";
+import { Venue } from "@entities/venue";
+import { ExploreCards } from "@widgets/explore-cards";
 import { dummyData } from "@shared/constants";
 
 const barsPageConfig = {
