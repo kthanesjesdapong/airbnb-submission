@@ -9,7 +9,7 @@ import { ContactPage } from "@pages/contact";
 
 export const NoMatch = () => <div>No match</div>;
 
-export const BrowserRouterComponent = () => {
+export const AppRouterComponent = () => {
     return (
         <Routes>
             <Route>

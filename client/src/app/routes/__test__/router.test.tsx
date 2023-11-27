@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import App from '@app/App';
 import { MemoryRouter } from 'react-router-dom';
 import { renderWithThemeProvider, renderWithProviders } from '@shared/lib/test-utils';
-import { BrowserRouterComponent } from '../BrowserRouterComponent';
+import { AppRouterComponent } from '../AppRouterComponent';
 import { LocationDisplay } from '@shared/lib/hooks';
 
 const render = renderWithThemeProvider;
@@ -34,7 +34,7 @@ test('landing on a bad page', () => {
     {
       children:
         <MemoryRouter initialEntries={[badRoute]}>
-          <BrowserRouterComponent />
+          <AppRouterComponent />
         </MemoryRouter>
     }
   );

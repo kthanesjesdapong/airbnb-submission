@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Card } from '.';
-import { AllTheProviders } from '@shared/lib/test-utils';
+import { AllProviders } from '@app/providers';
 
 const meta: Meta<typeof Card> = {
     component: Card,
     decorators: [
         (Story) => (
-            <AllTheProviders>
+            <AllProviders>
                 <Story />
-            </AllTheProviders>
+            </AllProviders>
         )
     ],
     tags: ['autodocs'],

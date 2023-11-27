@@ -1,15 +1,7 @@
-import { PropsWithChildren, ReactElement, ReactNode } from "react";
+import { PropsWithChildren, ReactElement } from "react";
 import { render, RenderResult } from "@testing-library/react";
 import type { RenderOptions } from "@testing-library/react";
 import { StyledThemeProvider } from "@app/providers/Style-Theme-Provider";
-
-import { MemoryRouter } from "react-router-dom";
-import { GlobalStyle } from "@shared/styles";
-
-import { Provider } from "react-redux";
-import { store } from "@shared/store";
-
-
 
 type RenderThemeProps = {
     children: ReactElement;
@@ -17,19 +9,6 @@ type RenderThemeProps = {
 };
 
 
-export const AllTheProviders = ({ children }: { children: ReactNode; }) => {
-
-    return (
-        <Provider store={store}>
-            <StyledThemeProvider>
-                <GlobalStyle />
-                <MemoryRouter>
-                    {children}
-                </ MemoryRouter>
-            </StyledThemeProvider>
-        </Provider>
-    );
-};
 
 
 /*

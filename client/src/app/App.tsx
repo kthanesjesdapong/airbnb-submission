@@ -1,7 +1,7 @@
 //Root LayOut
-import { Navigation } from '@widgets/navigation';
+import { Navigation } from '@features/navigation';
 import { BrowserRouter } from 'react-router-dom';
-import { BrowserRouterComponent } from '@shared/router/BrowserRouterComponent';
+import { AppRouterComponent } from '@app/routes/AppRouterComponent';
 import { LocationDisplay } from '@shared/lib/hooks';
 import { Footer } from '@shared/ui';
 
@@ -10,7 +10,7 @@ const App = () => {
         <BrowserRouter >
             <Navigation />
             <main>
-                <BrowserRouterComponent />
+                <AppRouterComponent />
             </main>
             <Footer />
             <LocationDisplay />
