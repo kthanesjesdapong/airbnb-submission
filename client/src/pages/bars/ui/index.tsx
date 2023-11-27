@@ -1,4 +1,4 @@
-import { Venue } from "@features/venue";
+import { Venue } from "@widgets/venue";
 import { ExploreCards } from "@widgets/ExploreCards";
 import { dummyData } from "@shared/constants";
 

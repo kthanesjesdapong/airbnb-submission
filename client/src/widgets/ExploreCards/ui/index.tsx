@@ -31,7 +31,6 @@ export const ExploreCards = ({ className, data, $width, $height }: ExploreCardsP
                 className={className}
                 $width={$width}
             >
-
                 {currentData && currentData.map((d, i) => (
                     <ExploreCardWrapper
                         $width={$width}
