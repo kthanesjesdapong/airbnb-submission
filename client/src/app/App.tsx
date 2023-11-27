@@ -1,9 +1,9 @@
 //Root LayOut
-import { Navigation } from '@features/navigation';
+import { Navigation } from '@widgets/navigation';
 import { BrowserRouter } from 'react-router-dom';
 import { BrowserRouterComponent } from '@shared/router/BrowserRouterComponent';
 import { LocationDisplay } from '@shared/lib/hooks';
-import { Footer } from '@widgets/Footer';
+import { Footer } from '@features/Footer';
 
 
 
