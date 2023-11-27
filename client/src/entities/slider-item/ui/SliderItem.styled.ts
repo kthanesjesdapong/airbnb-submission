@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import { HTMLAttributes } from "react";
 
-
-
-
 type SliderItemWrapperProps = {
   height: string;
   width: string;

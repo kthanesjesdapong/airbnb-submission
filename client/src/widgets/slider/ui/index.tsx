@@ -7,7 +7,7 @@ import { featuredCollections } from "@shared/constants";
 import { imageContainerConfigs } from "..";
 import { AnchorTag } from "@entities/slider-item/ui/SliderItem.styled";
 import { useEffect } from "react";
-// import { SelectedFeature } from "@shared/store/feature";
+
 
 
 //CALL USE REF MEMO OR USECALLBACK
@@ -26,6 +26,7 @@ export const Slider = () => {
             setCurrentItemIndex(0);
         }
     }, [selectedCategory, prevSelected, setCurrentItemIndex]);
+
     return (
         <SliderContainer >
             <Header
