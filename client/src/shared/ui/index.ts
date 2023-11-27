@@ -7,4 +7,5 @@ export * from './SideUl';
 export * from './SectionParagraph';
 export * from './Header';
 export * from './Card';
-export * from './Pagination';
+export * from '../../features/footer';
+export * from '../../features/hero-section';

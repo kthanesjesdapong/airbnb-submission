@@ -5,8 +5,6 @@ const PaginationContainer = styled.ul`
   display: flex;
   list-style-type: none;
   justify-content: center;
-  /* position: sticky;
-  align-items: end; */
 `;
 
 const PaginationItem = styled.li`
@@ -43,7 +41,6 @@ const PaginationItem = styled.li`
 const Arrow = styled.div`
   &::before{
     position: relative;
-    /* top: 3pt; Uncomment this to lower the icons as requested in comments*/
     content: '';
     display:inline-block;
     width: 0.4em;

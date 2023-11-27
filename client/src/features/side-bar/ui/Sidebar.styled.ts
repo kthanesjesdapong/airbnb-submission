@@ -2,14 +2,9 @@ import styled from 'styled-components';
 import { media } from '@shared/lib';
 import { HTMLAttributes } from 'react';
 
-// interface StyledBarContainerProps extends HTMLAttributes<HTMLDivElement> {
-//   role?: string;
-// }
-
 type SidebarContainerProps = {
   role?: string;
 } & HTMLAttributes<HTMLDivElement>;
-
 
 const SidebarContainer = styled.div<SidebarContainerProps>`
   display:flex;

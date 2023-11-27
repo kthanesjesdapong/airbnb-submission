@@ -56,5 +56,3 @@ export const Sidebar = ({ linkTitles, links, role }: SideBarProps) => {
         </SidebarContainer>
     );
 };
-
-// export default SideBar;

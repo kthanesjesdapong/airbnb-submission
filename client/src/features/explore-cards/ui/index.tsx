@@ -1,7 +1,7 @@
 import { ExploreCardsContainer, ExploreCardWrapper, ExploreCard } from "./ExploreCards.styled";
 import { exploreData } from "..";
 import { useState, useMemo } from "react";
-import { Pagination } from "@shared/ui";
+import { Pagination } from "@features/pagination/";
 
 type PageSizeT = number;
 const PageSize: PageSizeT = 6;
@@ -31,7 +31,6 @@ export const ExploreCards = ({ className, data, $width, $height }: ExploreCardsP
                 className={className}
                 $width={$width}
             >
-
                 {currentData && currentData.map((d, i) => (
                     <ExploreCardWrapper
                         $width={$width}

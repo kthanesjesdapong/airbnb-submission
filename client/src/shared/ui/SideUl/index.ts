@@ -1,10 +1,6 @@
 import styled, { keyframes, css } from 'styled-components';
 import { ULProps } from '..';
 
-// interface SideULProps extends ULProps {
-//   $top: number;
-// }
-
 type SideULProps = {
   $top: number;
 } & ULProps;
@@ -18,8 +14,6 @@ const slide = (start: number, end: number) => keyframes`
     right: ${end}em;
   }
 `;
-
-
 
 const SideUnorderedList = styled.ul<SideULProps>`
   position: absolute;
