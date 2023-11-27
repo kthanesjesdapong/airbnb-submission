@@ -1,8 +1,8 @@
 import { HomeLayoutContainer, FirstRowContainer, SecondRowContainer } from "./Layout.styled";
-import { SliderSelector } from "@widgets/SliderSelector";
+import { SliderSelector } from "@widgets/SliderSelector/";
 import { sliderOptions, sliderSelectorConfigs, heroSectionConfigs } from "../home.configs";
 import { HeroSection } from "@widgets/HeroSection";
-import { Slider } from "@widgets/slider";
+import { Slider } from "@features/slider";
 export const Layout = () => {
     const { sectionTitle, sectionParagraph } = heroSectionConfigs;
     return (

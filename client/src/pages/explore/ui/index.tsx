@@ -1,4 +1,4 @@
-import { CategorySelect } from "@widgets/category-select";
+import { CategorySelect } from "@features/category-select";
 
 export const ExplorePage = () => {
     return (
