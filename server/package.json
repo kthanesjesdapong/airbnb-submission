@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "ts-node-dev -r tsconfig-paths/register --transpile-only ./src/index.ts",
+    "run:dev": "ts-node -r tsconfig-paths/register --transpile-only ./src/index.ts",
+    "build": "tsc",
+    "lint": "eslint src/**/*.ts",
+    "format": "eslint src/**/*.ts --fix"
+  },
   "dependencies": {
     "@apollo/server": "^4.9.4",
     "axios": "^1.5.1",
@@ -26,9 +34,23 @@
     "@types/nanoid": "^3.0.0",
     "@types/node": "^20.8.7",
     "@types/pino": "^7.0.5",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.0",
+    "husky": "^8.0.3",
+    "prettier": "^3.1.0",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.2.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
   }
 }
