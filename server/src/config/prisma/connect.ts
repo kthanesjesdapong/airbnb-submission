@@ -2,7 +2,6 @@ import { prisma } from './client';
 import { logger } from '..';
 
 
-
 export async function connect(): Promise<void> {
   try {
     await prisma.$connect();

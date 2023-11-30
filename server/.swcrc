@@ -8,8 +8,8 @@
         "dynamicImport": true
       },
       "baseUrl": "./",
-      "paths":{
-        "@*": ["src/*"],
+      "paths": {
+        "@*": ["node_modules","src/*"],
         "$prisma/*": ["src/config/prisma/*"],
         "@config": ["src/config"],
         "@config/*": ["src/config/*"],
@@ -21,6 +21,5 @@
       "loose": false,
       "externalHelpers": false,
       "keepClassNames": false
-    },
-    "minify": true
+    }
   }

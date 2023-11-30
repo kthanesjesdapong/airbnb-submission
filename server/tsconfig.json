@@ -2,7 +2,8 @@
   "ts-node": {
     "require": ["tsconfig-paths/register"],
     "esm": true,
-    "experimentalSpecifierResolution": "node"
+    "experimentalSpecifierResolution": "node",
+    "swc":true
   },
 "compilerOptions": {
   "outDir": "build",
@@ -20,7 +21,7 @@
   "types": ["node", "jest"],
   "baseUrl": "./",
   "paths": {
-    "@*": ["src/*"],
+    "@*": ["node_modules","src/*"],
     "$prisma/*": ["src/config/prisma/*"],
     "@config": ["src/config"],
     "@config/*": ["src/config/*"],
@@ -28,5 +29,5 @@
     "@constants/*": ["src/constants/*"],
     "@seed/*": ["src/seed/*"]
   }
- }
+ },
 }
