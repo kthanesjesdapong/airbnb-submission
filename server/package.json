@@ -12,7 +12,9 @@
     "format": "eslint src/**/*.ts --fix",
     "test": "jest",
     "t-wa": "yarn test -watchAll",
-    "seed": "ts-node ./src/seed/index.ts"
+    "seed": "ts-node ./src/seed/index.ts",
+    "p-schema": "npx prisma generate generate --schema ./src/config/prisma/schema.prisma",
+    "migration": "npx prisma migrate dev"
   },
   "dependencies": {
     "@apollo/server": "^4.9.4",
@@ -53,6 +55,7 @@
     "eslint-plugin-import": "^2.29.0",
     "husky": "^8.0.3",
     "jest": "^29.7.0",
+    "jest-mock-extended": "^3.0.5",
     "prettier": "^3.1.0",
     "supertest": "^6.3.3",
     "ts-jest": "^29.1.1",

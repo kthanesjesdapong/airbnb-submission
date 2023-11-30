@@ -10,6 +10,7 @@
       "baseUrl": "./",
       "paths":{
         "@*": ["src/*"],
+        "$prisma/*": ["src/config/prisma/*"],
         "@config": ["src/config"],
         "@config/*": ["src/config/*"],
         "@constants/": ["src/constants/"],

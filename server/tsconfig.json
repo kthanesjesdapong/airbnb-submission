@@ -21,6 +21,7 @@
   "baseUrl": "./",
   "paths": {
     "@*": ["src/*"],
+    "$prisma/*": ["src/config/prisma/*"],
     "@config": ["src/config"],
     "@config/*": ["src/config/*"],
     "@constants/": ["src/constants/"],
@@ -28,6 +29,4 @@
     "@seed/*": ["src/seed/*"]
   }
  },
-//  "include": ["src/*"],
-//  "exclude": ["node_modules"]
 }

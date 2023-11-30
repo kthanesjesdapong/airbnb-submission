@@ -1,17 +1,17 @@
 import { gql } from 'graphql-request';
 
-export const barsQuery = gql`
-  query search($term: String!, $location: String!, $categories: String!) {
+export const searchQuery = gql`
+query search($term: String!, $location: String!, $categories: String!) {
   search(
     term:$term,
     location:$location,
     categories: $categories
+    limit: 50
   ) {
     total
     business {
       name
       rating
-      review_count
       photos
       coordinates {
         latitude
@@ -32,7 +32,15 @@ export const barsQuery = gql`
         country
       }
       display_phone
+      categories {
+        title
+        parent_categories {
+          title
+          alias
+        }
+        alias
+      }
     }
-  }
+  }  
 }
 `;

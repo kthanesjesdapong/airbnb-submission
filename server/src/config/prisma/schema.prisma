@@ -16,11 +16,11 @@ model Restaurant {
   rating Float
   photos String[]
   coordinates Json
+  hours Json[]
+  location Json
+  display_phone String
+  categories Json[]
   @@map("restaurants")
 }
 
 
-//  hours Json[]
-//   location Json
-//   display_phone String
-//   categories Json[]
