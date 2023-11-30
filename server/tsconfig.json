@@ -28,5 +28,5 @@
     "@constants/*": ["src/constants/*"],
     "@seed/*": ["src/seed/*"]
   }
- },
+ }
 }

@@ -86,9 +86,62 @@ describe('restaurants service', () => {
       coordinates: {
         latitude: 36.1579472959742,
         longitude: -115.153866894525
-      }
+      },
+      hours: [{
+        open: [
+          {
+            start: '0700',
+            end: '1900',
+            day: 0
+          },
+          {
+            start: '0700',
+            end: '1900',
+            day: 1
+          },
+          {
+            start: '0700',
+            end: '1900',
+            day: 2
+          },
+          {
+            start: '0700',
+            end: '1900',
+            day: 3
+          },
+          {
+            start: '0700',
+            end: '1900',
+            day: 4
+          },
+          {
+            start: '0700',
+            end: '1900',
+            day: 5
+          },
+          {
+            start: '0700',
+            end: '1900',
+            day: 6
+          }
+        ],
+        is_open_now: true
+      }],
+      location: {
+        address1: 'n/a',
+        city: 'lv',
+        state: 'nv',
+        country: 'usa'
+      },
+      display_phone: '(000)-000-0000',
+      categories: [
+        {
+          title: 'ex',
+          parent_categories: [{ title: 'ex2', alias: 'n/a' }],
+          alias: 'n/a'
+        }
+      ]
     });
   });
-
 })
 

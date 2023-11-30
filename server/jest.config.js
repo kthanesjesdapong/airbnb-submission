@@ -2,6 +2,8 @@ const fs = require('fs');
 const { readFileSync } = fs;
 const config = JSON.parse(readFileSync(`${__dirname}/.swcrc`, 'utf-8'));
 
+
+
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',

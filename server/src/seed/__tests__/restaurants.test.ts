@@ -2,6 +2,7 @@ import supertest from 'supertest';
 import routes from '@seed/routes';
 import createServer from '@api/utils/server';
 
+
 const app = createServer();
 routes(app);
 
