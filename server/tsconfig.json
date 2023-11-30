@@ -17,13 +17,15 @@
   "experimentalDecorators": true,
   "allowSyntheticDefaultImports": true,
   "emitDecoratorMetadata": true,
+  "types": ["node", "jest"],
   "baseUrl": "./",
   "paths": {
+    "@*": ["src/*"],
+    "@config": ["src/config"],
     "@config/*": ["src/config/*"],
     "@constants/": ["src/constants/"],
     "@constants/*": ["src/constants/*"],
-    "@utils": ["src/utils"],
-    "@utils/*": ["src/utils/*"],
-  },
-}
+    "@seed/*": ["src/seed/*"]
+  }
+ }
 }

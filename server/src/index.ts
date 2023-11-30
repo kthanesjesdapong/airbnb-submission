@@ -1,7 +1,11 @@
 import 'dotenv/config';
-import { Express } from 'express';
-import { logger, name } from '@utils';
+// import config from 'config';
 
-console.log(name);
+// import { Express } from 'express';
+// import cors from 'cors';
+// import bodyParser from 'body-parser';
 
-console.log('hello');
+// import { logger } from '@api/utils';
+// import schema from '@api/schema';
+
+// const port = config.get<number>('port');
