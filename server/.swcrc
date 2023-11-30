@@ -1,0 +1,25 @@
+{
+    "$schema": "https://json.schemastore.org/swcrc",
+    "jsc": {
+      "parser": {
+        "syntax": "typescript",
+        "tsx": false,
+        "decorators": false,
+        "dynamicImport": true
+      },
+      "baseUrl": "./",
+      "paths":{
+        "@*": ["src/*"],
+        "@config": ["src/config"],
+        "@config/*": ["src/config/*"],
+        "@constants/": ["src/constants/"],
+        "@constants/*": ["src/constants/*"],
+        "@seed/*": ["src/seed/*"]
+      },
+      "target": "esnext",
+      "loose": false,
+      "externalHelpers": false,
+      "keepClassNames": false
+    },
+    "minify": true
+  }
