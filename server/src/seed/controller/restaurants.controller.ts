@@ -17,9 +17,7 @@ export const getRestaurantsHandler = async (req: Request, res: Response): Promis
     restaurantArray?.forEach((restaurant) => {
       createRestaurant(restaurant, { prisma: prisma });
     });
-
     console.log(restaurantsData);
-    console.log({ restaurantArray });
     res.status(200).json(restaurantsData);
   } catch (e: unknown) {
     console.error(e);
