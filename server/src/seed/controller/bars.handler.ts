@@ -9,31 +9,29 @@ import { searchVars } from "@seed/utils/searchVars";
 
 import { prisma } from "$prisma/client";
 
-import { createRestaurant } from "@seed/service/restaurant/createRestaurant.service";
+import { createBar } from "@seed/service/bar/createBar.service";
 
 import { getTotalMatch } from "@seed/service/business/totalBusiness.service";
 import { findLimit } from "@seed/utils/findLimit";
 import { navigateTotalResults } from "@seed/utils/navigateTotalResults";
 
 
-export const createRestaurantsHandler = async (req: Request, res: Response): Promise<void> => {
+export const createBarsHandler = async (req: Request, res: Response): Promise<void> => {
+
   try {
-    //queryTerm
-    const restaurantsVars = searchVars("restaurants", "las vegas downtown freemont arts district", "Food", 1, 0);
-    //Find Total
-    const totalCountData = await getTotalMatch(gqlClient, totalQuery, restaurantsVars);
-    //calc Limit
+    const barsVar = searchVars('bars', 'las vegas downtown freemont arts district', 'Bars', 1, 0);
+
+    const totalCountData = await getTotalMatch(gqlClient, totalQuery, barsVar);
     const limitOffsetArr = findLimit(totalCountData?.search.total);
     const [maxFactor, complementary] = limitOffsetArr;
+    const newBarData = await navigateTotalResults(maxFactor, complementary, getBusiness, searchQuery, gqlClient, barsVar);
 
-    //call navTotalRes
-    const newRestaurantData = await navigateTotalResults(maxFactor, complementary, getBusiness, searchQuery, gqlClient, restaurantsVars);
-
-    newRestaurantData.forEach(restaurantData => {
-      createRestaurant(restaurantData, { prisma });
+    newBarData.forEach(barData => {
+      createBar(barData, { prisma });
     });
-    res.status(200).json(newRestaurantData);
+    res.status(200).json(newBarData);
   } catch (e: unknown) {
     console.error(e);
   }
+
 };

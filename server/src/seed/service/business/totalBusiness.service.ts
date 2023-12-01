@@ -1,5 +1,5 @@
 import type { GraphQLClient } from "graphql-request";
-import { TotalDataResponse } from "@seed/types/restaurants";
+import { TotalDataResponse } from "@seed/types/business";
 import { searchVars } from "@seed/types/searchVars";
 
 export type getTotalMatchType = (client: GraphQLClient, query: string, restaurantVars: searchVars) => Promise<TotalDataResponse | undefined>;

@@ -1,7 +1,7 @@
 import { getBusiness } from "@seed/types/getBusiness.type";
 import { GraphQLClient } from "graphql-request";
 import { type searchVars } from "@seed/types/searchVars";
-import { Business } from "@seed/types/restaurants";
+import { Business } from "@seed/types/business";
 
 export const navigateTotalResults = async <T extends number>(limit: T, resultTotalPages: T, callBack: getBusiness, query: string, client: GraphQLClient, queryVariables: searchVars) => {
 

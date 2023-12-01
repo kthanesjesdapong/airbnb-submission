@@ -7,7 +7,7 @@ query search($term: String!, $location: String!, $categories: String!, $limit: I
     location:$location,
     categories: $categories,
     limit: $limit,
-    offet: $offset
+    offset: $offset
   ) {
     total
   }  
