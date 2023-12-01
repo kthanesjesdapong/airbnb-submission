@@ -14,6 +14,7 @@
     "t-wa": "yarn test -watchAll",
     "seed": "ts-node ./src/seed/index.ts",
     "p-schema": "npx prisma generate generate --schema ./src/config/prisma/schema.prisma",
+    "reset-db": "npx prisma migrate reset",
     "migration": "npx prisma migrate dev"
   },
   "dependencies": {

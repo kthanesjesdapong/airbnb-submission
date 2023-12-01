@@ -1,12 +1,13 @@
 import { gql } from 'graphql-request';
 
 export const searchQuery = gql`
-query search($term: String!, $location: String!, $categories: String!) {
+query search($term: String!, $location: String!, $categories: String! $limit: Int! $offset: Int!) {
   search(
     term:$term,
     location:$location,
-    categories: $categories
-    limit: 50
+    categories: $categories,
+    limit: $limit,
+    offset: $offset
   ) {
     total
     business {

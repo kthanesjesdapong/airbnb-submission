@@ -55,3 +55,12 @@ export type Search = {
 export type QueryDataResponse = {
   search: Search;
 };
+
+
+export type Total = {
+  total: number;
+};
+
+export type TotalDataResponse = {
+  search: Total;
+};
