@@ -1,11 +1,48 @@
 import 'dotenv/config';
-// import config from 'config';
+import config from 'config';
 
-// import { Express } from 'express';
-// import cors from 'cors';
-// import bodyParser from 'body-parser';
+import { json } from 'express';
+import { expressMiddleware } from '@apollo/server/express4';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import { logger } from '@config';
 
-// import { logger } from '@api/utils';
-// import schema from '@api/schema';
+import { ApolloServer } from '@apollo/server';
+import { app } from '@config/apollo/config';
+import { httpServer } from '@config/apollo/config';
 
-// const port = config.get<number>('port');
+import apolloServerConfig from '@config/apollo/config';
+
+import connect from '@config/prisma/connect';
+
+import { Context } from '@types';
+import apolloServerContext from '@config/apollo/context';
+
+const port = config.get<number>('port');
+
+app.use(json());
+
+export const server = async () => {
+  //typeDefs missing for apollogServerConfig
+  const apolloServer = new ApolloServer<Context>(apolloServerConfig);
+  await apolloServer.start();
+
+  app.use(
+    '/',
+    cors<cors.CorsRequest>,
+    bodyParser.json(),
+    expressMiddleware(apolloServer, {
+      context: async () => (apolloServerContext)
+    })
+  );
+
+  await new Promise<void>(() => httpServer.listen({
+    port: port
+  }, () => {
+    logger.info(`App is running on http://localhost:${post}`);
+  }));
+
+  await connect();
+};
+
+server();

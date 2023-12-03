@@ -1,5 +1,5 @@
 import { createRestaurant } from "../restaurant/createRestaurant.service";
-import { createMockContext } from '@config/prisma/context';
+import { createMockContext } from '@config/prisma/mockContext';
 import { MockContext, Context } from "@types";
 
 let mockCtx: MockContext;

@@ -1,4 +1,4 @@
-import { Context } from "@config/prisma/context";
+import { Context } from "@config/prisma/mockContext";
 import { type Business } from "@seed/types/business";
 import { Bar } from '@prisma/client';
 
