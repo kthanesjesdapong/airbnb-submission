@@ -1,13 +1,7 @@
 import { PrismaClient } from '@prisma/client';
-import { mockDeep, DeepMockProxy } from 'jest-mock-extended';
+import { mockDeep } from 'jest-mock-extended';
+import { MockContext } from '@types';
 
-export type Context = {
-  prisma: PrismaClient;
-};
-
-export type MockContext = {
-  prisma: DeepMockProxy<PrismaClient>;
-};
 
 export const createMockContext = (): MockContext => {
   return {
@@ -16,10 +10,12 @@ export const createMockContext = (): MockContext => {
 };
 
 /*
+
+
 To use the context, you would do the following in your test file:
 
-
-import { MockContext, Context, createMockContext } from '../context'
+import {Context,MockContext} from '@types'
+import {createMockContext } from '../context'
 
 let mockCtx: MockContext
 let ctx: Context
