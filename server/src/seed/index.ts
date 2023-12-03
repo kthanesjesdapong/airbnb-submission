@@ -1,6 +1,6 @@
 import 'dotenv';
 import config from 'config';
-import { logger } from '@config'; //prisma, 
+import { logger } from '@config';
 import routes from './routes';
 import createServer from '@api/utils/server';
 import { errorMiddleware } from './middleware/errorMiddleWare';
