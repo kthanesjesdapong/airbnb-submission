@@ -39,9 +39,8 @@ export const server = async () => {
   await new Promise<void>(() => httpServer.listen({
     port: port
   }, () => {
-    logger.info(`App is running on http://localhost:${post}`);
+    logger.info(`App is running on http://localhost:${port}`);
   }));
-
   await connect();
 };
 
