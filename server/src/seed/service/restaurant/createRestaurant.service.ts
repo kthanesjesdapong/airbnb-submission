@@ -1,14 +1,11 @@
 import { Context } from "@types";
 import { type Business } from "@seed/types/business";
-import { Restaurant } from '@prisma/client';
-import { Prisma } from "@prisma/client";
+import { Restaurant, Prisma } from "@prisma/client";
 
 export type createRestaurant = (restaurant: Prisma.RestaurantCreateInput, ctx: Context) => Promise<Restaurant>;
-
 export const createRestaurant = async (restaurant: Business, ctx: Context) => {
   try {
-    
-    const { hours, location, categories, coordinates } = restaurant;
+    const { coordinates, hours, location, categories } = restaurant;
     const { latitude, longitude } = coordinates;
     const formattedHours = hours.length > 0 ? hours[0].open : [{ start: '0', end: '0', day: 0 }];
 
@@ -26,10 +23,21 @@ export const createRestaurant = async (restaurant: Business, ctx: Context) => {
         },
         location: {
           create: {
-            address: location.address1 ?? 'N/A',
-            city: location.city ?? 'N/A',
-            state: location.state ?? 'N/A',
-          },
+            location: {
+              connectOrCreate: {
+                where: {
+                  address: location.address1 ?? '',
+                  city: location.city ?? '',
+                  state: location.state ?? '',
+                },
+                create: {
+                  address: location.address1 ?? '',
+                  city: location.city ?? '',
+                  state: location.state ?? '',
+                }
+              }
+            }
+          }
         },
         display_phone: restaurant.display_phone,
         category: {

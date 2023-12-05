@@ -1,16 +1,15 @@
 import { Context } from "@types";
 import { type Business } from "@seed/types/business";
-import { Bar } from '@prisma/client';
-import { Prisma } from "@prisma/client";
+import { Bar, Prisma } from '@prisma/client';
+
 
 export type createBar = (bar: Prisma.BarCreateInput, ctx: Context) => Promise<Bar>;
 
 export const createBar = async (bar: Business, ctx: Context) => {
   try {
-    const { hours, location, categories, coordinates } = bar;
+    const { coordinates, hours, location, categories } = bar;
     const { latitude, longitude } = coordinates;
     const formattedHours = hours.length > 0 ? hours[0].open : [{ start: '0', end: '0', day: 0 }];
-
     return await ctx.prisma.bar.create({
       data: {
         name: bar.name,
@@ -21,9 +20,20 @@ export const createBar = async (bar: Business, ctx: Context) => {
         hours: { createMany: { data: formattedHours } },
         location: {
           create: {
-            address: location.address1 ?? 'N/A',
-            city: location.city ?? 'N/A',
-            state: location.state ?? 'N/A',
+            location: {
+              connectOrCreate: {
+                where: {
+                  address: location.address1 ?? '',
+                  city: location.city ?? '',
+                  state: location.state ?? '',
+                },
+                create: {
+                  address: location.address1 ?? '',
+                  city: location.city ?? '',
+                  state: location.state ?? '',
+                }
+              }
+            }
           }
         },
         display_phone: bar.display_phone,
@@ -46,6 +56,6 @@ export const createBar = async (bar: Business, ctx: Context) => {
       }
     });
   } catch (e: unknown) {
-    // console.error(bar.latitude, bar.longitude, 'THIS IS IN 53, latitude and longitude', e);
+    console.error(bar.name, e);
   }
 };

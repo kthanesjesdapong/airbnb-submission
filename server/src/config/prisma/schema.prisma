@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,7 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Restaurant {
   id Int @id @default(autoincrement())
   name String @unique
@@ -19,7 +15,7 @@ model Restaurant {
   latitude Float
   longitude Float
   hours RestaurantHours[]
-  location RestaurantLocation?
+  location RestaurantLocation[]
   display_phone String?
   category CategoriesOnRestaurants[]
   @@map("restaurants")
@@ -33,12 +29,11 @@ model Bar {
   latitude Float
   longitude Float
   hours BarHours[]
-  location BarLocation?
+  location BarLocation[]
   display_phone String?
   category CategoriesOnBars[]
   @@map("bars")
 }
-
 
 model RestaurantHours {
   id Int @id @default(autoincrement())
@@ -47,6 +42,8 @@ model RestaurantHours {
   day Int
   restaurant Restaurant @relation(fields: [restaurantName], references: [name])
   restaurantName String
+
+  @@map("restaurant_hours")
 }
 
 model BarHours {
@@ -56,35 +53,38 @@ model BarHours {
   day Int
   bar Bar @relation(fields: [barName], references: [name])
   barName String
+
+  @@map("bar_hours")
 }
 
+model Location {
+  id Int @id @default(autoincrement())
+  address String @unique
+  city String
+  state String
+  restaurants RestaurantLocation[]
+  bars BarLocation[]
 
-//Location has to change because 2 more restaurants can share an address. Consider making this a many to many relationship
-
-//seed Location after and connect it after
-
-//
-
-
+  @@map("location")
+}
 
 model RestaurantLocation {
-  id Int @id @default(autoincrement())
-  address String
-  city String
-  state String
   restaurant Restaurant @relation(fields: [restaurantName], references: [name])
-  restaurantName String @unique
+  restaurantName String
+  location Location @relation(fields: [locationAddress], references: [address])
+  locationAddress String
+  @@id([restaurantName, locationAddress])
+  @@map("restaurant_location")
 }
 
-
-
 model BarLocation {
-  id Int @id @default(autoincrement())
-  address String
-  city String
-  state String
   bar Bar @relation(fields: [barName], references: [name])
-  barName String @unique
+  barName String
+  location Location @relation(fields: [locationAddress], references: [address])
+  locationAddress String
+  @@id([barName, locationAddress])
+
+  @@map("bar_location")
 }
 
 model Category {
@@ -93,14 +93,18 @@ model Category {
   alias String @unique
   restaurants CategoriesOnRestaurants[]
   bars CategoriesOnBars[]
+
+  @@map("category")
 }
 
 model CategoriesOnRestaurants {
-  categoryAlias String
   restaurant Restaurant @relation(fields: [restaurantName], references: [name])
   restaurantName String
   category Category @relation(fields: [categoryAlias], references: [alias])
+  categoryAlias String
   @@id([restaurantName, categoryAlias])
+
+  @@map("categories_restaurants")
 }
 
 model CategoriesOnBars {
@@ -109,4 +113,6 @@ model CategoriesOnBars {
   category Category @relation(fields: [categoryAlias], references: [alias])
   categoryAlias String
   @@id([barName, categoryAlias])
+
+  @@map("categories_bars")
 }
