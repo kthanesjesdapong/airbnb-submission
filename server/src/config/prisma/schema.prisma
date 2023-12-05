@@ -10,33 +10,91 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-generator pothos {
-  provider = "prisma-pothos-types"  
-}
 
 model Restaurant {
   id Int @id @default(autoincrement())
-  name String
+  name String @unique
   rating Float
   photos String[]
-  coordinates Json
-  hours Json[]
-  location Json
-  display_phone String
-  categories Json[]
+  latitude Float
+  longitude Float
+  hours RestaurantHours[]
+  location RestaurantLocation?
+  display_phone String?
+  category CategoriesOnRestaurants[]
   @@map("restaurants")
 }
+
 model Bar {
   id Int @id @default(autoincrement())
-  name String
+  name String @unique
   rating Float
   photos String[]
-  coordinates Json
-  hours Json[]
-  location Json
-  display_phone String
-  categories Json[]
+  latitude Float
+  longitude Float
+  hours BarHours[]
+  location BarLocation?
+  display_phone String?
+  category CategoriesOnBars[]
   @@map("bars")
 }
 
 
+model RestaurantHours {
+  id Int @id @default(autoincrement())
+  start String
+  end String
+  day Int
+  restaurant Restaurant @relation(fields: [restaurantName], references: [name])
+  restaurantName String
+}
+
+model BarHours {
+  id Int @id @default(autoincrement())
+  start String
+  end String
+  day Int
+  bar Bar @relation(fields: [barName], references: [name])
+  barName String
+}
+
+model RestaurantLocation {
+  id Int @id @default(autoincrement())
+  address String
+  city String
+  state String
+  restaurant Restaurant @relation(fields: [restaurantName], references: [name])
+  restaurantName String @unique
+}
+model BarLocation {
+  id Int @id @default(autoincrement())
+  address String
+  city String
+  state String
+  bar Bar @relation(fields: [barName], references: [name])
+  barName String @unique
+}
+
+model Category {
+  id Int @id @default(autoincrement())
+  title String @unique
+  alias String @unique
+  restaurants CategoriesOnRestaurants[]
+  bars CategoriesOnBars[]
+}
+
+model CategoriesOnRestaurants {
+  categoryAlias String
+  restaurant Restaurant @relation(fields: [restaurantName], references: [name])
+  restaurantName String
+  category Category @relation(fields: [categoryAlias], references: [alias])
+  @@id([restaurantName, categoryAlias])
+}
+
+model CategoriesOnBars {
+  bar Bar @relation(fields: [barName], references: [name])
+  barName String
+  category Category @relation(fields: [categoryAlias], references: [alias])
+  categoryAlias String
+  @@id([barName, categoryAlias])
+}

@@ -16,6 +16,7 @@ import { findLimit } from "@seed/utils/findLimit";
 import { navigateTotalResults } from "@seed/utils/navigateTotalResults";
 
 
+
 export const createRestaurantsHandler = async (req: Request, res: Response): Promise<void> => {
   try {
     //queryTerm

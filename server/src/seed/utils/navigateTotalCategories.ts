@@ -1,12 +1,12 @@
-import { getBusiness } from "@seed/types/getBusiness.type";
+import { getCategories } from "@seed/service/category/getCategory";
 import { GraphQLClient } from "graphql-request";
 import { type searchVars } from "@seed/types/searchVars";
-import { Business } from "@seed/types/business";
+import { CategoryBusiness } from "@seed/service/category/createCategory.service";
 
 
-export const navigateTotalResults = async <T extends number>(limit: T, resultTotalPages: T, callBack: getBusiness, query: string, client: GraphQLClient, queryVariables: searchVars) => {
+export const navigateTotalCategories = async <T extends number>(limit: T, resultTotalPages: T, callBack: getCategories, query: string, client: GraphQLClient, queryVariables: searchVars) => {
 
-  const dataArr: Business[] = [];
+  const dataArr: CategoryBusiness[] = [];
   queryVariables.limit = limit;
   try {
     for (let i = 0; i < resultTotalPages; i++) {

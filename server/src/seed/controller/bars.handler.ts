@@ -11,6 +11,7 @@ import { prisma } from "$prisma/client";
 
 import { createBar } from "@seed/service/bar/createBar.service";
 
+
 import { getTotalMatch } from "@seed/service/business/totalBusiness.service";
 import { findLimit } from "@seed/utils/findLimit";
 import { navigateTotalResults } from "@seed/utils/navigateTotalResults";
@@ -20,7 +21,6 @@ export const createBarsHandler = async (req: Request, res: Response): Promise<vo
 
   try {
     const barsVar = searchVars('bars', 'las vegas downtown freemont arts district', 'Bars', 1, 0);
-
     const totalCountData = await getTotalMatch(gqlClient, totalQuery, barsVar);
     const limitOffsetArr = findLimit(totalCountData?.search.total);
     const [maxFactor, complementary] = limitOffsetArr;

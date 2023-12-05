@@ -24,7 +24,6 @@ query search($term: String!, $location: String!, $categories: String! $limit: In
           end
           day
         }
-        is_open_now
       }
       location {
         address1
@@ -35,10 +34,6 @@ query search($term: String!, $location: String!, $categories: String! $limit: In
       display_phone
       categories {
         title
-        parent_categories {
-          title
-          alias
-        }
         alias
       }
     }

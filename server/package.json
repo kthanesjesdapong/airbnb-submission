@@ -13,9 +13,10 @@
     "test": "jest",
     "t-wa": "yarn test -watchAll",
     "seed": "ts-node ./src/seed/index.ts",
-    "p-schema": "npx prisma generate generate --schema ./src/config/prisma/schema.prisma",
-    "reset-db": "npx prisma migrate reset",
-    "migration": "npx prisma migrate dev"
+    "db-schema": "npx prisma generate generate --schema ./src/config/prisma/schema.prisma",
+    "db-reset": "npx prisma migrate reset",
+    "db-migration": "npx prisma migrate dev",
+    "db-generate": "npx prisma generate"
   },
   "dependencies": {
     "@apollo/server": "^4.9.4",

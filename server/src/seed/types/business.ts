@@ -1,8 +1,3 @@
-export type Coordinates = {
-  latitude: number;
-  longitude: number;
-};
-
 export type Open = {
   start: string;
   end: string;
@@ -11,7 +6,6 @@ export type Open = {
 
 export type Hours = {
   open: Open[];
-  is_open_now: boolean;
 };
 
 export type Location = {
@@ -25,14 +19,8 @@ export type Phone = {
   display_phone: string;
 };
 
-export type ParentCategory = {
-  title: string;
-  alias: string;
-};
-
 export type Category = {
   title: string;
-  parent_categories: ParentCategory[];
   alias: string;
 };
 
@@ -40,7 +28,8 @@ export type Business = {
   name: string;
   rating: number;
   photos: string[];
-  coordinates: Coordinates;
+  latitude: number;
+  longitude: number;
   hours: Hours[];
   location: Location;
   display_phone: string;
@@ -56,7 +45,6 @@ export type QueryDataResponse = {
   search: Search;
 };
 
-
 export type Total = {
   total: number;
 };
@@ -64,3 +52,4 @@ export type Total = {
 export type TotalDataResponse = {
   search: Total;
 };
+
