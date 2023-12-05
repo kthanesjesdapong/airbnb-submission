@@ -4,6 +4,8 @@ import { Restaurant, Prisma } from "@prisma/client";
 import { prismaErrorHandler } from "@seed/middleware/prismaError";
 
 export type createRestaurant = (restaurant: Prisma.RestaurantCreateInput, ctx: Context) => Promise<Restaurant>;
+
+export type mockCreateRestaurant = (restaurant: Business, ctx: Context) => Promise<Restaurant>;
 export const createRestaurant = async (restaurant: Business, ctx: Context) => {
   try {
     const { coordinates, hours, location, categories } = restaurant;

@@ -18,8 +18,10 @@ describe('restaurants service', () => {
       name: 'Terrible Restaurant',
       rating: 4,
       photos: ['https://s3-media4.fl.yelpcdn.com/bphoto/OXH3YZsT6qc707NOg39zAw/o.jpg'],
-      latitude: ,
-      longitude,
+      coordinates: {
+        latitude: 0,
+        longitude: 0,
+      },
       hours: [{
         open: [
           {
@@ -60,9 +62,9 @@ describe('restaurants service', () => {
         ],
       }],
       location: {
-        address1: 'n/a',
-        city: 'lv',
-        state: 'nv',
+        address1: 'test street',
+        city: 'city',
+        state: 'state',
         country: 'usa'
       },
       display_phone: '(000)-000-0000',
@@ -73,17 +75,14 @@ describe('restaurants service', () => {
         }
       ]
     };
-    mockCtx.prisma.restaurant.create.mockResolvedValue(restaurant);
 
-    await expect(createRestaurant(restaurant, ctx)).resolves.toEqual({
+    const prismaResolvedValue = {
       id: 1,
       name: 'Terrible Restaurant',
       rating: 4,
       photos: ['https://s3-media4.fl.yelpcdn.com/bphoto/OXH3YZsT6qc707NOg39zAw/o.jpg'],
-      coordinates: {
-        latitude: 36.1579472959742,
-        longitude: -115.153866894525
-      },
+      latitude: 0,
+      longitude: 0,
       hours: [{
         open: [
           {
@@ -122,19 +121,80 @@ describe('restaurants service', () => {
             day: 6
           }
         ],
-        is_open_now: true
       }],
       location: {
-        address1: 'n/a',
-        city: 'lv',
-        state: 'nv',
+        address1: 'test street',
+        city: 'city',
+        state: 'state',
         country: 'usa'
       },
       display_phone: '(000)-000-0000',
       categories: [
         {
-          title: 'ex',
-          parent_categories: [{ title: 'ex2', alias: 'n/a' }],
+          title: 'n/a',
+          alias: 'n/a'
+        }
+      ]
+    };
+
+    mockCtx.prisma.restaurant.create.mockResolvedValue(prismaResolvedValue);
+
+    await expect(createRestaurant(restaurant, ctx)).resolves.toEqual({
+      id: 1,
+      name: 'Terrible Restaurant',
+      rating: 4,
+      photos: ['https://s3-media4.fl.yelpcdn.com/bphoto/OXH3YZsT6qc707NOg39zAw/o.jpg'],
+      latitude: 0,
+      longitude: 0,
+      hours: [{
+        open: [
+          {
+            start: '0700',
+            end: '1900',
+            day: 0
+          },
+          {
+            start: '0700',
+            end: '1900',
+            day: 1
+          },
+          {
+            start: '0700',
+            end: '1900',
+            day: 2
+          },
+          {
+            start: '0700',
+            end: '1900',
+            day: 3
+          },
+          {
+            start: '0700',
+            end: '1900',
+            day: 4
+          },
+          {
+            start: '0700',
+            end: '1900',
+            day: 5
+          },
+          {
+            start: '0700',
+            end: '1900',
+            day: 6
+          }
+        ],
+      }],
+      location: {
+        address1: 'test street',
+        city: 'city',
+        state: 'state',
+        country: 'usa'
+      },
+      display_phone: '(000)-000-0000',
+      categories: [
+        {
+          title: 'n/a',
           alias: 'n/a'
         }
       ]
