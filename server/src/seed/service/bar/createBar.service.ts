@@ -1,6 +1,7 @@
 import { Context } from "@types";
 import { type Business } from "@seed/types/business";
 import { Bar, Prisma } from '@prisma/client';
+import { prismaErrorHandler } from "@seed/middleware/prismaError";
 
 
 export type createBar = (bar: Prisma.BarCreateInput, ctx: Context) => Promise<Bar>;
@@ -56,6 +57,6 @@ export const createBar = async (bar: Business, ctx: Context) => {
       }
     });
   } catch (e: unknown) {
-    console.error(bar.name, e);
+    prismaErrorHandler(e, bar.name);
   }
 };

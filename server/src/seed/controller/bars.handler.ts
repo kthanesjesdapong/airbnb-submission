@@ -26,7 +26,6 @@ export const createBarsHandler = async (req: Request, res: Response): Promise<vo
     const [maxFactor, complementary] = limitOffsetArr;
     const newBarData = await navigateTotalResults(maxFactor, complementary, getBusiness, searchQuery, gqlClient, barsVar);
 
-    console.log(newBarData, newBarData.length);
     newBarData.forEach((barData) => {
       createBar(barData, { prisma });
     });

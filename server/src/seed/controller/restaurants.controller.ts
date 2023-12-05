@@ -19,15 +19,10 @@ import { navigateTotalResults } from "@seed/utils/navigateTotalResults";
 
 export const createRestaurantsHandler = async (req: Request, res: Response): Promise<void> => {
   try {
-    //queryTerm
     const restaurantsVars = searchVars("restaurants", "las vegas downtown freemont arts district", "Food", 1, 0);
-    //Find Total
     const totalCountData = await getTotalMatch(gqlClient, totalQuery, restaurantsVars);
-    //calc Limit
     const limitOffsetArr = findLimit(totalCountData?.search.total);
     const [maxFactor, complementary] = limitOffsetArr;
-
-    //call navTotalRes
     const newRestaurantData = await navigateTotalResults(maxFactor, complementary, getBusiness, searchQuery, gqlClient, restaurantsVars);
 
     newRestaurantData.forEach(restaurantData => {

@@ -1,6 +1,7 @@
 import { Context } from "@types";
 import { type Business } from "@seed/types/business";
 import { Restaurant, Prisma } from "@prisma/client";
+import { prismaErrorHandler } from "@seed/middleware/prismaError";
 
 export type createRestaurant = (restaurant: Prisma.RestaurantCreateInput, ctx: Context) => Promise<Restaurant>;
 export const createRestaurant = async (restaurant: Business, ctx: Context) => {
@@ -59,6 +60,6 @@ export const createRestaurant = async (restaurant: Business, ctx: Context) => {
       }
     });
   } catch (e: unknown) {
-    console.error(restaurant.name, e);
+    prismaErrorHandler(e, restaurant.name);
   }
 };
