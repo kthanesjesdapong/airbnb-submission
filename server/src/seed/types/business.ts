@@ -1,3 +1,8 @@
+export type Coordinates = {
+  latitude: number;
+  longitude: number;
+};
+
 export type Open = {
   start: string;
   end: string;
@@ -28,8 +33,7 @@ export type Business = {
   name: string;
   rating: number;
   photos: string[];
-  latitude: number;
-  longitude: number;
+  coordinates: Coordinates;
   hours: Hours[];
   location: Location;
   display_phone: string;

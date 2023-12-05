@@ -18,10 +18,8 @@ describe('restaurants service', () => {
       name: 'Terrible Restaurant',
       rating: 4,
       photos: ['https://s3-media4.fl.yelpcdn.com/bphoto/OXH3YZsT6qc707NOg39zAw/o.jpg'],
-      coordinates: {
-        latitude: 36.1579472959742,
-        longitude: -115.153866894525
-      },
+      latitude: ,
+      longitude,
       hours: [{
         open: [
           {
@@ -60,7 +58,6 @@ describe('restaurants service', () => {
             day: 6
           }
         ],
-        is_open_now: true
       }],
       location: {
         address1: 'n/a',
@@ -71,8 +68,7 @@ describe('restaurants service', () => {
       display_phone: '(000)-000-0000',
       categories: [
         {
-          title: 'ex',
-          parent_categories: [{ title: 'ex2', alias: 'n/a' }],
+          title: 'n/a',
           alias: 'n/a'
         }
       ]

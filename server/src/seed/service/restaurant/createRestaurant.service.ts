@@ -7,20 +7,18 @@ export type createRestaurant = (restaurant: Prisma.RestaurantCreateInput, ctx: C
 
 export const createRestaurant = async (restaurant: Business, ctx: Context) => {
   try {
-    const { hours, location, categories } = restaurant;
+    
+    const { hours, location, categories, coordinates } = restaurant;
+    const { latitude, longitude } = coordinates;
+    const formattedHours = hours.length > 0 ? hours[0].open : [{ start: '0', end: '0', day: 0 }];
 
-    const formattedHours = hours.length > 0 ? hours[0].open.map((h) => {
-      return {
-        ...h
-      };
-    }) : [{ start: '0', end: '0', day: 0 }];
     return await ctx.prisma.restaurant.create({
       data: {
         name: restaurant.name,
         rating: restaurant.rating,
         photos: restaurant.photos,
-        latitude: restaurant.latitude ?? 0,
-        longitude: restaurant.longitude ?? 0,
+        latitude: latitude ?? 0,
+        longitude: longitude ?? 0,
         hours: {
           createMany: {
             data: formattedHours

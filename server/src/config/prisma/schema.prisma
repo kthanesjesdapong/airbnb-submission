@@ -58,6 +58,15 @@ model BarHours {
   barName String
 }
 
+
+//Location has to change because 2 more restaurants can share an address. Consider making this a many to many relationship
+
+//seed Location after and connect it after
+
+//
+
+
+
 model RestaurantLocation {
   id Int @id @default(autoincrement())
   address String
@@ -66,6 +75,9 @@ model RestaurantLocation {
   restaurant Restaurant @relation(fields: [restaurantName], references: [name])
   restaurantName String @unique
 }
+
+
+
 model BarLocation {
   id Int @id @default(autoincrement())
   address String
