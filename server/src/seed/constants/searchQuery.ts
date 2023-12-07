@@ -13,6 +13,7 @@ query search($term: String!, $location: String!, $categories: String! $limit: In
     business {
       name
       rating
+      price
       photos
       coordinates {
         latitude

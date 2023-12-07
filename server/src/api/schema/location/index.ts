@@ -1,1 +1,1 @@
-export * from './types/location';
+export * from './types/Location';

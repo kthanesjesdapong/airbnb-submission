@@ -7,6 +7,10 @@ builder.prismaNode('Bar', {
   fields: (t) => ({
     name: t.exposeString('name'),
     rating: t.exposeFloat('rating'),
+    price: t.relatedConnection('price', {
+      cursor: 'barName_priceStr',
+      args: { barName_locationAddress: t.arg.stringList() }
+    }),
     photos: t.exposeStringList(
       'photos'
     ),
