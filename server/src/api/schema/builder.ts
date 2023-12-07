@@ -3,7 +3,6 @@ import SchemaBuilder from "@pothos/core";
 import { PrismaClient, Prisma } from "@prisma/client";
 import PrismaPlugin from '@pothos/plugin-prisma';
 import RelayPlugin from '@pothos/plugin-relay';
-import ErrorsPlugin from '@pothos/plugin-errors';
 import { Context } from "@types";
 import type PrismaTypes from '@pothos/plugin-prisma/generated';
 import './error/types/Error';
@@ -14,15 +13,7 @@ const builder = new SchemaBuilder<{
   Context: Context;
   PrismaTypes: PrismaTypes;
 }>({
-  plugins: [ErrorsPlugin, PrismaPlugin, RelayPlugin],
-  errorOptions: {
-    defaultTypes: [Error], defaultResultOptions: {
-      name: ({ parentTypeName, fieldName }) => `${fieldName}_Custom`,
-    },
-    defaultUnionOptions: {
-      name: ({ parentTypeName, fieldName }) => `${fieldName}_Custom`,
-    },
-  },
+  plugins: [PrismaPlugin, RelayPlugin],
   relayOptions: {
     clientMutationId: 'omit',
     cursorType: 'ID',
