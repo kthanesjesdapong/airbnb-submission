@@ -18,23 +18,27 @@ import connect from '@config/prisma/connect';
 import { Context } from '@types';
 import apolloServerContext from '@config/apollo/context';
 
+
 const port = config.get<number>('port');
 
-app.use(json());
+
 
 export const server = async () => {
-  //typeDefs missing for apollogServerConfig
+
   const apolloServer = new ApolloServer<Context>(apolloServerConfig);
   await apolloServer.start();
 
+  app.use(json());
   app.use(
     '/',
-    cors<cors.CorsRequest>,
+    cors<cors.CorsRequest>(),
     bodyParser.json(),
     expressMiddleware(apolloServer, {
       context: async () => (apolloServerContext)
     })
   );
+
+
 
   await new Promise<void>(() => httpServer.listen({
     port: port
