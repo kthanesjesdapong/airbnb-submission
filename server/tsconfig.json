@@ -1,0 +1,33 @@
+{
+  "ts-node": {
+    "require": ["tsconfig-paths/register"],
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+    "swc":true
+  },
+"compilerOptions": {
+  "outDir": "build",
+  "target": "ESNext",
+  "module": "NodeNext",
+  "moduleResolution": "NodeNext",
+  "esModuleInterop": true,
+  "forceConsistentCasingInFileNames": true,
+  "strict": true,
+  "skipLibCheck": true,
+  "lib": ["es2018", "esnext.asynciterable","esnext"],
+  "experimentalDecorators": true,
+  "allowSyntheticDefaultImports": true,
+  "emitDecoratorMetadata": true,
+  "types": ["node", "jest"],
+  "baseUrl": "./",
+  "paths": {
+    "@*": ["node_modules","src/*"],
+    "$prisma/*": ["src/config/prisma/*"],
+    "@config": ["src/config"],
+    "@config/*": ["src/config/*"],
+    "@constants/": ["src/constants/"],
+    "@constants/*": ["src/constants/*"],
+    "@seed/*": ["src/seed/*"]
+  }
+ },
+}
