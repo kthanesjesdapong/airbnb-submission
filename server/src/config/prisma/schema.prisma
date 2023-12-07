@@ -15,6 +15,7 @@ model Restaurant {
   id Int @id @default(autoincrement())
   name String @unique
   rating Float
+  price PricesOnRestaurant[]
   photos String[]
   latitude Float
   longitude Float
@@ -29,6 +30,7 @@ model Bar {
   id Int @id @default(autoincrement())
   name String @unique
   rating Float
+  price PricesOnBar[]
   photos String[]
   latitude Float
   longitude Float
@@ -38,6 +40,36 @@ model Bar {
   category CategoriesOnBars[]
   @@map("bars")
 }
+
+model Price {
+  id Int @id @default(autoincrement())
+  price String @unique
+  restaurants PricesOnRestaurant[]
+  bar PricesOnBar[]
+  @@map("price")
+}
+
+
+model PricesOnRestaurant {
+  restaurant Restaurant @relation(fields: [restaurantName], references: [name])
+  restaurantName String
+  price Price @relation(fields: [priceStr], references: [price])
+  priceStr String
+  @@id([restaurantName, priceStr])
+  @@map("restaurant_price")
+}
+
+model PricesOnBar {
+  bar Bar @relation(fields: [barName], references: [name])
+  barName String
+  price Price @relation(fields: [priceStr], references: [price])
+  priceStr String
+  @@id([barName, priceStr])
+  @@map("bar_price")
+}
+
+
+
 
 model RestaurantHours {
   id Int @id @default(autoincrement())

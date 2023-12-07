@@ -15,10 +15,25 @@ export const createBar = async (bar: Business, ctx: Context) => {
       data: {
         name: bar.name,
         rating: bar.rating,
+        price: {
+          create: {
+            price: {
+              connectOrCreate: {
+                where: {
+                  price: bar.price ?? 'Not Available'
+                },
+                create: {
+                  price: bar.price ?? 'Not Available'
+                }
+              }
+            }
+          }
+        },
         photos: bar.photos,
         latitude: latitude ?? 0,
         longitude: longitude ?? 0,
         hours: { createMany: { data: formattedHours } },
+
         location: {
           create: {
             location: {

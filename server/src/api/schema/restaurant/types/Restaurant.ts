@@ -8,6 +8,10 @@ builder.prismaNode('Restaurant', {
   fields: (t) => ({
     name: t.exposeString('name'),
     rating: t.exposeFloat('rating'),
+    price: t.relatedConnection('price', {
+      cursor: 'restaurantName_priceStr',
+      args: { estaurantName_priceStr: t.arg.stringList() }
+    }),
     photos: t.exposeStringList(
       'photos'
     ),

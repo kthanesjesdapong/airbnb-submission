@@ -11,7 +11,7 @@ builder.queryField('allRestaurants', (t) => t.prismaConnection({
       orderBy: [{
         id: 'asc'
       }],
-      include: { category: true, hours: true, location: true }
+      include: { price: true, category: true, hours: true, location: true }
     });
     return allRestaurants;
   }

@@ -32,6 +32,7 @@ export type Category = {
 export type Business = {
   name: string;
   rating: number;
+  price: string;
   photos: string[];
   coordinates: Coordinates;
   hours: Hours[];

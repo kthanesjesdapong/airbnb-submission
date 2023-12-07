@@ -16,6 +16,20 @@ export const createRestaurant = async (restaurant: Business, ctx: Context) => {
       data: {
         name: restaurant.name,
         rating: restaurant.rating,
+        price: {
+          create: {
+            price: {
+              connectOrCreate: {
+                where: {
+                  price: restaurant.price ?? 'Not Available'
+                },
+                create: {
+                  price: restaurant.price ?? 'Not Available'
+                }
+              }
+            }
+          }
+        },
         photos: restaurant.photos,
         latitude: latitude ?? 0,
         longitude: longitude ?? 0,
