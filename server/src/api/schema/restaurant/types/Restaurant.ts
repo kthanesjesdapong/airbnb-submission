@@ -1,11 +1,8 @@
-import builder from "../../builder";
-import { Restaurant } from "@prisma/client";
+import builder from "@api/schema/builder";
 
-
-builder.prismaNode('Restaurant', {
-  id: { resolve: (restaurant: Restaurant) => restaurant.id },
-  findUnique: (id) => ({ id: Number.parseInt(id, 10) }),
+builder.prismaObject('Restaurant', {
   fields: (t) => ({
+    id: t.exposeInt('id'),
     name: t.exposeString('name'),
     rating: t.exposeFloat('rating'),
     price: t.relatedConnection('price', {
