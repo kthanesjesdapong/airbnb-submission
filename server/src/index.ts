@@ -30,7 +30,7 @@ export const server = async () => {
 
   app.use(json());
   app.use(
-    '/',
+    '/graphql',
     cors<cors.CorsRequest>(),
     bodyParser.json(),
     expressMiddleware(apolloServer, {
@@ -43,7 +43,7 @@ export const server = async () => {
   await new Promise<void>(() => httpServer.listen({
     port: port
   }, () => {
-    logger.info(`App is running on http://localhost:${port}`);
+    logger.info(`App is running on http://localhost:${port}/graphql`);
   }));
   await connect();
 };
