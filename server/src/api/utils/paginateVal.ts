@@ -21,11 +21,9 @@ export const getFirstRecord = async (
 */
 
 export const getSkipVal = (arg: Arg) => {
-  console.log({ arg }, 'THIS IS SKIP VAL');
   return arg ? 1 : 0;
 };
 
 export const getVal = (arg: Arg, defaultVal?: number) => {
-  console.log({ arg, defaultVal }, 'cursorId, firstId');
   return arg ? arg : defaultVal;
 };

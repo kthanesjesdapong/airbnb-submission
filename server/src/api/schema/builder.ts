@@ -3,7 +3,6 @@ import { PrismaClient, Prisma } from "@prisma/client";
 
 import PrismaPlugin from '@pothos/plugin-prisma';
 import RelayPlugin from '@pothos/plugin-relay';
-import MockPlugin from '@pothos/plugin-mocks';
 
 import { Context } from "@types";
 import type PrismaTypes from '@pothos/plugin-prisma/generated';
@@ -17,7 +16,7 @@ const builder = new SchemaBuilder<{
   Context: Context;
   PrismaTypes: PrismaTypes;
 }>({
-  plugins: [MockPlugin, PrismaPlugin, RelayPlugin],
+  plugins: [PrismaPlugin, RelayPlugin],
   relayOptions: {
     clientMutationId: 'omit',
     cursorType: 'ID',
