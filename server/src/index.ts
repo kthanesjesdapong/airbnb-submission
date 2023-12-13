@@ -38,8 +38,6 @@ export const server = async () => {
     })
   );
 
-
-
   await new Promise<void>(() => httpServer.listen({
     port: port
   }, () => {
