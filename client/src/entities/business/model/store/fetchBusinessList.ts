@@ -11,6 +11,7 @@ export const fetchBusinessList = async (cursorId: number, query: string, busines
     }) as QueryResult;
     const totalCount = businessDataResponse?.data[businessType].totalCount;
     const formattedBusinessDataResponse = businessDataResponse?.data[businessType].edges.map((businessData) => {
+      //add location back
       const { id, name, rating, price, photos, hours, display_phone, category } = businessData.node;
       const businessPrice = price.edges[0].node.priceStr;
       const businessHours = hours.edges.map((hour) => {

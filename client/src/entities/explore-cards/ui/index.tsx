@@ -3,6 +3,7 @@ import { exploreData } from "..";
 import { useState, useMemo } from "react";
 import { Pagination } from "@features/pagination";
 import { useCurrentBusinessContext } from "@entities/business";
+import type { FormattedBusiness } from "@entities/business";
 
 type PageSizeT = number;
 const PageSize: PageSizeT = 6;
@@ -20,14 +21,18 @@ export const ExploreCards = ({ className, data, $width, $height }: ExploreCardsP
     const [currentPage, setCurrentPage] = useState(1);
 
     const businessData = useCurrentBusinessContext();
-    console.log(businessData, 'In businessData');
 
-    const currentData = useMemo<exploreData[]>(() => {
+    //,totalCount  <--- pass this into pagination and implement paginate logic
+    const { business } = businessData.data;
+
+    const currentData = useMemo<FormattedBusiness[]>(() => {
         const startPageIndex = (currentPage - 1) * PageSize;
         const endPageIndex = startPageIndex + PageSize;
 
-        return data.slice(startPageIndex, endPageIndex);
-    }, [currentPage, data]);
+
+        return business.slice(startPageIndex, endPageIndex);
+
+    }, [currentPage, business]);
 
 
     return (
@@ -41,12 +46,12 @@ export const ExploreCards = ({ className, data, $width, $height }: ExploreCardsP
                         $width={$width}
                         key={d.name + 'key' + i}>
                         <ExploreCard
-                            $url={'https://media-cdn.tripadvisor.com/media/photo-s/04/bd/37/54/velveteen-rabbit.jpg'}
+                            $url={`${d.photos[0] ?? 'https://media-cdn.tripadvisor.com/media/photo-s/04/bd/37/54/velveteen-rabbit.jpg'}`}
                             $width={$width}
                             $height={$height}>
                         </ExploreCard>
                         <p>{d.name.toUpperCase()}</p>
-                        <p>{d.address}</p>
+                        {/* <p>{d.address}</p> */}
                         <p>{d.price}</p>
                         <p>{d.rating}</p>
                     </ExploreCardWrapper>
