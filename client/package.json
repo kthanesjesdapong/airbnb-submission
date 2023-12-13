@@ -1,7 +1,7 @@
 {
-  "name": "react_wp5_swc_ts_boilerplate",
+  "name": "disclose-lv",
   "version": "1.0.0",
-  "description": "boiler plate for react projects using webpack/swc w ts",
+  "description": "client for disclose-lv",
   "main": "index.js",
   "author": "Kavin Thanesjesdapong",
   "license": "MIT",
