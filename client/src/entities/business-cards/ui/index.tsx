@@ -3,6 +3,7 @@ import { useState, useMemo } from "react";
 import { Pagination } from "@features/pagination";
 import { useCurrentBusinessContext } from "@entities/business";
 import type { FormattedBusiness } from "@entities/business";
+import { Button } from "@shared/ui";
 
 type PageSizeT = number;
 const PageSize: PageSizeT = 6;
@@ -41,10 +42,14 @@ export const BusinessCards = ({ className, $width, $height, }: BusinessCardsProp
                             $width={$width}
                             $height={$height}>
                         </BusinessCard>
-                        <p>{d.name.toUpperCase()}</p>
+                        <p className={'name'}>{d.name}</p>
                         <p>{d.location}</p>
                         <p>{d.rating}</p>
                         <p>{d.price}</p>
+                        <div className="button-wrapper">
+                            <Button className="show-more">{'Show More'}</Button>
+                        </div>
+
                     </BusinessCardWrapper>
 
                 ))}

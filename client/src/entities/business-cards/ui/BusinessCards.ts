@@ -14,8 +14,6 @@ const BusinessCardsContainer = styled.div<BusinessCardsContainerProps>`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  
-
   ${media.tablet} {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -37,11 +35,21 @@ type BusinessCardWrapperProps = {
 };
 
 const BusinessCardWrapper = styled.div<BusinessCardWrapperProps>`
+  
   width: ${props => props.$width}px;
   margin: 0 1em 1em 1em;
   p{
-    margin: 2px;
-    font-size: 1.18rem;
+    font-family: 'Open Sans Serif';
+    margin: 3px;
+    font-size: 1rem;
+  }
+  .name {
+    margin: 5px 3px;
+    font-weight: bolder;
+  }
+  .button-wrapper{
+    display:flex;
+    justify-content: flex-end;
   }
 `;
 
@@ -62,8 +70,8 @@ const BusinessCard = styled(Card) <BusinessCardProps>`
     background-position: center;
     background-image: url(${props => props.$url});
   }
-  border-bottom: 1px solid ${props => props.theme.colors.categorySub};
-  border-radius: 5px;
+  /* border-bottom: 1px solid ${props => props.theme.colors.categorySub}; */
+  border-radius: 1px;
 `;
 
 export { BusinessCardsContainer, BusinessCardWrapper, BusinessCard };

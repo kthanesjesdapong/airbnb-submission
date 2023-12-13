@@ -5,27 +5,27 @@ import { GlobalStyle } from "@shared/styles";
 
 import { Provider } from "react-redux";
 import { store } from "@shared/store";
-import { queryClient } from "@shared/api";
-import { QueryClientProvider } from "react-query";
+// import { queryClient } from "@shared/api";
+// import { QueryClientProvider } from "react-query";
 
-import { ReactQueryDevtools } from 'react-query/devtools';
+// import { ReactQueryDevtools } from 'react-query/devtools';
 
 
 //This is for storybook
 export const AllProviders = ({ children }: { children: ReactNode; }) => {
 
     return (
-        <QueryClientProvider client={queryClient}>
-            <Provider store={store}>
-                <StyledThemeProvider>
-                    <GlobalStyle />
-                    <MemoryRouter>
-                        {children}
-                    </ MemoryRouter>
-                    <ReactQueryDevtools initialIsOpen={false} />
-                </StyledThemeProvider>
-            </Provider>
-        </QueryClientProvider>
+        // <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+            <StyledThemeProvider>
+                <GlobalStyle />
+                <MemoryRouter>
+                    {children}
+                </ MemoryRouter>
+                {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+            </StyledThemeProvider>
+        </Provider>
+        // </QueryClientProvider>
     );
 };
 

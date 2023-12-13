@@ -10,7 +10,10 @@ const meta: Meta<typeof Button> = {
                 <Story />
             </AllProviders>
         )
-    ]
+    ],
+    parameters: {
+        layout: 'centered'
+    }
 };
 
 export default meta;
@@ -19,6 +22,6 @@ type Story = StoryObj<typeof Button>;
 
 export const ButtonStory: Story = {
     args: {
-
+        children: 'Show more'
     }
 };

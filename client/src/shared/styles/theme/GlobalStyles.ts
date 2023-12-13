@@ -92,14 +92,15 @@ export const GlobalStyle = createGlobalStyle`
     ${media.desktop} {
         html,body {
             padding: 0  2.5rem;
-            background-color: black;
+            
+            /* background-color: black; */
         }
     }
 
     ${media.uhd} {
         html,body {
             padding: 0  4em;
-            background-color: black;
+            /* background-color: black; */
         }
     }
 
