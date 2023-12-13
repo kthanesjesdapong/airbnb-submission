@@ -22,6 +22,13 @@ export type BusinessResponse = {
       };
     }[];
   };
+  location: {
+    edges: {
+      node: {
+        locationAddress: string;
+      };
+    }[];
+  };
   category: {
     edges: {
       node: {
@@ -65,6 +72,7 @@ export type SingleBusiness = {
 export type FormattedBusiness = {
   price: string;
   hours: string[][];
+  location: string;
   category: string[];
 } & BaseBusiness;
 

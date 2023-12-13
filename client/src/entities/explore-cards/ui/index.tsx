@@ -19,7 +19,7 @@ export const ExploreCards = ({ className, $width, $height, }: ExploreCardsProp) 
     const [currentPage, setCurrentPage] = useState(1);
     const businessData = useCurrentBusinessContext();
     const { business, totalCount } = businessData.data;
-
+    console.log(business);
 
     const currentData = useMemo<FormattedBusiness[]>(() => {
         const startPageIndex = (currentPage - 1) * PageSize;
@@ -44,8 +44,9 @@ export const ExploreCards = ({ className, $width, $height, }: ExploreCardsProp) 
                             $height={$height}>
                         </ExploreCard>
                         <p>{d.name.toUpperCase()}</p>
-                        <p>{d.price}</p>
+                        <p>{d.location}</p>
                         <p>{d.rating}</p>
+                        <p>{d.price}</p>
                     </ExploreCardWrapper>
 
                 ))}

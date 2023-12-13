@@ -24,6 +24,13 @@ query allBars($cursorId: Int) {
             }
           }
         }
+        location {
+          edges {
+            node {
+              locationAddress
+            }
+          }
+        }
         display_phone
         category {
           edges {

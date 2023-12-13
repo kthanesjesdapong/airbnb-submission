@@ -12,11 +12,12 @@ export const fetchBusinessList = async (cursorId: number, query: string, busines
     const totalCount = businessDataResponse?.data[businessType].totalCount;
     const formattedBusinessDataResponse = businessDataResponse?.data[businessType].edges.map((businessData) => {
       //add location back
-      const { id, name, rating, price, photos, hours, display_phone, category } = businessData.node;
+      const { id, name, rating, price, photos, hours, display_phone, category, location } = businessData.node;
       const businessPrice = price.edges[0].node.priceStr;
       const businessHours = hours.edges.map((hour) => {
         return [hour.node.start, hour.node.end];
       });
+      const businessLocation = location.edges[0].node.locationAddress;
       const businessCategories = category.edges.map((category) => {
         return category.node.categoryAlias;
       });
@@ -28,6 +29,7 @@ export const fetchBusinessList = async (cursorId: number, query: string, busines
         price: businessPrice,
         photos: photos,
         hours: businessHours,
+        location: businessLocation,
         display_phone: display_phone,
         category: businessCategories
       };
