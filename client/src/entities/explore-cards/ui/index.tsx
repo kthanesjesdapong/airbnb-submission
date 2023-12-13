@@ -44,7 +44,6 @@ export const ExploreCards = ({ className, $width, $height, }: ExploreCardsProp) 
                             $height={$height}>
                         </ExploreCard>
                         <p>{d.name.toUpperCase()}</p>
-                        {/* <p>{d.address}</p> */}
                         <p>{d.price}</p>
                         <p>{d.rating}</p>
                     </ExploreCardWrapper>

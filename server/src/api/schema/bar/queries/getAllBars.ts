@@ -8,7 +8,7 @@ import { getSkipVal, getVal, getFirstRecord } from "@api/utils/paginateVal";
 builder.queryField('allBars', (t) => t.prismaConnection({
   type: 'Bar',
   cursor: 'id',
-  defaultSize: 30,
+  defaultSize: 100,
   args: {
     take: t.arg.int({ required: false }),
     cursorId: t.arg.int({ required: false })
@@ -21,7 +21,7 @@ builder.queryField('allBars', (t) => t.prismaConnection({
         orderBy: [{
           id: 'asc'
         }],
-        take: getVal(_args.take, 30),
+        take: getVal(_args.take, 100),
         cursor: {
           id: getVal(_args.cursorId, firstId?.id)
         },
@@ -34,6 +34,6 @@ builder.queryField('allBars', (t) => t.prismaConnection({
     }
   },
   totalCount: async (_parent, _args, _context, _info) => {
-    return _context.prisma.restaurant.count();
+    return _context.prisma.bar.count();
   },
 }));

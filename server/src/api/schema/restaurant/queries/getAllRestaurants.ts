@@ -6,7 +6,7 @@ import { getSkipVal, getVal, getFirstRecord } from "@api/utils/paginateVal";
 builder.queryField('allRestaurants', (t) => t.prismaConnection({
   type: 'Restaurant',
   cursor: 'id',
-  defaultSize: 30,
+  defaultSize: 180,
   args: {
     take: t.arg.int({ required: false }),
     cursorId: t.arg.int({ required: false })
@@ -20,7 +20,7 @@ builder.queryField('allRestaurants', (t) => t.prismaConnection({
         orderBy: [{
           id: 'asc'
         }],
-        take: getVal(_args.take, 30),
+        take: getVal(_args.take, 180),
         skip: getSkipVal(_args.cursorId),
         cursor: {
           id: getVal(_args.cursorId, firstId?.id)

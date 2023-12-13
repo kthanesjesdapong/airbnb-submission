@@ -13,7 +13,6 @@ const restaurantsPageConfig = {
 
 
 export const RestaurantsPage = () => {
-
     return (
         <>
             <CurrentBusinessContextProvider cursorId={0} query={allRestaurantsQuery} modelType="restaurant">
