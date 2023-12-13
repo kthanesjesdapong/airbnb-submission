@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { useFetchAllBusiness, CurrentBusinessContext } from ".";
+import { useFetchAllBusiness, CurrentBusinessContext } from "..";
 
 type CurrentBusinessContextProviderProps = {
   children: ReactNode;
@@ -30,8 +30,11 @@ export const CurrentBusinessContextProvider = ({ children, cursorId, query, mode
 };
 
 /*
-To use, Ex: Bar
+How to use: 
 
+Provides Context for children to consume
+
+Ex: For Bar
             <CurrentBusinessContextProvider cursorId={cursorId} query={allBarsQuery} modelType="bar">
 
                 <h2>{'B A R S'}</h2>

@@ -38,7 +38,6 @@ export type BusinessResponse = {
   };
 } & BaseBusiness;
 
-
 export type BusinessEdge = {
   node: BusinessResponse;
 };
@@ -52,11 +51,6 @@ export type BusinessListResponse = {
 
 export type BusinessEdgesTest = {
   edges: BusinessEdge[];
-};
-
-
-export type QueryVariables = {
-  cursorId: number;
 };
 
 export type QueryResult = {
@@ -85,9 +79,4 @@ export type FormattedBusinessResponse = {
     business: FormattedBusiness[];
     totalCount: number;
   };
-};
-
-export type BusinessListResponseQuery = {
-  business: FormattedBusiness[];
-  totalCount: number;
 };

@@ -19,14 +19,12 @@ export const ExploreCards = ({ className, $width, $height, }: ExploreCardsProp) 
     const [currentPage, setCurrentPage] = useState(1);
     const businessData = useCurrentBusinessContext();
     const { business, totalCount } = businessData.data;
-    console.log(business);
 
     const currentData = useMemo<FormattedBusiness[]>(() => {
         const startPageIndex = (currentPage - 1) * PageSize;
         const endPageIndex = startPageIndex + PageSize;
         return business.slice(startPageIndex, endPageIndex);
     }, [currentPage, business]);
-
 
     return (
         <>

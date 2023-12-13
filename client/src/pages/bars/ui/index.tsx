@@ -1,15 +1,9 @@
-import { Venue } from "@entities/venue";
+import { BusinessLayout, businessLayoutConfigs } from "@entities/business-layout";
 import { ExploreCards } from "@entities/explore-cards";
 
-import { allBarsQuery } from "@shared/api";
+import { allBarsQuery } from "..";
 import { CurrentBusinessContextProvider } from "@entities/business";
 
-
-
-const barsPageConfig = {
-    $width: 300,
-    $height: 150
-};
 
 export const BarsPage = () => {
 
@@ -17,14 +11,14 @@ export const BarsPage = () => {
         <>
             <CurrentBusinessContextProvider cursorId={0} query={allBarsQuery} modelType="bar">
                 <h2>{'B A R S'}</h2>
-                <Venue
+                <BusinessLayout
                     child1={
                         <p> THIS IS FILTER BAR</p>
                     }
                     child2={
                         <ExploreCards
-                            $width={barsPageConfig.$width}
-                            $height={barsPageConfig.$height}
+                            $width={businessLayoutConfigs.$width}
+                            $height={businessLayoutConfigs.$height}
                             className="someClass"
                         />
 

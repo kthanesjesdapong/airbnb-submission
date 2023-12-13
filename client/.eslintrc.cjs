@@ -20,7 +20,7 @@ module.exports = {
         'no-unused-vars': 1,
         '@typescript-eslint/no-unused-vars': 'error',
         '@typescript-eslint/no-var-requires': 'off',
-        '@typescript-eslint/no-unsafe-assignment': "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
         "@typescript-eslint/no-unsafe-return": "off",
         'react/prop-types': 'off',
         'react/jsx-uses-react': 'off',

@@ -1,10 +1,21 @@
 import '@testing-library/jest-dom';
 import { renderHook } from '@testing-library/react';
-import { usePagination } from '..';
+import { usePagination, usePaginationProps } from '..';
+
+type usePaginateValsType = usePaginationProps;
 
 describe(('usePagination'), () => {
+  let usePaginateVals: usePaginateValsType;
+  beforeEach(() => {
+    usePaginateVals = {
+      totalCount: 0,
+      currentPage: 0,
+      pageSize: 0
+    };
+  });
+
   it('the totalPages should be the result of totalCount / pageSize Rounded Up', () => {
-    const usePaginateVals = {
+    usePaginateVals = {
       totalCount: 65,
       currentPage: 1,
       pageSize: 10
@@ -16,7 +27,7 @@ describe(('usePagination'), () => {
     }
   });
   it('should return 1 - to currentPage value if the currentPage >= totalPageNumberCount', () => {
-    const usePaginateVals = {
+    usePaginateVals = {
       totalCount: 15,
       currentPage: 3,
       pageSize: 6,
@@ -27,7 +38,7 @@ describe(('usePagination'), () => {
     }
   });
   it('should return leftRange and right DOTs when there is no there are no left dots to be shown', () => {
-    const usePaginateVals = {
+    usePaginateVals = {
       totalCount: 40,
       currentPage: 1,
       pageSize: 6,
@@ -39,7 +50,7 @@ describe(('usePagination'), () => {
     }
   });
   it('should return rightRight and leftDots when there are no right dots to be shown', () => {
-    const usePaginateVals = {
+    usePaginateVals = {
       totalCount: 45,
       currentPage: 6,
       pageSize: 7
@@ -52,7 +63,7 @@ describe(('usePagination'), () => {
   });
 
   it('should return both RANGES and both DOTS when both totalPage !== currentPage and currentPage is > 2 AND < totalPageCount - 2 ', () => {
-    const usePaginateVals = {
+    usePaginateVals = {
       totalCount: 70,
       currentPage: 4,
       pageSize: 7
@@ -64,7 +75,6 @@ describe(('usePagination'), () => {
       expect(result.current[usePaginateVals.pageSize - 2]).toBe('...');
       expect(result.current[usePaginateVals.pageSize - 3]).toBe(5);
     }
-
   });
 });
 
