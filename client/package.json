@@ -1,5 +1,5 @@
 {
-  "name": "disclose-lv",
+  "name": "disclose-lv-client",
   "version": "1.0.0",
   "description": "client for disclose-lv",
   "main": "index.js",

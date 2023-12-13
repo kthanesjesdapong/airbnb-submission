@@ -3,7 +3,9 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   rules: {
     "import/no-named-as-default": 0,
-    "import/no-unresolved": 0
+    "import/no-unresolved": 0,
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-return": "off"
   },
   parser: "@typescript-eslint/parser",
   extends: ["plugin:@typescript-eslint/recommended"],

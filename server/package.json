@@ -1,5 +1,6 @@
 {
-  "name": "server",
+  "name": "disclose-lv-server",
+  "description": "server disclose-lv contains seeding directory",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
