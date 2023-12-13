@@ -6,7 +6,7 @@
   "author": "Kavin Thanesjesdapong",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"cd ../server && npm run dev\" \"npm run dev\"",
+    "start-dev": "concurrently \"cd ../server && npm run dev\" \"npm run dev\"",
     "build": "webpack --config webpack/webpack.config.js --env env=prod",
     "build:dev": "webpack --config webpack/webpack.config.js --env env=dev",
     "dev": "webpack-dev-server --config webpack/webpack.config.js --env env=dev",

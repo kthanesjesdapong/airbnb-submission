@@ -2,6 +2,7 @@ import { ExploreCardsContainer, ExploreCardWrapper, ExploreCard } from "./Explor
 import { exploreData } from "..";
 import { useState, useMemo } from "react";
 import { Pagination } from "@features/pagination";
+import { useCurrentBusinessContext } from "@entities/business";
 
 type PageSizeT = number;
 const PageSize: PageSizeT = 6;
@@ -18,10 +19,14 @@ export const ExploreCards = ({ className, data, $width, $height }: ExploreCardsP
 
     const [currentPage, setCurrentPage] = useState(1);
 
+    const businessData = useCurrentBusinessContext();
+    console.log(businessData, 'In businessData');
+
     const currentData = useMemo<exploreData[]>(() => {
-        const firstPageIndex = (currentPage - 1) * PageSize;
-        const lastPageIndex = firstPageIndex + PageSize;
-        return data.slice(firstPageIndex, lastPageIndex);
+        const startPageIndex = (currentPage - 1) * PageSize;
+        const endPageIndex = startPageIndex + PageSize;
+
+        return data.slice(startPageIndex, endPageIndex);
     }, [currentPage, data]);
 
 

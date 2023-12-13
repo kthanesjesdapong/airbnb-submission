@@ -1,13 +1,15 @@
-import { QueryResult } from './types';
+import { QueryResult, FormattedBusinessResponse } from './types';
 import { apiInstance, API_URL } from '@shared/api';
 
-export const fetchBusinessList = async (cursorId: number, query: string, businessType: string) => {
+
+export const fetchBusinessList = async (cursorId: number, query: string, businessType: string): Promise<FormattedBusinessResponse | undefined> => {
   try {
     businessType = businessType === 'restaurant' ? 'allRestaurants' : 'allBars';
     const businessDataResponse = await apiInstance.post(API_URL, {
       query: query,
       variables: { cursorId: cursorId }
     }) as QueryResult;
+    const totalCount = businessDataResponse?.data[businessType].totalCount;
     const formattedBusinessDataResponse = businessDataResponse?.data[businessType].edges.map((businessData) => {
       const { id, name, rating, price, photos, hours, display_phone, category } = businessData.node;
       const businessPrice = price.edges[0].node.priceStr;
@@ -29,7 +31,8 @@ export const fetchBusinessList = async (cursorId: number, query: string, busines
         category: businessCategories
       };
     });
-    return formattedBusinessDataResponse;
+
+    return { data: { business: formattedBusinessDataResponse, totalCount: totalCount } };
   } catch (error: unknown) {
     console.error('Error: ', error);
   }

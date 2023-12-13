@@ -34,6 +34,7 @@ query allRestaurants($cursorId: Int) {
         }
       }
     }
+    totalCount
   }
 }
 `;

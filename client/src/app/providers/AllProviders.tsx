@@ -8,8 +8,10 @@ import { store } from "@shared/store";
 import { queryClient } from "@shared/api";
 import { QueryClientProvider } from "react-query";
 
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 
+//This is for storybook
 export const AllProviders = ({ children }: { children: ReactNode; }) => {
 
     return (
@@ -20,6 +22,7 @@ export const AllProviders = ({ children }: { children: ReactNode; }) => {
                     <MemoryRouter>
                         {children}
                     </ MemoryRouter>
+                    <ReactQueryDevtools initialIsOpen={false} />
                 </StyledThemeProvider>
             </Provider>
         </QueryClientProvider>

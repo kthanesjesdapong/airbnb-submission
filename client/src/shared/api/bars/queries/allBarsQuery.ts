@@ -2,7 +2,7 @@ import { gql } from "graphql-request";
 
 export const allBarsQuery = gql`
 query allBars($cursorId: Int) {
-  allallBars(cursorId: $cursorId) {
+  allBars(cursorId: $cursorId) {
     edges {
       node {
         id
@@ -34,6 +34,7 @@ query allBars($cursorId: Int) {
         }
       }
     }
+    totalCount
   }
 }
 `;

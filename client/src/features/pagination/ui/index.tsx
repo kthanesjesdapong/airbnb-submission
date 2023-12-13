@@ -5,7 +5,7 @@ import { MouseEventHandler } from "react";
 
 
 type PaginationProps = {
-    onPageChange: (page: number) => void; //callback fc invoked with updated page val when page is changed;
+    onPageChange: (page: number) => void;
     totalCount: number;
     siblingCount?: number;
     currentPage: number;

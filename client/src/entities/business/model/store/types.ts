@@ -39,8 +39,14 @@ export type BusinessEdge = {
 export type BusinessListResponse = {
   [index: string]: {
     edges: BusinessEdge[];
+    totalCount: number;
   };
 };
+
+export type BusinessEdgesTest = {
+  edges: BusinessEdge[];
+};
+
 
 export type QueryVariables = {
   cursorId: number;
@@ -55,8 +61,25 @@ export type SingleBusiness = {
   longitude: number;
 } & BaseBusiness;
 
-export type FormattedBusinessList = {
+
+export type FormattedBusiness = {
   price: string;
   hours: string[][];
   category: string[];
 } & BaseBusiness;
+
+export type FormattedBusinessList = {
+  business: FormattedBusiness[],
+};
+
+export type FormattedBusinessResponse = {
+  [index: string]: {
+    business: FormattedBusiness[];
+    totalCount: number;
+  };
+};
+
+export type BusinessListResponseQuery = {
+  business: FormattedBusiness[];
+  totalCount: number;
+};
