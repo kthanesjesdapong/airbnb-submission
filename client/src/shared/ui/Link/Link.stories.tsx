@@ -1,14 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { LinkElement } from "@shared/ui";
-import { AllTheProviders } from '@shared/lib/test-utils';
+import { LinkElement } from ".";
+import { AllProviders } from '@app/providers';
 
 
 const meta: Meta<typeof LinkElement> = {
     component: LinkElement,
     decorators: [
-        (Story) => (<AllTheProviders>
-            <Story />
-        </AllTheProviders>)
+        (Story) => (
+            <AllProviders>
+                <Story />
+            </AllProviders>
+        )
     ],
     tags: ['autodocs'],
     parameters: {

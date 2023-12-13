@@ -11,3 +11,4 @@ export * from './footer';
 export * from './hero-section';
 export * from './top-bar';
 export * from './side-bar';
+export * from './button';

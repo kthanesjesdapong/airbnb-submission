@@ -1,13 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Logo } from ".";
-import { AllTheProviders } from '@shared/lib/test-utils';
+import { AllProviders } from '@app/providers';
 
 const meta: Meta<typeof Logo> = {
     component: Logo,
     decorators: [
-        (Story) => (<AllTheProviders>
-            <Story />
-        </AllTheProviders>)
+        (Story) =>
+        (
+            <AllProviders>
+                <Story />
+            </AllProviders>
+        )
     ],
     tags: ['autodocs'],
     parameters: {
