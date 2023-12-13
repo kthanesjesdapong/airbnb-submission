@@ -1,40 +1,40 @@
 {
-    "$schema": "https://json.schemastore.org/swcrc",
-    "jsc": {
-      "parser": {
-        "syntax": "typescript",
-        "tsx": true,
-        "decorators": false,
-        "dynamicImport": true
+  "$schema": "https://json.schemastore.org/swcrc",
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+      "decorators": false,
+      "dynamicImport": true
 
-      },
-      "baseUrl": "./src",
-      "paths":{
-        "@app": ["./app"],
-        "@app/*": ["./app/*"],
-        "@assets": ["./assets"],
-        "@assets/*": ["./assets/*"],
-        "@pages": ["./pages"],
-        "@pages/*": ["./pages/*"],
-        "@widgets": ["./widgets"],
-        "@widgets/*": ["./widgets/*"],
-        "@features": ["./features"],
-        "@features/*": ["./features/*"],
-        "@entities": ["./entities"],
-        "@entities/*": ["./entities/*"],
-        "@shared": ["./shared"],
-        "@shared/*": ["./shared/*"]
-      },
-      "transform": {
-        "react":{
-          "runtime": "automatic",
-          "refresh": true
-        }
-      },
-      "target": "es2015",
-      "loose": false,
-      "externalHelpers": false,
-      "keepClassNames": false
     },
-    "minify": true
-  }
+    "baseUrl": "./src",
+    "paths":{
+      "@app": ["./app"],
+      "@app/*": ["./app/*"],
+      "@assets": ["./assets"],
+      "@assets/*": ["./assets/*"],
+      "@pages": ["./pages"],
+      "@pages/*": ["./pages/*"],
+      "@widgets": ["./widgets"],
+      "@widgets/*": ["./widgets/*"],
+      "@features": ["./features"],
+      "@features/*": ["./features/*"],
+      "@entities": ["./entities"],
+      "@entities/*": ["./entities/*"],
+      "@shared": ["./shared"],
+      "@shared/*": ["./shared/*"]
+    },
+    "transform": {
+      "react":{
+        "runtime": "automatic",
+        "refresh": true
+      }
+    },
+    "target": "es2015",
+    "loose": false,
+    "externalHelpers": false,
+    "keepClassNames": false
+  },
+  "minify": true
+}

@@ -5,7 +5,7 @@ import { MouseEventHandler } from "react";
 
 
 type PaginationProps = {
-    onPageChange: (page: number) => void; //callback fc invoked with updated page val when page is changed;
+    onPageChange: (page: number) => void;
     totalCount: number;
     siblingCount?: number;
     currentPage: number;
@@ -52,10 +52,10 @@ export const Pagination = ({ onPageChange, totalCount, siblingCount, currentPage
                         className={currentPage === 1 ? 'disabled left' : 'left'}
                     />
                 </PaginationItem>
-                {paginationRange?.map(pageNumber => {
+                {paginationRange?.map((pageNumber, i) => {
                     if (pageNumber === DOTS) {
                         return <PaginationItem
-                            key={`${pageNumber} key`}
+                            key={`${pageNumber + ' ' + i + ' '} key`}
                             className="dots">
                             &#8230;
                         </PaginationItem>;

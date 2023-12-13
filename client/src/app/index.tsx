@@ -4,14 +4,22 @@ import { StyledThemeProvider } from "./providers/Style-Theme-Provider";
 import App from "./App";
 import { Provider } from 'react-redux';
 import { store } from '@shared/store';
-//Render Providers here
+
+import { queryClient } from "@shared/api";
+import { QueryClientProvider } from "react-query";
+
+import { ReactQueryDevtools } from 'react-query/devtools';
+
 const root = createRoot(document.getElementById('root') as HTMLElement);
 root.render(
     <StrictMode>
-        <Provider store={store}>
-            <StyledThemeProvider>
-                <App />
-            </StyledThemeProvider>
-        </Provider>
+        <QueryClientProvider client={queryClient}>
+            <Provider store={store}>
+                <StyledThemeProvider>
+                    <App />
+                    <ReactQueryDevtools initialIsOpen={false} />
+                </StyledThemeProvider>
+            </Provider>
+        </QueryClientProvider>
     </StrictMode>
 );

@@ -4,7 +4,7 @@ import { range, DOTS } from '..';
 
 
 
-type usePaginationProps = {
+export type usePaginationProps = {
   totalCount: number; // total count of data available from the source
   currentPage: number; //represents the current active page. Using 1-based index instead of traditional 0-based index for our currentPage value.
   pageSize: number; // rep the max data that is visible in a single page

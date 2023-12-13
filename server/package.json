@@ -1,5 +1,6 @@
 {
-  "name": "server",
+  "name": "disclose-lv-server",
+  "description": "server disclose-lv contains seeding directory",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -11,12 +12,11 @@
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix",
     "test": "jest",
-    "t-wa": "yarn test -watchAll",
-    "seed": "ts-node ./src/seed/index.ts",
-    "db-schema": "npx prisma generate generate --schema ./src/config/prisma/schema.prisma",
-    "db-reset": "npx prisma migrate reset",
+    "db-generate": "npx prisma generate",
+    "db-schema": "npx prisma generate --schema ./src/config/prisma/schema.prisma",
     "db-migration": "npx prisma migrate dev",
-    "db-generate": "npx prisma generate"
+    "db-reset": "npx prisma migrate reset",
+    "seed": "ts-node ./src/seed/index.ts"
   },
   "dependencies": {
     "@apollo/server": "^4.9.4",

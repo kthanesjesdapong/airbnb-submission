@@ -26,7 +26,8 @@ builder.prismaObject('Restaurant', {
     category: t.relatedConnection('category', {
       cursor: 'restaurantName_categoryAlias',
       args: { restaurantName_categoryAlias: t.arg.stringList() }
-    })
+    }),
+
   })
 });
 

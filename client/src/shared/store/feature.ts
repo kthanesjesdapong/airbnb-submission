@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-export type SelectedFeature = {
+export type SelectedFeaturedCategory = {
   selected: string;
   prevSelected: string;
 };
 
-const initialState: SelectedFeature = {
+const initialState: SelectedFeaturedCategory = {
   selected: 'Events',
   prevSelected: 'Events'
 };

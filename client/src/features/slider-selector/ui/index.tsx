@@ -27,15 +27,15 @@ export const SliderSelector = ({ options, configs }: SliderSelectorProps) => {
 
     return (
         <SliderContainer >
-            {options.map((o) => (
-                <SectionParagraph key={`key ${o}`}
+            {options.map((option) => (
+                <SectionParagraph key={`key ${option}`}
                     $fontSize={fontSize}
                     $margin={margin}
                     $cursor={cursor}
                     $activeColor={activeColor}
                     onClick={handleClick}
                 >
-                    {o}
+                    {option}
                 </SectionParagraph>
             ))}
         </SliderContainer>

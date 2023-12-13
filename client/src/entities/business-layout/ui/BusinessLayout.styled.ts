@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { media } from '@shared/lib';
 
-const VenueLayout = styled.div`
+const BusinessContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,4 +42,4 @@ const VenueLayout = styled.div`
 
 
 
-export { VenueLayout };
+export { BusinessContainer };

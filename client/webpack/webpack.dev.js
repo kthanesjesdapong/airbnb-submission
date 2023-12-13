@@ -10,7 +10,7 @@ module.exports = merge(webpackConfig, {
     devServer: {
         historyApiFallback: true,
         client: {
-            progress: true
+            progress: false,
         },
         static: {
             directory: resolve(__dirname, '..', 'dist'),

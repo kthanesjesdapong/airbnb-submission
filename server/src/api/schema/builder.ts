@@ -15,6 +15,9 @@ const prisma = new PrismaClient({});
 const builder = new SchemaBuilder<{
   Context: Context;
   PrismaTypes: PrismaTypes;
+  Connection: {
+    totalCount: number | (() => number | Promise<number>);
+  };
 }>({
   plugins: [PrismaPlugin, RelayPlugin],
   relayOptions: {
@@ -28,5 +31,12 @@ const builder = new SchemaBuilder<{
     onUnusedQuery: process.env.NODE_ENV === 'production' ? null : 'warn',
   },
 });
+
+builder.globalConnectionField('totalCount', (t) =>
+  t.int({
+    nullable: false,
+    resolve: (parent) =>
+      typeof parent.totalCount === 'function' ? parent.totalCount() : parent.totalCount,
+  }));
 
 export default builder;
