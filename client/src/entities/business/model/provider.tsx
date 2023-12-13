@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { useFetchAllBusiness, CurrentBusinessContext } from ".";
 
+
 type CurrentBusinessContextProviderProps = {
   children: ReactNode;
   cursorId: number;
@@ -10,8 +11,12 @@ type CurrentBusinessContextProviderProps = {
 
 export const CurrentBusinessContextProvider = ({ children, cursorId, query, modelType }: CurrentBusinessContextProviderProps) => {
 
+
+
   const { data: businessData, isLoading } = useFetchAllBusiness(cursorId, query, modelType);
-  //isError, error
+
+
+
 
 
   if (isLoading) {
@@ -23,6 +28,8 @@ export const CurrentBusinessContextProvider = ({ children, cursorId, query, mode
   // if (isError) {
   //   return <p>{error}</p>;
   // }
+
+
 
   return (
     <CurrentBusinessContext.Provider value={dataValue}>

@@ -1,5 +1,4 @@
 import { ExploreCardsContainer, ExploreCardWrapper, ExploreCard } from "./ExploreCards.styled";
-import { exploreData } from "..";
 import { useState, useMemo } from "react";
 import { Pagination } from "@features/pagination";
 import { useCurrentBusinessContext } from "@entities/business";
@@ -11,27 +10,21 @@ const PageSize: PageSizeT = 6;
 
 type ExploreCardsProp = {
     className: string;
-    data: exploreData[];
     $width: number;
     $height: number;
 };
 
-export const ExploreCards = ({ className, data, $width, $height }: ExploreCardsProp) => {
+export const ExploreCards = ({ className, $width, $height, }: ExploreCardsProp) => {
 
     const [currentPage, setCurrentPage] = useState(1);
-
     const businessData = useCurrentBusinessContext();
+    const { business, totalCount } = businessData.data;
 
-    //,totalCount  <--- pass this into pagination and implement paginate logic
-    const { business } = businessData.data;
 
     const currentData = useMemo<FormattedBusiness[]>(() => {
         const startPageIndex = (currentPage - 1) * PageSize;
         const endPageIndex = startPageIndex + PageSize;
-
-
         return business.slice(startPageIndex, endPageIndex);
-
     }, [currentPage, business]);
 
 
@@ -60,7 +53,7 @@ export const ExploreCards = ({ className, data, $width, $height }: ExploreCardsP
             </ExploreCardsContainer>
             <Pagination
                 currentPage={currentPage}
-                totalCount={data.length}
+                totalCount={totalCount}
                 pageSize={PageSize}
                 onPageChange={page => setCurrentPage(page)}
             />

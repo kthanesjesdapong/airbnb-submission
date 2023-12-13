@@ -1,40 +1,37 @@
-// import { useFetchAllBusiness} from "@entities/business";
-// import { useState } from "react";
-// import { allRestaurantsQuery } from "@shared/api";
+import { Venue } from "@entities/venue";
+import { ExploreCards } from "@entities/explore-cards";
+
+import { allRestaurantsQuery } from "@shared/api";
+import { CurrentBusinessContextProvider } from "@entities/business";
+
+const restaurantsPageConfig = {
+    $width: 300,
+    $height: 150
+};
+
 
 
 
 export const RestaurantsPage = () => {
 
-
-    //Call this in Restaurant Page
-    // const [cursorId, setCursorId] = useState(0);
-    // const { data: businessData } = useFetchAllBusiness(cursorId, allRestaurantsQuery, 'restaurant');
-
-    // console.log(businessData);
-
-    //Handle isLoading
-
-    //Handle Error
-
-    //figure out to setcursorId after fetching.
-
-
-
     return (
         <>
+            <CurrentBusinessContextProvider cursorId={0} query={allRestaurantsQuery} modelType="restaurant">
+                <h2>{'B A R S'}</h2>
+                <Venue
+                    child1={
+                        <p> THIS IS FILTER BAR</p>
+                    }
+                    child2={
+                        <ExploreCards
+                            $width={restaurantsPageConfig.$width}
+                            $height={restaurantsPageConfig.$height}
+                            className="someClass"
+                        />
 
-            {/* somewhere here implement logic to navigate based off of final cursorId
-            
-            calc totalAmount as result of the call
-            
-
-            {businessData && businessData!.business.map()} */}
-            {/* {data && data.business.map((business: FormattedBusiness) => (
-                <p key={business.name + business.id}>
-                    {business.name}
-                </p>
-            ))} */}
+                    }
+                />
+            </CurrentBusinessContextProvider>
         </>
     );
 };

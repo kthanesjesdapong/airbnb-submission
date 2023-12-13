@@ -52,10 +52,10 @@ export const Pagination = ({ onPageChange, totalCount, siblingCount, currentPage
                         className={currentPage === 1 ? 'disabled left' : 'left'}
                     />
                 </PaginationItem>
-                {paginationRange?.map(pageNumber => {
+                {paginationRange?.map((pageNumber, i) => {
                     if (pageNumber === DOTS) {
                         return <PaginationItem
-                            key={`${pageNumber} key`}
+                            key={`${pageNumber + ' ' + i + ' '} key`}
                             className="dots">
                             &#8230;
                         </PaginationItem>;
