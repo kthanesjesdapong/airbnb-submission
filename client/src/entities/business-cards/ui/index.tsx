@@ -1,4 +1,4 @@
-import { ExploreCardsContainer, ExploreCardWrapper, ExploreCard } from "./ExploreCards.styled";
+import { BusinessCardsContainer, BusinessCardWrapper, BusinessCard } from "./BusinessCards";
 import { useState, useMemo } from "react";
 import { Pagination } from "@features/pagination";
 import { useCurrentBusinessContext } from "@entities/business";
@@ -8,13 +8,13 @@ type PageSizeT = number;
 const PageSize: PageSizeT = 6;
 
 
-type ExploreCardsProp = {
+type BusinessCardsProp = {
     className: string;
     $width: number;
     $height: number;
 };
 
-export const ExploreCards = ({ className, $width, $height, }: ExploreCardsProp) => {
+export const BusinessCards = ({ className, $width, $height, }: BusinessCardsProp) => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const businessData = useCurrentBusinessContext();
@@ -28,27 +28,27 @@ export const ExploreCards = ({ className, $width, $height, }: ExploreCardsProp) 
 
     return (
         <>
-            <ExploreCardsContainer
+            <BusinessCardsContainer
                 className={className}
                 $width={$width}
             >
                 {currentData && currentData.map((d, i) => (
-                    <ExploreCardWrapper
+                    <BusinessCardWrapper
                         $width={$width}
                         key={d.name + 'key' + i}>
-                        <ExploreCard
+                        <BusinessCard
                             $url={`${d.photos[0] ?? 'https://media-cdn.tripadvisor.com/media/photo-s/04/bd/37/54/velveteen-rabbit.jpg'}`}
                             $width={$width}
                             $height={$height}>
-                        </ExploreCard>
+                        </BusinessCard>
                         <p>{d.name.toUpperCase()}</p>
                         <p>{d.location}</p>
                         <p>{d.rating}</p>
                         <p>{d.price}</p>
-                    </ExploreCardWrapper>
+                    </BusinessCardWrapper>
 
                 ))}
-            </ExploreCardsContainer>
+            </BusinessCardsContainer>
             <Pagination
                 currentPage={currentPage}
                 totalCount={totalCount}

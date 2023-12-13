@@ -3,12 +3,12 @@ import { Card } from '@shared/ui';
 import { HTMLAttributes } from 'react';
 import { media } from '@shared/lib';
 
-type StyledCardProps = {
+type ExploreSelectionCardContainerProps = {
   $maxwidth: number;
   $url: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-const StyledCard = styled(Card) <StyledCardProps>`
+const ExploreSelectionCardContainer = styled(Card) <ExploreSelectionCardContainerProps>`
   position: relative;
   overflow: hidden;
   transition: width 0.4s ease-out;
@@ -60,4 +60,4 @@ const StyledCard = styled(Card) <StyledCardProps>`
   }
 `;
 
-export { StyledCard };
+export { ExploreSelectionCardContainer };

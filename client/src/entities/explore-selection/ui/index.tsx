@@ -1,17 +1,17 @@
-import { StyledCard } from "./CardSelection.styled";
-import { cardSelectionConfig } from "..";
+import { ExploreSelectionCardContainer } from "./ExploreSelection.styled";
+import { exploreSelectionConfigs } from "..";
 import { LinkElement } from "@shared/ui";
 
-type CardSelectionProps = {
+type ExploreSelectionProps = {
     header: string;
     href: string;
     url: string;
 };
 
-export const CardSelection = ({ header, href, url }: CardSelectionProps) => {
-    const { $width, $height, $maxwidth } = cardSelectionConfig;
+export const ExploreSelection = ({ header, href, url }: ExploreSelectionProps) => {
+    const { $width, $height, $maxwidth } = exploreSelectionConfigs;
     return (
-        <StyledCard
+        <ExploreSelectionCardContainer
             $width={$width}
             $height={$height}
             $maxwidth={$maxwidth}
@@ -24,6 +24,6 @@ export const CardSelection = ({ header, href, url }: CardSelectionProps) => {
                     {header}
                 </LinkElement>
             </div>
-        </StyledCard>
+        </ExploreSelectionCardContainer>
     );
 };

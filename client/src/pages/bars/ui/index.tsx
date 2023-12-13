@@ -1,5 +1,5 @@
-import { BusinessLayout, businessLayoutConfigs } from "@entities/business-layout";
-import { ExploreCards } from "@entities/explore-cards";
+import { BusinessLayout, businessLayoutConfigs } from "@widgets/business-layout";
+import { BusinessCards } from "@entities/business-cards";
 
 import { allBarsQuery } from "..";
 import { CurrentBusinessContextProvider } from "@entities/business";
@@ -16,7 +16,7 @@ export const BarsPage = () => {
                         <p> THIS IS FILTER BAR</p>
                     }
                     child2={
-                        <ExploreCards
+                        <BusinessCards
                             $width={businessLayoutConfigs.$width}
                             $height={businessLayoutConfigs.$height}
                             className="someClass"

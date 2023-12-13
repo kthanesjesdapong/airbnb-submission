@@ -3,13 +3,13 @@ import { Card } from '@shared/ui';
 import { HTMLAttributes } from 'react';
 import { media } from '@shared/lib';
 
-type ExploreCardsContainerProps = {
+type BusinessCardsContainerProps = {
   className: string;
   $width: number;
 } & HTMLAttributes<HTMLDivElement>;
 
 //Cards that are actually rendered onto here.
-const ExploreCardsContainer = styled.div<ExploreCardsContainerProps>`
+const BusinessCardsContainer = styled.div<BusinessCardsContainerProps>`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -32,11 +32,11 @@ const ExploreCardsContainer = styled.div<ExploreCardsContainerProps>`
   
 `;
 
-type ExploreCardWrapperProps = {
+type BusinessCardWrapperProps = {
   $width: number;
 };
 
-const ExploreCardWrapper = styled.div<ExploreCardWrapperProps>`
+const BusinessCardWrapper = styled.div<BusinessCardWrapperProps>`
   width: ${props => props.$width}px;
   margin: 0 1em 1em 1em;
   p{
@@ -45,11 +45,11 @@ const ExploreCardWrapper = styled.div<ExploreCardWrapperProps>`
   }
 `;
 
-type ExploreCardProps = {
+type BusinessCardProps = {
   $url: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-const ExploreCard = styled(Card) <ExploreCardProps>`
+const BusinessCard = styled(Card) <BusinessCardProps>`
   position: relative;
   overflow: hidden;
   &::before {
@@ -66,4 +66,4 @@ const ExploreCard = styled(Card) <ExploreCardProps>`
   border-radius: 5px;
 `;
 
-export { ExploreCardsContainer, ExploreCardWrapper, ExploreCard };
+export { BusinessCardsContainer, BusinessCardWrapper, BusinessCard };
