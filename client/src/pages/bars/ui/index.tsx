@@ -1,5 +1,5 @@
 import { BusinessLayout, businessLayoutConfigs } from "@widgets/business-layout";
-import { BusinessCards } from "@entities/business-cards";
+import { BusinessCards } from "@widgets/business-cards";
 
 import { allBarsQuery } from "..";
 import { CurrentBusinessContextProvider } from "@entities/business";

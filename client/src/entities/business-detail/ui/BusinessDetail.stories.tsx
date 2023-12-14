@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '.';
+import { BusinessDetail } from '.';
 import { AllProviders } from '@app/providers';
 
-const meta: Meta<typeof Button> = {
-    component: Button,
+const meta: Meta<typeof BusinessDetail> = {
+    component: BusinessDetail,
     decorators: [
         (Story) => (
             <AllProviders>
@@ -19,10 +19,10 @@ const meta: Meta<typeof Button> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof BusinessDetail>;
 
-export const ButtonStory: Story = {
+export const BusinessDetailStory: Story = {
     args: {
-        children: 'Show more'
+
     }
 };

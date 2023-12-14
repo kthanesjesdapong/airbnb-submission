@@ -70,7 +70,6 @@ const BusinessCard = styled(Card) <BusinessCardProps>`
     background-position: center;
     background-image: url(${props => props.$url});
   }
-  /* border-bottom: 1px solid ${props => props.theme.colors.categorySub}; */
   border-radius: 1px;
 `;
 
