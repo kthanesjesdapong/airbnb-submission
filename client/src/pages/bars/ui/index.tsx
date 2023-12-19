@@ -20,8 +20,8 @@ export const BarsPage = () => {
                             $width={businessLayoutConfigs.$width}
                             $height={businessLayoutConfigs.$height}
                             className="someClass"
+                            model='b'
                         />
-
                     }
                 />
             </CurrentBusinessContextProvider>

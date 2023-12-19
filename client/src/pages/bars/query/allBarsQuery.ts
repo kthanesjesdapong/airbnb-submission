@@ -21,6 +21,7 @@ query allBars($cursorId: Int) {
             node {
               start
               end
+              day
             }
           }
         }

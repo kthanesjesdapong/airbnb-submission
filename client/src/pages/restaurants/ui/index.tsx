@@ -19,8 +19,8 @@ export const RestaurantsPage = () => {
                             $width={businessLayoutConfigs.$width}
                             $height={businessLayoutConfigs.$height}
                             className="someClass"
+                            model="r"
                         />
-
                     }
                 />
             </CurrentBusinessContextProvider>

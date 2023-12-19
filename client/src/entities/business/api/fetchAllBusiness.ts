@@ -13,7 +13,7 @@ export const fetchBusinessList = async (cursorId: number, query: string, busines
       const { id, name, rating, price, photos, hours, display_phone, category, location } = businessData.node;
       const businessPrice = price.edges[0].node.priceStr;
       const businessHours = hours.edges.map((hour) => {
-        return [hour.node.start, hour.node.end];
+        return [hour.node.day, hour.node.start, hour.node.end];
       });
       const businessLocation = location.edges[0].node.locationAddress;
       const businessCategories = category.edges.map((category) => {

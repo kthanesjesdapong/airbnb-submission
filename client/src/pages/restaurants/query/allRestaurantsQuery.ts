@@ -21,6 +21,7 @@ query allRestaurants($cursorId: Int) {
             node {
               start
               end
+              day
             }
           }
         }

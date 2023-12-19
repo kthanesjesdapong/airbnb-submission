@@ -1,5 +1,6 @@
 import { BusinessCardsContainer, BusinessCardWrapper, BusinessCard } from "./BusinessCards";
 import { useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { Pagination } from "@features/pagination";
 import { useCurrentBusinessContext } from "@entities/business";
 import type { FormattedBusiness } from "@entities/business";
@@ -13,9 +14,12 @@ type BusinessCardsProp = {
     className: string;
     $width: number;
     $height: number;
+    model: string;
 };
 
-export const BusinessCards = ({ className, $width, $height, }: BusinessCardsProp) => {
+export const BusinessCards = ({ className, $width, $height, model }: BusinessCardsProp) => {
+
+    const navigate = useNavigate();
 
     const [currentPage, setCurrentPage] = useState(1);
     const businessData = useCurrentBusinessContext();
@@ -47,11 +51,12 @@ export const BusinessCards = ({ className, $width, $height, }: BusinessCardsProp
                         <p>{d.rating}</p>
                         <p>{d.price}</p>
                         <div className="button-wrapper">
-                            <Button className="show-more">{'Show More'}</Button>
+                            <Button className="show-more"
+                                onClick={() => navigate(`${model}/${d.id}`)}
+                            >{'Show More'}
+                            </Button>
                         </div>
-
                     </BusinessCardWrapper>
-
                 ))}
             </BusinessCardsContainer>
             <Pagination

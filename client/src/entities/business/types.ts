@@ -6,6 +6,11 @@ export type BaseBusiness = {
   display_phone: string;
 };
 
+export type HourArr = (string | number)[];
+
+export type HoursArr = HourArr[];
+
+
 export type BusinessResponse = {
   price: {
     edges: {
@@ -19,6 +24,7 @@ export type BusinessResponse = {
       node: {
         start: string;
         end: string;
+        day: number;
       };
     }[];
   };
@@ -36,7 +42,12 @@ export type BusinessResponse = {
       };
     }[];
   };
+  latitude?: number;
+  longitude?: number;
 } & BaseBusiness;
+
+
+
 
 export type BusinessEdge = {
   node: BusinessResponse;
@@ -57,15 +68,9 @@ export type QueryResult = {
   data: BusinessListResponse;
 };
 
-export type SingleBusiness = {
-  latitude: number;
-  longitude: number;
-} & BaseBusiness;
-
-
 export type FormattedBusiness = {
   price: string;
-  hours: string[][];
+  hours: HoursArr;
   location: string;
   category: string[];
 } & BaseBusiness;
@@ -80,3 +85,32 @@ export type FormattedBusinessResponse = {
     totalCount: number;
   };
 };
+
+export type SingleBusiness = {
+  longitude: number;
+  latitude: number;
+  price: string;
+  hours: HoursArr;
+  location: string;
+  category: string[];
+} & BaseBusiness;
+
+export type SingleBusinessQueryResult = {
+  data: {
+    [index: string]: BusinessResponse;
+  };
+};
+export type FormattedSingleBusiness = {
+  price: string;
+  hours: HoursArr;
+  location: string;
+  category: string[];
+  latitude?: number;
+  longitude?: number;
+} & BaseBusiness;
+
+
+export type FormattedSingleBusinessResponse = {
+  data: SingleBusiness;
+};
+
