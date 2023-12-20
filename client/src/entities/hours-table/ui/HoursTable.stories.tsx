@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { BusinessDetail } from '.';
+import { HoursTable } from '.';
 import { AllProviders } from '@app/providers';
 
-const meta: Meta<typeof BusinessDetail> = {
-    component: BusinessDetail,
+const meta: Meta<typeof HoursTable> = {
+    component: HoursTable,
     decorators: [
         (Story) => (
             <AllProviders>
@@ -19,10 +19,11 @@ const meta: Meta<typeof BusinessDetail> = {
 
 export default meta;
 
-type Story = StoryObj<typeof BusinessDetail>;
+type Story = StoryObj<typeof HoursTable>;
 
-export const BusinessDetailStory: Story = {
+export const HoursTableStory: Story = {
     args: {
-        
+        width: '300px',
+        margin: '0.5em 0 2em'
     }
 };

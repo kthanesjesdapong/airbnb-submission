@@ -1,20 +1,16 @@
 import { formatHours } from ".";
-
+import { HoursArr } from "@entities/business";
 
 type StoreHoursProps = {
     status: boolean | string;
-    start: string;
-    end: string;
+    hours: HoursArr;
 };
 
-
-export const StoreHours = ({ status, start, end }: StoreHoursProps) => {
-
-    const formattedHours = formatHours(start, end);
+export const StoreHours = ({ status, hours }: StoreHoursProps) => {
 
     if (status === 'Hours Not Available') {
         return <>
-            <p>{status}</p>
+            <p className="closed">{'Hours Not Available'}</p>
         </>;
     }
 
@@ -26,14 +22,27 @@ export const StoreHours = ({ status, start, end }: StoreHoursProps) => {
         </>;
     }
 
+
     return (
         <>
+
             <p className="open">
                 OPEN
             </p>
-            <p className="hours">
-                {formattedHours}
-            </p>
+            {hours.map((hour, i) => (
+                (i > 0 ? (
+                    <p className="hours"
+                        key={`hour-key-${i}`}
+                    >{`, ${formatHours(hour[1] as string, hour[2] as string)}`}</p>
+
+                ) : (
+                    <p className="hours"
+                        key={`hour-key-${i}`}
+                    >{formatHours(hour[1] as string, hour[2] as string)}</p>
+
+                ))
+            ))}
+
         </>
     );
 };

@@ -33,7 +33,7 @@ const BusinessDetailCard = styled(Card) <BusinessDetailCardProps>`
     position: absolute;
     left: 2%;
     bottom: 5%;
-    
+    text-shadow: 1px 1px .5px #0a0a0abf;
     color: white;
       .category-price-container, 
       .hours-container {

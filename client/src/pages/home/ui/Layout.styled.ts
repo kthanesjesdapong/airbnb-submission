@@ -5,6 +5,9 @@ import { media } from "@shared/lib";
 const HomeLayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
+  ${media.desktop} {
+    margin: 5em 0;
+  }
 `;
 
 const FirstRowContainer = styled.div`
@@ -17,7 +20,6 @@ const FirstRowContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     padding-left: 3em;
-
   }
 `;
 

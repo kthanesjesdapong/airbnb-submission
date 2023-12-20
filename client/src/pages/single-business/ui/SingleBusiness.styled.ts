@@ -8,7 +8,7 @@ const SingleBusinessContainer = styled.div`
   align-items: center;
 
   ${media.tablet} {
-    flex-direction: row;
+    /* flex-direction: row; */
     justify-content: center;
   }
 `;

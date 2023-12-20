@@ -4,6 +4,8 @@ import { singleBarQuery, singleRestaurantQuery } from "../query";
 import { useFetchSingleBusiness } from "@entities/business";
 import { BusinessDetail } from "@entities/business-detail";
 import { SingleBusinessContainer } from './SingleBusiness.styled';
+import { HoursTable } from "@entities/hours-table";
+import { getCurrentDateAndTime } from "@entities/business-detail/utils";
 
 export const SingleBusiness = () => {
     const params = useParams();
@@ -19,6 +21,10 @@ export const SingleBusiness = () => {
         return <span>is Loading....</span>;
     }
 
+
+    const currentDateAndTime = getCurrentDateAndTime();
+    const { currentDay, currentTime } = currentDateAndTime;
+
     return (
         <SingleBusinessContainer>
             <BusinessDetail
@@ -29,6 +35,13 @@ export const SingleBusiness = () => {
                 price={businessData!.data.price}
                 hours={businessData!.data.hours}
                 address={businessData!.data.location} />
+            <HoursTable
+                width={'300px'}
+                margin={'1px'}
+                hours={businessData!.data.hours}
+                currentDay={currentDay}
+                currentTime={currentTime}
+            />
         </SingleBusinessContainer>
     );
 };

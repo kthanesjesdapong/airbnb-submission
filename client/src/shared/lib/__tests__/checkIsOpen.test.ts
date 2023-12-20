@@ -1,26 +1,26 @@
-import { checkIfOpen, checkIfOpenThisHour, HourArr, HoursArr } from '..';
-
+import { checkIfOpen, checkIfOpenThisHour } from '..';
+import { HoursArr } from '@entities/business';
 
 
 describe('checkIfOpenThisHour', () => {
 
 
   it('should return false if the currentTime is LESS than businessStartTime', () => {
-    const businessHours: HourArr = [0, '0700', '0000'];
+    const businessHours: HoursArr = [[0, '0700', '0000']];
     const res = checkIfOpenThisHour(businessHours, '0600');
     expect(res).toBe(false);
   });
   it('should return false if end time is GREATER than businessEndTime', () => {
-    const businessHours: HourArr = [1, '0700', '2300'];
+    const businessHours: HoursArr = [[1, '0700', '2300']];
     const res = checkIfOpenThisHour(businessHours, '2345');
     expect(res).toBe(false);
   });
   it('should return true if end time is greater than businessEndTime BUT businessEndTime starts with a 0', () => {
-    const res = checkIfOpenThisHour([1, '0700', '0000'], '2345');
+    const res = checkIfOpenThisHour([[1, '0700', '0000']], '2345');
     expect(res).toBe(true);
   });
   it('should return true if end time is greater than businessEndTime BUT businessEndTime is either 0100, 0200, 0300,0400', () => {
-    const res = checkIfOpenThisHour([1, '0700', '0100'], '2345');
+    const res = checkIfOpenThisHour([[1, '0700', '0100']], '2345');
     expect(res).toBe(true);
   });
 });
@@ -43,7 +43,7 @@ describe('checkIfOpen', () => {
   it('should return true if the dayInput is contained within the hours array and currentTime does not exceed businessEndTime', () => {
     const businessHours: HoursArr = [[0, '0700', '0000'], [2, '0700', '2345'], [4, '0700', '2200'], [5, '0700', '2000']];
     const res = checkIfOpen(businessHours, 2, '2300');
-    expect(res).toBe(true);
+    expect(res).toStrictEqual([[2, '0700', '2345']]);
   });
 
 });

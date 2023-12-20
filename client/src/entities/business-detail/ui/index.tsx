@@ -2,8 +2,7 @@ import { businessDetailConfigs } from "../businessDetail.configs";
 import { BusinessDetailCard } from "./BusinessDetail.styled";
 import { getCurrentDateAndTime } from "../utils";
 import { StoreHours } from "../libs";
-import { checkIfOpen, openIndex } from "@shared/lib";
-
+import { checkIfOpen } from "@shared/lib";
 
 type BusinessDetailProps = {
     imgUrl: string;
@@ -18,11 +17,12 @@ type BusinessDetailProps = {
 
 export const BusinessDetail = ({ imgUrl, name, rating, category, hours, price, address }: BusinessDetailProps) => {
 
-
     const currentDateAndTime = getCurrentDateAndTime();
     const { currentDay, currentTime } = currentDateAndTime;
+
     const storeIsOpen = checkIfOpen(hours, currentDay, currentTime);
-    const storeIndex = openIndex(hours, currentDay, currentTime);
+    price = price === 'Not Available' ? 'Prices Not Available' : price;
+    console.log({ hours }, 'BusinessDetail');
 
     return (
         <BusinessDetailCard
@@ -39,9 +39,8 @@ export const BusinessDetail = ({ imgUrl, name, rating, category, hours, price, a
                 </div>
                 <div className="hours-container">
                     <StoreHours
-                        status={storeIsOpen}
-                        start={hours[storeIndex][1] as string}
-                        end={hours[storeIndex][2] as string}
+                        status={Array.isArray(storeIsOpen) ? 'Open' : storeIsOpen}
+                        hours={Array.isArray(storeIsOpen) ? storeIsOpen : []}
                     />
                 </div>
                 <p>{address}</p>
