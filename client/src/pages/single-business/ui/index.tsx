@@ -42,6 +42,8 @@ export const SingleBusiness = () => {
                 hours={businessData!.data.hours}
                 currentDay={currentDay}
                 currentTime={currentTime}
+                width={500}
+                margin={'0.5em 0 2em'}
             />
         </SingleBusinessContainer>
     );

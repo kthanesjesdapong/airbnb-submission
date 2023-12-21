@@ -39,9 +39,9 @@ const BusinessCardWrapper = styled.div<BusinessCardWrapperProps>`
   width: ${props => props.$width}px;
   margin: 0 1em 1em 1em;
   p{
-    font-family: 'Open Sans Serif';
+    font-family: ${props => props.theme.fonts.secondary};
     margin: 3px;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   .name {
     margin: 5px 3px;
