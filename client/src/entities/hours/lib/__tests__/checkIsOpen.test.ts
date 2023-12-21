@@ -1,17 +1,16 @@
-import { checkIfOpen, checkIfOpenThisHour } from '..';
-import { HoursArr } from '@entities/business';
+import { BusinessHoursList, checkIfOpen, checkIfOpenThisHour } from '@entities/hours';
 
 
 describe('checkIfOpenThisHour', () => {
 
 
   it('should return false if the currentTime is LESS than businessStartTime', () => {
-    const businessHours: HoursArr = [[0, '0700', '0000']];
+    const businessHours: BusinessHoursList = [[0, '0700', '0000']];
     const res = checkIfOpenThisHour(businessHours, '0600');
     expect(res).toBe(false);
   });
   it('should return false if end time is GREATER than businessEndTime', () => {
-    const businessHours: HoursArr = [[1, '0700', '2300']];
+    const businessHours: BusinessHoursList = [[1, '0700', '2300']];
     const res = checkIfOpenThisHour(businessHours, '2345');
     expect(res).toBe(false);
   });
@@ -31,17 +30,17 @@ describe('checkIfOpen', () => {
     expect(res).toBe('Hours Not Available');
   });
   it('should return false if the dayInput is not contained within the hours array', () => {
-    const businessHours: HoursArr = [[0, '0700', '0000'], [2, '0700', '2300'], [4, '0700', '2200'], [5, '0700', '2000']];
+    const businessHours: BusinessHoursList = [[0, '0700', '0000'], [2, '0700', '2300'], [4, '0700', '2200'], [5, '0700', '2000']];
     const res = checkIfOpen(businessHours, 1, '2300');
     expect(res).toBe(false);
   });
   it('should return false if the dayInput is contained with the hoursArray but the current time exceeds the businessEnd time', () => {
-    const businessHours: HoursArr = [[0, '0700', '0000'], [2, '0700', '2300'], [4, '0700', '2200'], [5, '0700', '2000']];
+    const businessHours: BusinessHoursList = [[0, '0700', '0000'], [2, '0700', '2300'], [4, '0700', '2200'], [5, '0700', '2000']];
     const res = checkIfOpen(businessHours, 1, '2300');
     expect(res).toBe(false);
   });
   it('should return true if the dayInput is contained within the hours array and currentTime does not exceed businessEndTime', () => {
-    const businessHours: HoursArr = [[0, '0700', '0000'], [2, '0700', '2345'], [4, '0700', '2200'], [5, '0700', '2000']];
+    const businessHours: BusinessHoursList = [[0, '0700', '0000'], [2, '0700', '2345'], [4, '0700', '2200'], [5, '0700', '2000']];
     const res = checkIfOpen(businessHours, 2, '2300');
     expect(res).toStrictEqual([[2, '0700', '2345']]);
   });

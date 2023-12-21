@@ -14,10 +14,6 @@ const BusinessDetailCard = styled(Card) <BusinessDetailCardProps>`
   width: 360px;
   height: 220px;
 
-  .active {
-    opacity: 1;
-  }
-
   &::before {
     content: '';
     position: absolute;
@@ -60,11 +56,11 @@ const BusinessDetailCard = styled(Card) <BusinessDetailCardProps>`
     }
     
     .open {
-      color: rgb(4, 197, 133); 
+      color: ${p => p.theme.colors.openGreen}; 
     }
 
     .closed {
-      color: rgba(255,139,135,1);
+      color: ${p => p.theme.colors.closedRed};
     }
     .hours {
       margin-left: .2em;
@@ -72,7 +68,6 @@ const BusinessDetailCard = styled(Card) <BusinessDetailCardProps>`
     }
   }
 
-  
   ${media.tablet} {
     width: ${props => props.$width}px;
     height: ${props => props.$height}px;
@@ -81,51 +76,15 @@ const BusinessDetailCard = styled(Card) <BusinessDetailCardProps>`
     width: ${props => props.$width + 100}px;
     height: ${props => props.$height + 50}px;
     .content-container {
-    position: absolute;
-    left: 2%;
-    bottom: 5%;
-    
-    color: white;
-      .category-price-container, 
-      .hours-container {
-      display: flex;
-      flex-direction: row;
-    }
-    .price {
-      margin-left:.25em;
-      color: rgba(88,180,255,1);
-      font-weight: bolder;
-    }
-    
-    p {
-      margin: 0 1px;
-      font: 700 1.25rem ${props => props.theme.fonts.secondary};
-    }
-    span {
-      margin: 0 0.25em;
-    }
     .open,
     .closed {
-      font-weight: bolder;
       font-size: 1.15em;
-    }
-    
-    .open {
-      color: rgb(4, 197, 133); 
-    }
-
-    .closed {
-      color: rgba(255,139,135,1);
     }
     .hours {
-      margin-left: .2em;
       font-size: 1.15em;
     }
+    }
   }
-
-  }
-
-  
 `;
 
 export { BusinessDetailCard };

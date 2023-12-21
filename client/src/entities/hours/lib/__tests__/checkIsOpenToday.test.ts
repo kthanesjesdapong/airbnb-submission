@@ -1,4 +1,4 @@
-import { checkIfOpenToday } from "..";
+import { checkIfOpenToday } from "@entities/hours";
 
 describe('checkIsOpenToday', () => {
   it('Given an array of hours and days, it should return false when the day is not included', () => {

@@ -23,7 +23,7 @@ type Story = StoryObj<typeof HoursTable>;
 
 export const HoursTableStory: Story = {
     args: {
-        width: '300px',
-        margin: '0.5em 0 2em'
+        width: 300,
+        $margin: '0.5em 0 2em'
     }
 };

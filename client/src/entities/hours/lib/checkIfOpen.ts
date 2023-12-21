@@ -17,8 +17,6 @@ export const checkIfOpenThisHour = (hoursAndDay: HoursArr, currentTime: string):
       return true;
     }
   }
-
-
   return false;
 };
 

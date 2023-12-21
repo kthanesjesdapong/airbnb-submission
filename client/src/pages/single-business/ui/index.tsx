@@ -2,10 +2,10 @@
 import { useParams } from "react-router-dom";
 import { singleBarQuery, singleRestaurantQuery } from "../query";
 import { useFetchSingleBusiness } from "@entities/business";
-import { BusinessDetail } from "@entities/business-detail";
+import { BusinessDetail } from "@widgets/business-detail";
 import { SingleBusinessContainer } from './SingleBusiness.styled';
-import { HoursTable } from "@entities/hours-table";
-import { getCurrentDateAndTime } from "@entities/business-detail/utils";
+import { HoursTable } from "@widgets/hours-table";
+import { getCurrentDateAndTime } from "@entities/hours";
 
 export const SingleBusiness = () => {
     const params = useParams();
@@ -34,10 +34,11 @@ export const SingleBusiness = () => {
                 category={businessData!.data.category[0]}
                 price={businessData!.data.price}
                 hours={businessData!.data.hours}
-                address={businessData!.data.location} />
+                address={businessData!.data.location}
+                currentDay={currentDay}
+                currentTime={currentTime}
+            />
             <HoursTable
-                width={'300px'}
-                margin={'1px'}
                 hours={businessData!.data.hours}
                 currentDay={currentDay}
                 currentTime={currentTime}

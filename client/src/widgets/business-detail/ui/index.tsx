@@ -1,8 +1,7 @@
 import { businessDetailConfigs } from "../businessDetail.configs";
 import { BusinessDetailCard } from "./BusinessDetail.styled";
-import { getCurrentDateAndTime } from "../utils";
-import { StoreHours } from "../libs";
-import { checkIfOpen } from "@shared/lib";
+import { checkIfOpen, StoreHours } from "@entities/hours";
+
 
 type BusinessDetailProps = {
     imgUrl: string;
@@ -12,17 +11,16 @@ type BusinessDetailProps = {
     price: string;
     hours: (string | number)[][];
     address: string;
+    currentDay: number;
+    currentTime: string;
 
 };
 
-export const BusinessDetail = ({ imgUrl, name, rating, category, hours, price, address }: BusinessDetailProps) => {
+export const BusinessDetail = ({ imgUrl, name, rating, category, hours, price, address, currentDay, currentTime }: BusinessDetailProps) => {
 
-    const currentDateAndTime = getCurrentDateAndTime();
-    const { currentDay, currentTime } = currentDateAndTime;
 
     const storeIsOpen = checkIfOpen(hours, currentDay, currentTime);
     price = price === 'Not Available' ? 'Prices Not Available' : price;
-    console.log({ hours }, 'BusinessDetail');
 
     return (
         <BusinessDetailCard

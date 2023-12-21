@@ -1,9 +1,8 @@
-import { formatHours } from ".";
-import { HoursArr } from "@entities/business";
+import { formatHours, BusinessHoursList } from "@entities/hours";
 
 type StoreHoursProps = {
     status: boolean | string;
-    hours: HoursArr;
+    hours: BusinessHoursList;
 };
 
 export const StoreHours = ({ status, hours }: StoreHoursProps) => {

@@ -1,4 +1,4 @@
-import { formatHours } from "..";
+import { formatHours } from "@entities/hours";
 
 describe('formatHours', () => {
   it('should return hours formatted correctly', () => {

@@ -9,8 +9,8 @@ export const fonts = {
     fileFormats: ['otf']
   }),
   ...fontFace({
-    fontFamily: 'Open Sans',
-    fontFilePath: 'assets/fonts/OpenSans-Regular.ttf',
+    fontFamily: 'Open-Sans',
+    fontFilePath: 'assets/fonts/OpenSans-Regular',
     fontWeight: 'regular',
     fontDisplay: 'fallback',
     fileFormats: ['ttf']
