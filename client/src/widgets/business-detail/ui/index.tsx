@@ -1,6 +1,8 @@
 import { businessDetailConfigs } from "../businessDetail.configs";
 import { BusinessDetailCard } from "./BusinessDetail.styled";
 import { checkIfOpen, StoreHours } from "@entities/hours";
+// import Yelpstar from '@assets/png/yelp-star/small/small_5@3x.png';
+
 
 
 type BusinessDetailProps = {
@@ -30,6 +32,7 @@ export const BusinessDetail = ({ imgUrl, name, rating, category, hours, price, a
             <div className="content-container">
                 <p className="name">{name}</p>
                 <p>{rating}</p>
+                {/* <img src={Yelpstar} alt="" width={'92'} /> */}
                 <div className="category-price-container">
                     <p>{category}</p>
                     <span> - </span>

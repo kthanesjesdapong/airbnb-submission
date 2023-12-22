@@ -15,13 +15,13 @@ module.exports = {
         },
     },
     rules: {
+        // "@typescript-eslint/no-unsafe-call": "off",
+        '@typescript-eslint/no-var-requires': 'off',
+        // "@typescript-eslint/no-unsafe-return": "off",
         "import/no-named-as-default": 0,
         "import/resolver": 0,
         'no-unused-vars': 1,
         '@typescript-eslint/no-unused-vars': 'error',
-        '@typescript-eslint/no-var-requires': 'off',
-        "@typescript-eslint/no-unsafe-assignment": "off",
-        "@typescript-eslint/no-unsafe-return": "off",
         'react/prop-types': 'off',
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
@@ -36,7 +36,9 @@ module.exports = {
         semi: [0],
     },
     env: {
-        browser: true, es2020: true, "node": true
+        browser: true,
+        es11: true,
+        node: true,
     },
     extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:react-hooks/recommended', 'plugin:import/typescript', 'plugin:import/errors', 'plugin:import/warnings', 'plugin:@typescript-eslint/recommended', 'plugin:@typescript-eslint/recommended-requiring-type-checking', 'plugin:storybook/recommended'],
     plugins: ["@typescript-eslint"],

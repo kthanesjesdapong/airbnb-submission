@@ -8,6 +8,7 @@ import { store } from '@shared/store';
 import { queryClient } from "@shared/api";
 import { QueryClientProvider } from "react-query";
 
+
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 const root = createRoot(document.getElementById('root') as HTMLElement);

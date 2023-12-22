@@ -51,6 +51,9 @@ const BusinessCardWrapper = styled.div<BusinessCardWrapperProps>`
     display:flex;
     justify-content: flex-end;
   }
+  img {
+    margin: 3px;
+  }
 `;
 
 type BusinessCardProps = {

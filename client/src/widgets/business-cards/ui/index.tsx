@@ -1,10 +1,19 @@
 import { BusinessCardsContainer, BusinessCardWrapper, BusinessCard } from "./BusinessCards";
-import { useState, useMemo } from "react";
+import { useState, useMemo, lazy } from "react";
 import { useNavigate } from "react-router-dom";
 import { Pagination } from "@features/pagination";
 import { useCurrentBusinessContext } from "@entities/business";
 import type { FormattedBusiness } from "@entities/business";
 import { Button } from "@shared/ui";
+// import Yelpstar from '@assets/png/yelp-star/small/small_5@3x.png';
+
+
+
+
+// const  = lazy(() => import('./BusinessCards.js').then(module => ({ default: module.BusinessCardWrapper })));
+
+
+
 
 type PageSizeT = number;
 const PageSize: PageSizeT = 6;
@@ -49,6 +58,7 @@ export const BusinessCards = ({ className, $width, $height, model }: BusinessCar
                         <p className={'name'}>{d.name}</p>
                         <p>{d.location}</p>
                         <p>{d.rating}</p>
+                        {/* <img src={Yelpstar} alt="" width={'72'} /> */}
                         <p>{d.price}</p>
                         <div className="button-wrapper">
                             <Button className="show-more"

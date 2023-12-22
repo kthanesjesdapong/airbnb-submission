@@ -3,34 +3,46 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { ProgressPlugin } = require('webpack');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+
+
+
+
+
 
 
 const { resolve } = path;
 const envVar = process.env.npm_lifecycle_event;
-// console.log({ envVar });
 const isDevelopment = envVar !== 'prod';
-// console.log({ isDevelopment });
+
 
 module.exports = {
     mode: isDevelopment ? 'development' : 'production',
-    entry: resolve(__dirname, '..', './src/app/index.tsx'),
+    // entry: resolve(__dirname, '..', './src/app/index.tsx'),
+    entry: {
+        index: resolve(__dirname, '..', './src/app/index.tsx'),
+        home: resolve(__dirname, '..', './src/pages/home/index.ts'),
+        explore: resolve(__dirname, '..', './src/pages/explore/index.ts'),
+        events: resolve(__dirname, '..', './src/pages/events/index.ts'),
+        restaurants: resolve(__dirname, '..', './src/pages/restaurants/index.ts'),
+        bars: resolve(__dirname, '..', './src/pages/bars/index.ts'),
+        single_business: resolve(__dirname, '..', './src/pages/single-business/index.ts'),
+        about: resolve(__dirname, '..', './src/pages/about/index.ts'),
+        conact: resolve(__dirname, '..', './src/pages/contact/index.ts')
+    },
     resolve: {
-        plugins: [new TsconfigPathsPlugin({
-            configFile: './tsconfig.json'
-        })],
         extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'],
     },
     module: {
         rules: [
             {
                 test: /\.(ts|js)x?$/,
+                include: [path.resolve(__dirname, "../", "./src")],
                 exclude: /(node_modules)/,
                 use: {
                     // `.swcrc` can be used to configure swc
-                    loader: "swc-loader"
+                    loader: "swc-loader",
+                    // options: webpackSwcConfig
                 }
             },
             {
@@ -42,19 +54,19 @@ module.exports = {
                     {
                         loader: 'style-loader',
                         options: {
-                            sourceMap: true
+                            sourceMap: isDevelopment ? true : false
                         }
                     },
                     {
                         loader: 'css-loader',
                         options: {
-                            sourceMap: true,
+                            sourceMap: isDevelopment ? true : false
                         },
                     },
                     {
                         loader: 'sass-loader',
                         options: {
-                            sourceMap: true,
+                            sourceMap: isDevelopment ? true : false
                         },
                     },
                 ],
@@ -71,8 +83,10 @@ module.exports = {
         ]
     },
     output: {
+        filename: '[name].bundle.js',
         path: resolve(__dirname, '..', './dist'),
-        filename: 'bundle.js',
+        // path: resolve('..', './dist'),
+        // filename: 'bundle.js',
         // This determines where our bundle will be outputted to.
         //The filename tells webpack that we want our bundled output to be 'bundle.js'
     },
@@ -80,7 +94,6 @@ module.exports = {
         { '@swc/core': 'swc' },
     ],
     plugins: [
-        // new ProgressPlugin(),
         new CleanWebpackPlugin({
             //Favicon is currently also being deleted from ./dist
         }),
