@@ -53,16 +53,14 @@ const SliderItemWrapper = styled.div<SliderItemWrapperProps>`
 
 const AnchorTag = styled.a`
   display: flex;
-  transform: translate(0%, 0%) rotate(0deg);
-  filter: grayscale(0);
+  color: #fff;
+  text-shadow: 3px 1px 3px #000000;
   z-index: 1;
   opacity: 1;
   transform: translate(0%, 0%) rotate(0deg);
   filter: grayscale(0);
-  z-index: 1;
-  opacity: 1;
   transition: all 500ms cubic-bezier(.42, .84, 0, 1.06);
-  font-size: 2rem;
+  font-size: 2.2rem;
   &.prev {
     transform: translateX(-100%) rotate(0deg);
     filter: grayscale(1);

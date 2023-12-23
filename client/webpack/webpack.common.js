@@ -5,12 +5,6 @@ const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
-
-
-
-
-
-
 const { resolve } = path;
 const envVar = process.env.npm_lifecycle_event;
 const isDevelopment = envVar !== 'prod';
@@ -40,9 +34,7 @@ module.exports = {
                 include: [path.resolve(__dirname, "../", "./src")],
                 exclude: /(node_modules)/,
                 use: {
-                    // `.swcrc` can be used to configure swc
                     loader: "swc-loader",
-                    // options: webpackSwcConfig
                 }
             },
             {
@@ -75,7 +67,6 @@ module.exports = {
                 test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
                 type: 'asset/resource',
             },
-            //asset resource loader should be used for the above file types.
             {
                 test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
                 type: 'asset/inline',
@@ -85,17 +76,12 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         path: resolve(__dirname, '..', './dist'),
-        // path: resolve('..', './dist'),
-        // filename: 'bundle.js',
-        // This determines where our bundle will be outputted to.
-        //The filename tells webpack that we want our bundled output to be 'bundle.js'
     },
     externals: [
         { '@swc/core': 'swc' },
     ],
     plugins: [
         new CleanWebpackPlugin({
-            //Favicon is currently also being deleted from ./dist
         }),
         new CopyPlugin({
             patterns: [

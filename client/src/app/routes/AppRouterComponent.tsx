@@ -44,11 +44,13 @@ export const AppRouterComponent = () => {
                     </Suspense>
                 } />
                 <Route path='explore/restaurants/:model/:restaurantId' element={<SingleBusiness />} action={({ params }) => { return params; }} />
+
                 <Route path='explore/bars' element={
                     <Suspense>
                         <BarsPage />
                     </Suspense>
                 } />
+
                 <Route path='explore/bars/:model/:barId' element={<SingleBusiness />} action={({ params }) => { return params; }} />
                 <Route path='about' element={<AboutPage />} />
                 <Route path='contact' element={<ContactPage />} />

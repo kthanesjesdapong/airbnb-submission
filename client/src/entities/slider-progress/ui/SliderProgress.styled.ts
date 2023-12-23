@@ -43,7 +43,7 @@ const ProgressBarItems = styled.span`
     background-color: grey;
     transform: translateX(100%/3);
     &.active {
-      background-color: white;
+      background-color: #000000;
     }
 `;
 

@@ -3,7 +3,8 @@ import { colors } from "./colors";
 
 const fonts = {
   primary: 'Better Vinegar Demo',
-  secondary: 'Open Sans'
+  secondary: 'Open Sans',
+  content: 'Helvetica Neue'
 };
 
 export interface CustomTheme {

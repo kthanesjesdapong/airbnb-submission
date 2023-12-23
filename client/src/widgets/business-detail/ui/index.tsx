@@ -1,7 +1,8 @@
 import { businessDetailConfigs } from "../businessDetail.configs";
 import { BusinessDetailCard } from "./BusinessDetail.styled";
 import { checkIfOpen, StoreHours } from "@entities/hours";
-// import Yelpstar from '@assets/png/yelp-star/small/small_5@3x.png';
+import { ratingsMap, PNGComponent } from "@entities/rating";
+
 
 
 
@@ -20,7 +21,6 @@ type BusinessDetailProps = {
 
 export const BusinessDetail = ({ imgUrl, name, rating, category, hours, price, address, currentDay, currentTime }: BusinessDetailProps) => {
 
-
     const storeIsOpen = checkIfOpen(hours, currentDay, currentTime);
     price = price === 'Not Available' ? 'Prices Not Available' : price;
 
@@ -31,8 +31,7 @@ export const BusinessDetail = ({ imgUrl, name, rating, category, hours, price, a
             $height={businessDetailConfigs.height} >
             <div className="content-container">
                 <p className="name">{name}</p>
-                <p>{rating}</p>
-                {/* <img src={Yelpstar} alt="" width={'92'} /> */}
+                <PNGComponent src={ratingsMap[rating]} alt={String(rating)} width={'92'} />
                 <div className="category-price-container">
                     <p>{category}</p>
                     <span> - </span>

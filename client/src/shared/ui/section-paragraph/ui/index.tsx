@@ -11,6 +11,7 @@ type SectionParagraphProps = {
 
 const SectionParagraph = styled.p<SectionParagraphProps>`
   transition: all 0.4s ease-in-out;
+  color: #000;
   font-size: ${props => props.$fontSize ? props.$fontSize : '1.5em'};
   cursor: ${props => props.$cursor ? props.$cursor : 'none'};
   margin: ${props => props.$margin![0] && props.$margin![1] && props.$margin![2] && props.$margin![3] ? `${props.$margin![0]}px ${props.$margin![1]}px ${props.$margin![2]}px ${props.$margin![3]}px` : 0};
@@ -23,7 +24,7 @@ const SectionParagraph = styled.p<SectionParagraphProps>`
     height: 2px;
     top:0;
     left: 0;
-    background-color: #fff;
+    background-color: #4c4c4c;
     transform: scaleX(0);
     transform-origin: bottom left;
     transition: transform 0.3s ease;
@@ -43,7 +44,7 @@ const SectionParagraph = styled.p<SectionParagraphProps>`
   &:hover,
   &.active {
   transform: translate3d(0, -10%, 0);
-  color: white;
+  color: ${props => props.theme.colors.textHoverHighlight};
   }
 
   ${media.tablet} {

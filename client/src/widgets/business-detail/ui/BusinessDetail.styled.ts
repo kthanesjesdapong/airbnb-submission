@@ -38,12 +38,17 @@ const BusinessDetailCard = styled(Card) <BusinessDetailCardProps>`
     }
     .price {
       margin-left:.25em;
-      color: rgba(88,180,255,1);
+      color: ${props => props.theme.colors.priceBlue};
       font-weight: bolder;
     }
     p {
       margin: 0 1px;
-      font: 700 1rem ${props => props.theme.fonts.secondary};
+      font: 700 1.2rem ${props => props.theme.fonts.secondary};
+
+    }
+    img {
+      margin: 0 2px;
+    /* box-shadow: 1px 1px .5px #0a0a0abf; */
 
     }
     span {

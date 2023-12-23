@@ -17,7 +17,7 @@ const LinkElement = styled(Link) <LinkProps>`
   }
   &:active,
   &:hover {
-    color: ${props => props.theme.colors.oliveMainBg};
+    color: ${props => props.theme.colors.textHoverHighlight};
   }
 `;
 

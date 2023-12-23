@@ -1,17 +1,11 @@
 import { BusinessCardsContainer, BusinessCardWrapper, BusinessCard } from "./BusinessCards";
-import { useState, useMemo, lazy } from "react";
+import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Pagination } from "@features/pagination";
 import { useCurrentBusinessContext } from "@entities/business";
 import type { FormattedBusiness } from "@entities/business";
 import { Button } from "@shared/ui";
-// import Yelpstar from '@assets/png/yelp-star/small/small_5@3x.png';
-
-
-
-
-// const  = lazy(() => import('./BusinessCards.js').then(module => ({ default: module.BusinessCardWrapper })));
-
+import { ratingsMap, PNGComponent } from "@entities/rating";
 
 
 
@@ -27,6 +21,8 @@ type BusinessCardsProp = {
 };
 
 export const BusinessCards = ({ className, $width, $height, model }: BusinessCardsProp) => {
+
+
 
     const navigate = useNavigate();
 
@@ -57,9 +53,8 @@ export const BusinessCards = ({ className, $width, $height, model }: BusinessCar
                         </BusinessCard>
                         <p className={'name'}>{d.name}</p>
                         <p>{d.location}</p>
-                        <p>{d.rating}</p>
-                        {/* <img src={Yelpstar} alt="" width={'72'} /> */}
-                        <p>{d.price}</p>
+                        <PNGComponent src={ratingsMap[d.rating]} alt={String(d.rating)} width={'72'} />
+                        <p className='price'>{d.price}</p>
                         <div className="button-wrapper">
                             <Button className="show-more"
                                 onClick={() => navigate(`${model}/${d.id}`)}

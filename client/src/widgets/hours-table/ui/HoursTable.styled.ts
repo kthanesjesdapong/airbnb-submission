@@ -21,13 +21,13 @@ const HoursTableContainer = styled.div<HoursTableContainerProps>`
   }
 
   span {
-    font: 700 1rem ${props => props.theme.fonts.secondary};
+    font: 700 1rem ${props => props.theme.fonts.content};
 
   }
 
   p {
     margin: 0 0.5em 0.8em;
-    font: 700 1rem ${props => props.theme.fonts.secondary};
+    font: 700 1.15rem ${props => props.theme.fonts.content};
     text-align: start;
   }
 
@@ -39,7 +39,6 @@ const HoursTableContainer = styled.div<HoursTableContainerProps>`
 
   th {
       display: flex;
-
       margin-right: 1em;
       
   }
@@ -60,7 +59,7 @@ const HoursTableContainer = styled.div<HoursTableContainerProps>`
   ${media.widescreen} {
     width: ${p => `calc(${p.width}px + 100px)`};
     p {
-      font: 900 1rem ${props => props.theme.fonts.secondary};
+      font: 900 1.2rem ${props => props.theme.fonts.content};
     }
   }
 

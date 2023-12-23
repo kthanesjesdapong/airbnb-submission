@@ -22,26 +22,36 @@ module.exports = merge(webpackConfig, {
     },
     optimization: {
         minimize: false,
-        // runtimeChunk: 'single',
+        runtimeChunk: 'single',
         splitChunks: {
-            chunks: 'async',
-            minSize: 20000,
+            minSize: 17000,
             minRemainingSize: 0,
             minChunks: 1,
             maxAsyncRequests: 30,
             maxInitialRequests: 30,
-            enforceSizeThreshold: 50000,
+            automaticNameDelimiter: "_",
+            enforceSizeThreshold: 30000,
             cacheGroups: {
-                defaultVendors: {
+                common: {
                     test: /[\\/]node_modules[\\/]/,
-                    priority: -10,
+                    priority: -5,
                     reuseExistingChunk: true,
+                    chunks: "initial",
+                    name: "common_app",
+                    minSize: 0,
                 },
                 default: {
                     minChunks: 2,
                     priority: -20,
                     reuseExistingChunk: true,
                 },
+                defaultVendors: false,
+                reactPackage: {
+                    test: /[\\/]node_modules[\\/](react|react-dom|react-router|react-router-dom)[\\/]/,
+                    name: 'vendor_react',
+                    chunks: "all",
+                    priority: 10,
+                }
             },
         },
     }

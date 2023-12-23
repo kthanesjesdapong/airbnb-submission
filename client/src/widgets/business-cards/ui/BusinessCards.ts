@@ -37,22 +37,29 @@ type BusinessCardWrapperProps = {
 const BusinessCardWrapper = styled.div<BusinessCardWrapperProps>`
   
   width: ${props => props.$width}px;
+  
   margin: 0 1em 1em 1em;
   p{
-    font-family: ${props => props.theme.fonts.secondary};
+    font-family: ${props => props.theme.fonts.content};
     margin: 3px;
-    font-size: 0.9rem;
+    font-size: .95rem;
+    
+  
   }
   .name {
     margin: 5px 3px;
-    font-weight: bolder;
+    font-weight: bold;
+  
   }
+
+  
+  
   .button-wrapper{
     display:flex;
     justify-content: flex-end;
   }
   img {
-    margin: 3px;
+    margin: 2px;
   }
 `;
 

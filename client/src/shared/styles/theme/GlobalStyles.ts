@@ -64,7 +64,7 @@ export const GlobalStyle = createGlobalStyle`
         }
         &:active, 
         &:hover {
-        color: #55554b;
+        color: ${props => props.theme.colors.textHoverHighlight};
         }
     }
 
@@ -105,20 +105,3 @@ export const GlobalStyle = createGlobalStyle`
     }
 
 `;
-
-
-
-/*
- 
- 
-Implement when media util func is created
-${media.tablet} {
-html, body {
-padding: 1em 2em;
-}
-}
-${media.desktop} {
-html,body {
-    padding: 1em 4em;
-}        
-}       */
