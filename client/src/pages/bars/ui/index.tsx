@@ -3,6 +3,7 @@ import { BusinessLayout, businessLayoutConfigs } from "@widgets/business-layout"
 import { allBarsQuery } from "..";
 import { CurrentBusinessContextProvider } from "@entities/business";
 
+import { FilterBar } from '@entities/filter';
 
 const BusinessCards = lazy(() => import('@widgets/business-cards/index.js').then(module => ({ default: module.BusinessCards })));
 
@@ -14,7 +15,7 @@ export const BarsPage = () => {
                 <h2>{'B A R S'}</h2>
                 <BusinessLayout
                     child1={
-                        <p> THIS IS FILTER BAR</p>
+                        <FilterBar />
                     }
                     child2={
                         <BusinessCards
