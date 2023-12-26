@@ -8,6 +8,8 @@ const BusinessContainer = styled.div`
   flex-direction: column;
   align-content: flex-start;
 
+
+  
   .card-container{
     align-items: center;
   }
@@ -19,9 +21,8 @@ const BusinessContainer = styled.div`
     column-gap: 1em;
 
     .header {
-        /* grid-area: 1 / 2 / 1 / 5; */ //Enable this if you want the listing to be show in the center of the card container
-        grid-area: 1 / 1 / 1 / 1;
-        /* justify-self: center; */
+      grid-area: 1 / 1 / 1 / 1;
+      margin: 0;
     }
     .card-container {
       grid-area: 2 / 2 / 4 / 5;
@@ -30,7 +31,6 @@ const BusinessContainer = styled.div`
     .filter-bar {
       opacity:1;
       grid-area: 2 / 1 / 3 / 1;
-      border: 1px solid blue;
       align-self: start;
       position: sticky;
       top: 0;

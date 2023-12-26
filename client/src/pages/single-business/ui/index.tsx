@@ -22,6 +22,7 @@ export const SingleBusiness = () => {
     }
 
 
+
     const currentDateAndTime = getCurrentDateAndTime();
     const { currentDay, currentTime } = currentDateAndTime;
 

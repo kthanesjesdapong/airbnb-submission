@@ -3,13 +3,14 @@ import styled from 'styled-components';
 const FilterBarContainer = styled.form`
 
 
-  border: 1px solid green;
   height: 100%;
 
   .filter-wrapper {
     margin: 1em .5em;
     h3 {
+      font-weight: 500;
       font-family: ${p => p.theme.fonts.content};
+      letter-spacing: 0.10em;
     } 
   }
 

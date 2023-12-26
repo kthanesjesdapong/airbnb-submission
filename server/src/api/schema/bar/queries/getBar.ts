@@ -1,17 +1,17 @@
 import builder from "@api/schema/builder";
 import { prismaErrorHandler } from "@seed/middleware/prismaError";
 
-builder.queryField('getRestaurant', (t) => t.prismaField({
-  type: 'Restaurant',
+builder.queryField('getBar', (t) => t.prismaField({
+  type: 'Bar',
   args: {
-    restaurant_id: t.arg.int({ required: true }),
+    bar_id: t.arg.int({ required: true }),
   },
   resolve: async (_query, _parent, _args, _context) => {
     try {
-      const restaurant = await _context.prisma.restaurant.findUnique({
+      const restaurant = await _context.prisma.bar.findUnique({
         ..._query,
         where: {
-          id: _args?.restaurant_id,
+          id: _args?.bar_id,
         },
         include: { price: true, category: true, hours: true, location: true }
       });

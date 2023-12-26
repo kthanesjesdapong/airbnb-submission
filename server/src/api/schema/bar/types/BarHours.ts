@@ -7,6 +7,7 @@ builder.prismaNode('BarHours', {
   fields: (t) => ({
     start: t.exposeString('start'),
     end: t.exposeString('end'),
+    day: t.exposeInt('day'),
     restaurantName: t.exposeString('barName'),
   })
 });

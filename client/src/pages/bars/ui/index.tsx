@@ -1,21 +1,33 @@
-import { lazy } from 'react';
+import { lazy, } from 'react';
 import { BusinessLayout, businessLayoutConfigs } from "@widgets/business-layout";
 import { allBarsQuery } from "..";
 import { CurrentBusinessContextProvider } from "@entities/business";
 
 import { FilterBar } from '@entities/filter';
+import { useFilterByPrice, useFilterByRating } from '@entities/filter/lib';
+
+
+
 
 const BusinessCards = lazy(() => import('@widgets/business-cards/index.js').then(module => ({ default: module.BusinessCards })));
 
 export const BarsPage = () => {
 
+
+
+    const { rating, handleRatingChange } = useFilterByRating();
+    const { prices, handlePriceChange } = useFilterByPrice();
+
     return (
         <>
             <CurrentBusinessContextProvider cursorId={0} query={allBarsQuery} modelType="bar">
-                <h2>{'B A R S'}</h2>
+                <h1 style={{ textAlign: 'center', marginBottom: '0' }}>{'B A R S'}</h1>
                 <BusinessLayout
                     child1={
-                        <FilterBar />
+                        <FilterBar
+                            checkBoxCallBack={handlePriceChange}
+                            inputFieldCallBack={handleRatingChange}
+                        />
                     }
                     child2={
                         <BusinessCards
@@ -23,6 +35,8 @@ export const BarsPage = () => {
                             $height={businessLayoutConfigs.$height}
                             className="someClass"
                             model='b'
+                            pricesFilterArray={prices}
+                            ratingFilter={rating}
                         />
                     }
                 />

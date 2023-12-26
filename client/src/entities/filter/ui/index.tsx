@@ -1,28 +1,38 @@
+
+import { ChangeEventHandler } from "react";
 import { FilterBarContainer } from "./Filter.styled";
 import { InputContainer } from "./InputContainer";
 
 import { InputField } from "./InputField";
 import { CheckBox } from "./Checkbox";
 
+import { priceLabels, ratingPrompt } from "..";
 
-const dummyLabel: string[] = ['$', '$$', '$$$', '$$$$'];
-const rating: string[] = ['Enter a rating'];
+type FilterBarProps = {
+    checkBoxCallBack: (value: string[]) => void;
+    inputFieldCallBack: ChangeEventHandler<HTMLInputElement>;
+};
 
-export const FilterBar = () => {
+
+export const FilterBar = ({ checkBoxCallBack, inputFieldCallBack }: FilterBarProps) => {
+
     return (
         <FilterBarContainer>
-            <InputContainer filterTitle="Price:" children={
+            <InputContainer filterTitle="Filter By Prices:" children={
                 <CheckBox
-                    checkBoxLabel={dummyLabel}
+                    checkBoxLabel={priceLabels}
                     inputType="checkbox"
                     inputName="price-checkbox"
+                    callBackFn={checkBoxCallBack}
                 />
             } />
-            {<InputContainer filterTitle="Ratings: " children={
+            {<InputContainer filterTitle="Filter By Rating: " children={
                 <InputField
-                    inputLabel={rating}
+                    inputLabel={ratingPrompt}
                     inputType={'text'}
-                    inputName={'rating-input'} />
+                    inputName={'rating-input'}
+                    callBackFn={inputFieldCallBack}
+                />
             } />}
         </FilterBarContainer>
     );

@@ -1,10 +1,7 @@
 import { ReactElement } from "react";
-import { CheckBox } from "./Checkbox";
 
 type CheckBoxProps = {
     filterTitle: string;
-    // inputLabel: string[];
-    // inputType: string;
     children: ReactElement;
 };
 

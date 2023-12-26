@@ -7,6 +7,7 @@ import type { FormattedBusiness } from "@entities/business";
 import { Button } from "@shared/ui";
 import { ratingsMap, PNGComponent } from "@entities/rating";
 
+import { useGetPriceFilteredArray } from "..";
 
 
 type PageSizeT = number;
@@ -18,11 +19,11 @@ type BusinessCardsProp = {
     $width: number;
     $height: number;
     model: string;
+    pricesFilterArray: string[];
+    ratingFilter: number;
 };
 
-export const BusinessCards = ({ className, $width, $height, model }: BusinessCardsProp) => {
-
-
+export const BusinessCards = ({ className, $width, $height, model, pricesFilterArray, ratingFilter }: BusinessCardsProp) => {
 
     const navigate = useNavigate();
 
@@ -30,11 +31,21 @@ export const BusinessCards = ({ className, $width, $height, model }: BusinessCar
     const businessData = useCurrentBusinessContext();
     const { business, totalCount } = businessData.data;
 
+    const { filteredBusiness, filteredBusinessCount } = useGetPriceFilteredArray(business, pricesFilterArray, ratingFilter);
+
     const currentData = useMemo<FormattedBusiness[]>(() => {
         const startPageIndex = (currentPage - 1) * PageSize;
         const endPageIndex = startPageIndex + PageSize;
-        return business.slice(startPageIndex, endPageIndex);
-    }, [currentPage, business]);
+
+        if (pricesFilterArray.length === 0 && ratingFilter === 0) {
+            return business.slice(startPageIndex, endPageIndex);
+        } else {
+            return filteredBusiness.slice(startPageIndex, endPageIndex);
+        }
+
+    }, [currentPage, business, filteredBusiness, ratingFilter]);
+
+
 
     return (
         <>
@@ -66,7 +77,7 @@ export const BusinessCards = ({ className, $width, $height, model }: BusinessCar
             </BusinessCardsContainer>
             <Pagination
                 currentPage={currentPage}
-                totalCount={totalCount}
+                totalCount={filteredBusiness.length === 0 ? totalCount : filteredBusinessCount}
                 pageSize={PageSize}
                 onPageChange={page => setCurrentPage(page)}
             />
