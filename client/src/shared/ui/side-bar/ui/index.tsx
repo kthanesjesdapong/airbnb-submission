@@ -3,7 +3,7 @@ import { SidebarContainer, SidebarWrapper } from "./Sidebar.styled";
 import { SideUnorderedList, ListItem, LinkElement, ListItemLink } from "@shared/ui";
 import { useToggle } from "@shared/lib/hooks";
 import { SidebarConfig } from "..";
-import { position } from "polished";
+import { useLocation } from "react-router-dom";
 
 
 type SideBarProps = {
@@ -20,16 +20,17 @@ export const Sidebar = ({ linkTitles, links, role, menuItems }: SideBarProps) =>
 
     const { status: expand, toggleStatus: toggleExpand, toggleOff } = useToggle();
 
+    const { pathname } = useLocation();
 
 
     return (
         <SidebarContainer
             role={role}
-            style={expand ? { zIndex: '199', position: 'fixed', left: 0, right: 0, bottom: 0, top: 0 } : {}}
+            style={expand ? { zIndex: '199', position: 'fixed', left: 0, right: 0, bottom: 0, top: 0 } : { zIndex: 0 }}
         >
 
             <SidebarWrapper >
-                <Bars3Icon onClick={toggleExpand} style={!expand ? { zIndex: '200' } : { zIndex: '100' }} />
+                <Bars3Icon onClick={toggleExpand} style={!expand ? { zIndex: '200' } : { zIndex: '150', opacity: 0 }} />
                 <SideUnorderedList
                     $visible={expand}
                     $start={start}

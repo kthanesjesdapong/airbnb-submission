@@ -8,8 +8,9 @@ type MobileFilterProps = {
 
 export const MobileFilter = ({ children, show }: MobileFilterProps) => {
 
+
     return (
-        <MobileFilterContainer show={show}>
+        <MobileFilterContainer $show={show ? show.toString() : undefined}>
             {children}
         </MobileFilterContainer>
     );

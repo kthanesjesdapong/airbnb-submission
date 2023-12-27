@@ -30,7 +30,7 @@ export const FilterBar = ({ checkBoxCallBack, inputFieldCallBack }: FilterBarPro
 
     return (<>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <FilterButton onClick={handleMobile} style={{ marginBottom: '1em' }}>FILTER</FilterButton>
+            <FilterButton onClick={handleMobile} style={{ marginBottom: '1em', zIndex: 2 }}>FILTER</FilterButton>
         </div>
         <MobileFilter show={toggleMobile}>
             <InputContainer filterTitle="Filter By Prices:" children={

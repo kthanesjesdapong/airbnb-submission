@@ -3,7 +3,7 @@ import { media } from "@shared/lib";
 
 
 type MobileFilterContainerProps = {
-  show: boolean;
+  $show: string | undefined;
 };
 
 const fadeIn = keyframes`
@@ -20,13 +20,13 @@ const fadeIn = keyframes`
 
 const MobileFilterContainer = styled.form<MobileFilterContainerProps>`
 
-  display:${props => props.show ? 'flex' : 'none'};
+  display:${props => props.$show ? 'flex' : 'none'};
   flex-direction: row;
   align-items: start;
   justify-content: center;
   margin: 0 0 1em 0;
   transform: transform 0.5s ease-in-out;
-  ${props => props.show && css`
+  ${props => props.$show && css`
   animation: ${fadeIn} 0.5s ease-in-out;
   `}
   
@@ -34,8 +34,8 @@ const MobileFilterContainer = styled.form<MobileFilterContainerProps>`
         width: 20%;
       }
     
+      margin-left: 2em;
       .filter-wrapper {
-        margin-left: 5em;
         width: 50%;
         h3 {
           font-weight: 500;
@@ -48,7 +48,7 @@ const MobileFilterContainer = styled.form<MobileFilterContainerProps>`
       flex-direction: row;
       justify-content: start;
       align-items: start;
-
+  
       input {
         width: 20%;
       }
