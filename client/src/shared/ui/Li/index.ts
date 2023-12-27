@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 type ListItemProps = {
   fontSize: number;
   color: string;
+  fontFamily?: string;
 } & HTMLAttributes<HTMLLIElement>;
 
 const ListItem = styled.li<ListItemProps>`
@@ -16,6 +17,10 @@ const ListItem = styled.li<ListItemProps>`
   color: ${props => props.color ? props.color : props.theme.colors.categorySub};
   margin:.25em 0;
   padding: .2em .5em;
+  
+  a {
+    font-family: ${p => p.fontFamily ? p.theme.fonts.content : p.theme.fonts.primary};
+  }
 
   text-align: start;
   &:hover, 

@@ -1,11 +1,5 @@
 import styled from 'styled-components';
-// import { HTMLAttributes } from 'react';
 import { media } from '@shared/lib';
-
-
-// type LinksContainerProps = {
-//   role: string;
-// };
 
 const LinksContainer = styled.div`
   display: none;

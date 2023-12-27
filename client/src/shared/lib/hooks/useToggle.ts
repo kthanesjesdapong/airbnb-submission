@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 export const useToggle = () => {
   const [status, setStatus] = useState(false);
-  const toggleStatus = () => setStatus(prevStatus => !prevStatus);
-  return { status, toggleStatus };
+  const toggleStatus = () => setStatus(!status);
+  const toggleOff = () => setStatus(false);
+  return { status, toggleStatus, toggleOff };
 };

@@ -5,13 +5,14 @@ import { CurrentBusinessContextProvider } from "@entities/business";
 
 import { FilterBar } from '@entities/filter';
 import { useFilterByPrice, useFilterByRating } from '@entities/filter/lib';
-
+import { Button } from '@shared/ui';
 
 
 
 const BusinessCards = lazy(() => import('@widgets/business-cards/index.js').then(module => ({ default: module.BusinessCards })));
 
 export const BarsPage = () => {
+
 
 
 

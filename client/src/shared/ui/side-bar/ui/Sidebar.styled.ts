@@ -7,6 +7,7 @@ type SidebarContainerProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 const SidebarContainer = styled.div<SidebarContainerProps>`
+  height: 100%;
   display:flex;
   transition: all 0.4s ease-in-out;
   flex-direction: column;
@@ -23,6 +24,14 @@ const SidebarWrapper = styled.div`
   transition: all 0.4s ease-in-out;
   justify-content: center;
   align-items: center;
+
+
+  span {
+    font-family: ${p => p.theme.fonts.content};
+    padding-left: 0.25em;
+    padding-top: 0.25em;
+  }
+
   svg {
     width: 27px;
     height: 27px;
