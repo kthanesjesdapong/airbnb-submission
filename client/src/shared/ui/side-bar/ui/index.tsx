@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import { SidebarContainer, SidebarWrapper } from "./Sidebar.styled";
 import { SideUnorderedList, ListItem, LinkElement, ListItemLink } from "@shared/ui";
@@ -11,6 +12,7 @@ type SideBarProps = {
     links?: string[];
     menuItems: string[];
     role?: string;
+
 };
 
 
@@ -20,8 +22,11 @@ export const Sidebar = ({ linkTitles, links, role, menuItems }: SideBarProps) =>
 
     const { status: expand, toggleStatus: toggleExpand, toggleOff } = useToggle();
 
-    const { pathname } = useLocation();
+    const location = useLocation();
 
+    useEffect(() => {
+        toggleOff();
+    }, [location]);
 
     return (
         <SidebarContainer
@@ -39,6 +44,7 @@ export const Sidebar = ({ linkTitles, links, role, menuItems }: SideBarProps) =>
                     $top={top}
                     $width={width}
                     $height={height}
+                    style={!expand ? { zIndex: '-1', display: 'none' } : { zIndex: '199', display: 'block' }}
                 >
                     <span onClick={toggleOff} style={{ color: 'white', fontSize: '2em' }}>x</span>
                     {links && linkTitles.map((linkTitle, i) => (

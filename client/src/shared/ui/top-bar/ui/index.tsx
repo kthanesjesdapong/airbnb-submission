@@ -1,7 +1,6 @@
 import { LinksContainer, LinkWrapper } from "./Topbar.styled";
 import { useToggle } from "@shared/lib/hooks";
 import { LinkElement } from "@shared/ui";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { DropDown } from "./Dropdown";
 import { TopbarConfig } from "..";
 
@@ -16,11 +15,7 @@ export const Topbar = ({ linkTitles, links, menuItems }: TopbarProps) => {
 
     const { status: expand, toggleStatus: toggleExpand } = useToggle();
 
-    const { start, end } = TopbarConfig;
-
-
-    //In between Links Container You essentially need to map through linkTitles and pass in the titles and links
-    //Create Dropdown component as a separate component within Topbar/ui/
+    const { start, end, dropDownArrowWidth, dropDownArrowDisplay } = TopbarConfig;
 
     return (
         <LinksContainer>
@@ -38,12 +33,13 @@ export const Topbar = ({ linkTitles, links, menuItems }: TopbarProps) => {
                     title={linkTitle}
                     to={'' + links[i]}
                     menuItems={menuItems}
-                    IconSVG={ChevronDownIcon}
                     key={linkTitle + ' key'}
                     state={expand}
                     callBack={toggleExpand}
                     start={start}
                     end={end}
+                    dropDownArrowWidth={dropDownArrowWidth}
+                    dropDownArrowDisplay={dropDownArrowDisplay}
                 />
 
             ))}

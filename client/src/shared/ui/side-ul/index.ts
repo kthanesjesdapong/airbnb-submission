@@ -31,7 +31,7 @@ display: block;
   right: 0em;
 
   width: ${props => props.$width ? `${props.$width}%` : ''};
-  height: 5000px;
+  height: 100%;
   
   box-shadow: '10px 10px 5px rgba(0,0,0,.05)';
 

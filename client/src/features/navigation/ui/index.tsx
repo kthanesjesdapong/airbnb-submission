@@ -6,6 +6,8 @@ import { NavigationContainer, LogoContainer } from "./Navigation.styled";
 import { Topbar } from '@shared/ui/top-bar';
 import { Sidebar } from '@shared/ui/side-bar';
 
+
+
 type NavigationProps = {
     className?: string;
 };
@@ -13,6 +15,7 @@ type NavigationProps = {
 
 //MAP THROUGH ARRAY OF LINKS FOR LINK ELEMENT.
 export const Navigation = ({ className }: NavigationProps) => {
+
     return (
 
         <NavigationContainer className={className}>
@@ -29,7 +32,9 @@ export const Navigation = ({ className }: NavigationProps) => {
             <Sidebar
                 linkTitles={navLinkTitles}
                 links={navigationLinks}
-                menuItems={exploreLinks} />
+                menuItems={exploreLinks}
+
+            />
         </NavigationContainer>
     );
 };

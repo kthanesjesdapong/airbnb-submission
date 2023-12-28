@@ -12,3 +12,4 @@ export * from './top-bar';
 export * from './side-bar';
 export * from './button';
 export * from './logo';
+export * from './dropdown-arrow';

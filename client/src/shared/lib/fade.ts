@@ -1,42 +1,68 @@
-import { keyframes } from 'styled-components';
-
-export const fadeIn = keyframes`
-    0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
+import { keyframes, css } from 'styled-components';
 
 
-export const fadeOut = keyframes`
-  100% {
-    opacity: 1;
-  }
+export const createKeyFrames = ({ startProperty, endProperty }: { startProperty: string, endProperty?: string; }) => ({ startValue, endValue }: { startValue: any, endValue: any; }) => keyframes`
   0% {
-    opacity: 0;
+    ${startProperty}: ${startValue}
+  }
+  100% {
+    ${endProperty ?? startProperty}: ${endValue}
   }
 `;
 
+export const createCssInterpolation = (animationKeyFrames: ReturnType<typeof keyframes>, duration: number) =>
+  css`
+  animation: ${animationKeyFrames} ${duration}s ease-in-out
+`;
+
+
+
 /*
-import styled, { keyframes } from 'styled-components';
 
-// Import the keyframes
-import { fadeIn, fadeOut } from './path-to-keyframes';  // Adjust the path based on your project structure
+//How to Modularize the call
 
-// Create a styled component and use the keyframes in the animation property
-const AnimatedComponent = styled.div`
-  // Other styles for your component
+const createRotateValues = () => {
+  const rotateProperties = createKeyFrames({
+    startProperty: 'transform',
+    endProperty: 'transform'
+  });
 
-  /* Example of using fadeIn keyframes for an entrance animation */
-//animation: ${ fadeIn; } 1s ease -in -out; // Adjust the duration and easing as needed
+  const startRotateValue = 'rotate(0deg)';
+  const endRotateValue = 'rotate(180deg)';
 
-/* Example of using fadeOut keyframes for an exit animation */
-// animation: ${fadeOut} 1s ease-in-out; // Uncomment if you want to use fadeOut
+  return {
+    rotateValues: rotateProperties({
+      startValue: startRotateValue,
+      endValue: endRotateValue,
+    }),
+    startRotateValue,
+    endRotateValue,
+  };
+};
 
-//Other styles for your component 
-/*
- `;
+
+//How to Call it within a styling of a styled-component
+styled.div`
+${createCssInterpolation(rotateValues, 0.4)};
+`
+
+import { keyframes } from 'your-css-in-js-library'; // Import the keyframes function from your CSS-in-JS library
+
+const slideAnimation = createAnimation({
+  startDirection: 'left',
+  endDirection: 'right',
+});
+
+const slideKeyframes = slideAnimation({
+  startValue: '0%',
+  endValue: '100%',
+});
+
+const slideIn = keyframes`${slideKeyframes}`; ||
+
+within
+styled.div`
+  ${createCssInterpolation(slideKeyframes)}
+`
 
 */
