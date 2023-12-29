@@ -8,7 +8,7 @@ const FilterBarContainer = styled.form`
   display: flex;
   flex-direction: column;
   height: 100%;
-    .filter-wrapper {
+  .filter-wrapper {
       margin: 0 0 1em 0 ;
         .filter-title-wrapper {
           display: flex;
@@ -20,11 +20,12 @@ const FilterBarContainer = styled.form`
             letter-spacing: 0.10em;
           } 
         }
-      }
+  }
 
     .input-container {
       display: flex;
       margin: .5em 0 .5em 2em ;
+
       input {
         width: 20%;
       }

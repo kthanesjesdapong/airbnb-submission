@@ -6,8 +6,6 @@ import { NavigationContainer, LogoContainer } from "./Navigation.styled";
 import { Topbar } from '@shared/ui/top-bar';
 import { Sidebar } from '@shared/ui/side-bar';
 
-
-
 type NavigationProps = {
     className?: string;
 };

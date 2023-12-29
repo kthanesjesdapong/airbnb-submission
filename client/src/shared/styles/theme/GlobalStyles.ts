@@ -51,11 +51,25 @@ export const GlobalStyle = createGlobalStyle`
     }
 
 
+    .expanded {
+        max-height: 500px;
+        opacity:1;
+        transition-duration: .4s;
+        transition-property: opacity max-height;
+        transition-timing-function: ease-in;   
+    }
+
+   .collapsed {
+        max-height: 0;
+        opacity:0;
+        transition-duration: .4s;
+        transition-property: opacity max-height;
+        transition-timing-function: ease-out;   
+   }
 
 
 
-    a 
-    {  
+    a {  
         font-size: clamp(1.2em,1.5em,2vw);
         text-decoration: none;
         transition: 0.3s ease-in-out;
@@ -92,16 +106,13 @@ export const GlobalStyle = createGlobalStyle`
     ${media.desktop} {
         html,body {
             padding: 0  2.5rem;
-            
-            /* background-color: black; */
         }
     }
 
     ${media.uhd} {
         html,body {
             padding: 0  4em;
-            /* background-color: black; */
+            
         }
     }
-
 `;

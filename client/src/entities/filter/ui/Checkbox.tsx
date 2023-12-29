@@ -33,7 +33,7 @@ export const CheckBox = ({ checkBoxLabel, inputType, inputName, callBackFn, acti
 
 
     return (
-        <div style={{ display: active ? 'block' : 'none', height: active ? 'auto' : '0', opacity: active ? '1' : '0' }}>
+        <div className={active ? 'expanded' : 'collapsed'}>
             {checkBoxLabel.map((label, i) => (
                 <div className="input-container" key={label + ' ' + i}>
                     <input type={inputType} name={inputName} onChange={handleCheckBoxChange} value={label}

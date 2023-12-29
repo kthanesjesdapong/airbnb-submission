@@ -31,7 +31,8 @@ export const Sidebar = ({ linkTitles, links, role, menuItems }: SideBarProps) =>
     return (
         <SidebarContainer
             role={role}
-            style={expand ? { zIndex: '199', position: 'fixed', left: 0, right: 0, bottom: 0, top: 0 } : { zIndex: 0 }}
+            $expand={expand ? expand.toString() : undefined}
+
         >
 
             <SidebarWrapper >
@@ -44,9 +45,10 @@ export const Sidebar = ({ linkTitles, links, role, menuItems }: SideBarProps) =>
                     $top={top}
                     $width={width}
                     $height={height}
-                    style={!expand ? { zIndex: '-1', display: 'none' } : { zIndex: '199', display: 'block' }}
+                    $expand={expand ? expand.toString() : undefined}
+                    className={expand ? 'show' : 'hide'}
                 >
-                    <span onClick={toggleOff} style={{ color: 'white', fontSize: '2em' }}>x</span>
+                    <span onClick={toggleOff} style={{ color: 'white', fontSize: '2em', marginLeft: '.5em', marginTop: '5em' }}>X</span>
                     {links && linkTitles.map((linkTitle, i) => (
                         (linkTitle !== 'Explore' ? (
                             <ListItem
@@ -55,9 +57,11 @@ export const Sidebar = ({ linkTitles, links, role, menuItems }: SideBarProps) =>
                                 color={color}
                                 style={{ paddingLeft: '3em', }}
                                 fontFamily="content"
+                                className={expand ? '' : 'hide'}
                             >
                                 <LinkElement
                                     to={'/' + links[i]}
+                                    className={expand ? '' : 'hide'}
                                 >
                                     {linkTitle}
                                 </LinkElement>
@@ -70,9 +74,11 @@ export const Sidebar = ({ linkTitles, links, role, menuItems }: SideBarProps) =>
                                 color={color}
                                 style={{ paddingLeft: '3em', }}
                                 fontFamily="content"
+                                className={expand ? '' : 'hide'}
                             >
                                 <LinkElement
                                     to={'/' + links[i]}
+                                    className={expand ? '' : 'hide'}
                                 >
                                     {linkTitle}
                                 </LinkElement>
@@ -83,6 +89,7 @@ export const Sidebar = ({ linkTitles, links, role, menuItems }: SideBarProps) =>
                                             style={{ fontSize: '.8em', color: '808080' }}
                                             key={mIKey.toString()}
                                             to={`/explore/${menuItem.toLowerCase()}`}
+                                            className={expand ? '' : 'hide'}
                                         >
                                             {menuItem}
                                         </ListItemLink>

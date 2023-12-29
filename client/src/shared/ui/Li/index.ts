@@ -8,6 +8,7 @@ type ListItemProps = {
   fontSize: number;
   color: string;
   fontFamily?: string;
+  className?: string;
 } & HTMLAttributes<HTMLLIElement>;
 
 const ListItem = styled.li<ListItemProps>`
@@ -18,6 +19,12 @@ const ListItem = styled.li<ListItemProps>`
   margin:.25em 0;
   padding: .2em .5em;
   
+  
+
+  .hide{
+    display: none;
+  }
+
   a {
     font-family: ${p => p.fontFamily ? p.theme.fonts.content : p.theme.fonts.primary};
   }

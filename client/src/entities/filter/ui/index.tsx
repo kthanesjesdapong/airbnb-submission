@@ -3,12 +3,14 @@ import { ChangeEventHandler } from "react";
 import { FilterBarContainer, FilterButton } from "./Filter.styled";
 import { InputContainer } from "./InputContainer";
 
-import { useToggle } from "@shared/lib/hooks";
+import { useToggle, useWindowDimensions } from "@shared/lib/hooks";
 
 import { InputField } from "./InputField";
 import { CheckBox } from "./Checkbox";
 
 import { priceLabels, ratingPrompt } from "..";
+
+
 
 type FilterBarProps = {
     checkBoxCallBack: (value: string[]) => void;
@@ -17,10 +19,10 @@ type FilterBarProps = {
 
 export const FilterBar = ({ checkBoxCallBack, inputFieldCallBack }: FilterBarProps) => {
 
+    const { width } = useWindowDimensions();
     const { status: active, toggleStatus: toggleActive } = useToggle();
 
-    return (<>
-
+    return (
         <FilterBarContainer >
             <FilterButton onClick={(e) => {
                 e.preventDefault();
@@ -33,6 +35,8 @@ export const FilterBar = ({ checkBoxCallBack, inputFieldCallBack }: FilterBarPro
                 dAWidth="20px"
                 dADisplay="inline-block"
                 inputContainerActive={active}
+                className={active || width >= 1024 ? 'expanded' : 'collapsed'}
+                currentWindowWidth={width}
                 children={
                     <CheckBox
                         checkBoxLabel={priceLabels}
@@ -45,6 +49,8 @@ export const FilterBar = ({ checkBoxCallBack, inputFieldCallBack }: FilterBarPro
                 dAWidth="20px"
                 dADisplay="inline-block"
                 inputContainerActive={active}
+                currentWindowWidth={width}
+                className={active || width >= 1024 ? 'expanded' : 'collapsed'}
                 children={
                     <InputField
 
@@ -55,6 +61,6 @@ export const FilterBar = ({ checkBoxCallBack, inputFieldCallBack }: FilterBarPro
                     />
                 } />}
         </FilterBarContainer>
-    </>
+
     );
 };

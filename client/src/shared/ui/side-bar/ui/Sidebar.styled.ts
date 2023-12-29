@@ -1,9 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { media } from '@shared/lib';
 import { HTMLAttributes } from 'react';
 
 type SidebarContainerProps = {
   role?: string;
+  $expand?: string | undefined;
 } & HTMLAttributes<HTMLDivElement>;
 
 const SidebarContainer = styled.div<SidebarContainerProps>`
@@ -13,6 +14,20 @@ const SidebarContainer = styled.div<SidebarContainerProps>`
   flex-direction: column;
   align-items: flex-end;
   opacity: 1;
+
+  ${p => p.$expand ? css`
+  z-index:199;
+  position:fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  `
+    : css`
+  z-index: 0;
+  `}
+
+
    ${media.tablet} {
     display:none;
     opacity: 0;
