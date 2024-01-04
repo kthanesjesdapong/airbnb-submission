@@ -53,7 +53,6 @@ export const FilterBar = ({ checkBoxCallBack, inputFieldCallBack }: FilterBarPro
                 className={active || width >= 1024 ? 'expanded' : 'collapsed'}
                 children={
                     <InputField
-
                         inputLabel={ratingPrompt}
                         inputType={'text'}
                         inputName={'rating-input'}

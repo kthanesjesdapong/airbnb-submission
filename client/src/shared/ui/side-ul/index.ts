@@ -12,23 +12,16 @@ type SideULProps = {
 
 const SideUnorderedList = styled.ul<SideULProps>`
   ${p => p.$expand ? css`
-  /* z-index: 120; */
-  opacity: 1;
   `: css`
   z-index: -1;
-  opacity:0
-  max-height: 0;
-  max-width: 0;
-  /* display: none; */
   `}
   
-  /* display: block; */
   position: absolute;
-  top: 0em;
-  right: 0em;
+  top: ${props => props.$expand ? '0' : '-100em'};
+  left: ${props => props.$expand ? '0' : '-100em'};
   
   opacity: ${props => props.$visible ? '1' : '0'};
-  transition: all 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 
   list-style: none;
   background-color: rgb(26,26,26);

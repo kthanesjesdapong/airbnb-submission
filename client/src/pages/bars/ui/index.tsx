@@ -5,8 +5,7 @@ import { CurrentBusinessContextProvider } from "@entities/business";
 
 import { FilterBar } from '@entities/filter';
 import { useFilterByPrice, useFilterByRating } from '@entities/filter/lib';
-import { Button } from '@shared/ui';
-
+import { useWindowDimensions } from '@shared/lib/hooks';
 
 
 const BusinessCards = lazy(() => import('@widgets/business-cards/index.js').then(module => ({ default: module.BusinessCards })));
@@ -14,7 +13,7 @@ const BusinessCards = lazy(() => import('@widgets/business-cards/index.js').then
 export const BarsPage = () => {
 
 
-
+    const { width: currentWidth } = useWindowDimensions();
 
     const { rating, handleRatingChange } = useFilterByRating();
     const { prices, handlePriceChange } = useFilterByPrice();
@@ -22,7 +21,7 @@ export const BarsPage = () => {
     return (
         <>
             <CurrentBusinessContextProvider cursorId={0} query={allBarsQuery} modelType="bar">
-                <h1 style={{ textAlign: 'center', marginBottom: '0' }}>{'B A R S'}</h1>
+                <h1 style={{ textAlign: currentWidth >= 1024 ? 'start' : 'center', marginBottom: '0' }}>{'B A R S'}</h1>
                 <BusinessLayout
                     child1={
                         <FilterBar

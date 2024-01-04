@@ -32,7 +32,6 @@ export const Sidebar = ({ linkTitles, links, role, menuItems }: SideBarProps) =>
         <SidebarContainer
             role={role}
             $expand={expand ? expand.toString() : undefined}
-
         >
 
             <SidebarWrapper >

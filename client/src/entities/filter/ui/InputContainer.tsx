@@ -15,11 +15,7 @@ type InputContainer = {
 
 export const InputContainer = ({ filterTitle, dAWidth, dADisplay, children, inputContainerActive, className, currentWindowWidth }: InputContainer) => {
 
-
-
-
     const { status: active, toggleStatus: toggleActive } = useToggle();
-
 
     return (
         <div className={`filter-wrapper ${className}`} style={{ maxHeight: inputContainerActive || currentWindowWidth >= 1024 ? '500px' : '0' }}>
