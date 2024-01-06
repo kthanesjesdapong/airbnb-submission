@@ -21,7 +21,6 @@ module.exports = {
         restaurants: resolve(__dirname, '..', './src/pages/restaurants/index.ts'),
         bars: resolve(__dirname, '..', './src/pages/bars/index.ts'),
         single_business: resolve(__dirname, '..', './src/pages/single-business/index.ts'),
-        about: resolve(__dirname, '..', './src/pages/about/index.ts'),
         conact: resolve(__dirname, '..', './src/pages/contact/index.ts')
     },
     resolve: {

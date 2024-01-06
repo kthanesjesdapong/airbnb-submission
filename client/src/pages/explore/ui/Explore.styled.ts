@@ -13,13 +13,13 @@ const ExplorePageContainer = styled.div`
   gap: .4rem;
 
   ${media.tablet} {
-    margin-top: 15em;
+    margin-top: 10em;
     flex-direction: row;
     gap: 1.2rem;
   }
 
   ${media.desktop} {
-    margin-top :15em;
+    margin-top :10em;
   }
 `;
 

@@ -23,6 +23,8 @@ model Restaurant {
   location RestaurantLocation[]
   display_phone String?
   category CategoriesOnRestaurants[]
+
+  users UsersLikedRestaurants[]
   @@map("restaurants")
 }
 
@@ -38,6 +40,8 @@ model Bar {
   location BarLocation[]
   display_phone String?
   category CategoriesOnBars[]
+
+  users UsersLikedBars[]
   @@map("bars")
 }
 
@@ -67,9 +71,6 @@ model PricesOnBar {
   @@id([barName, priceStr])
   @@map("bar_price")
 }
-
-
-
 
 model RestaurantHours {
   id Int @id @default(autoincrement())
@@ -151,4 +152,56 @@ model CategoriesOnBars {
   @@id([barName, categoryAlias])
 
   @@map("categories_bars")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  email String @unique
+  password String
+  createdAt DateTime @default(now())
+  role Role
+
+  userProfile UserProfile?
+  usersLikedRestaurants UsersLikedRestaurants[]
+  usersLikedBars UsersLikedBars[]
+
+  @@map("user")
+}
+
+model UserProfile {
+  id Int @id @default(autoincrement())
+  
+  firstName String
+  lastName String
+  user User @relation(fields: [userId], references: [id])
+  userId Int @unique
+
+  @@map("user_profile")
+
+}
+
+model UsersLikedRestaurants {
+  restaurant Restaurant @relation(fields: [restaurantName], references: [name])
+  restaurantName String
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  @@id([restaurantName, userId])
+
+  @@map("users_liked_restaurants")
+
+}
+model UsersLikedBars {
+  bar Bar @relation(fields: [barName], references: [name])
+  barName String
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  @@id([barName, userId])
+
+  @@map("users_liked_bars")
+
+}
+
+enum Role {
+  USER
+  ADMIN
 }

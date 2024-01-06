@@ -7,6 +7,8 @@ import RelayPlugin from '@pothos/plugin-relay';
 import { Context } from "@types";
 import type PrismaTypes from '@pothos/plugin-prisma/generated';
 
+import { DateTimeResolver } from 'graphql-scalars';
+
 
 
 
@@ -17,6 +19,12 @@ const builder = new SchemaBuilder<{
   PrismaTypes: PrismaTypes;
   Connection: {
     totalCount: number | (() => number | Promise<number>);
+  };
+  Scalars: {
+    Date: {
+      Input: Date,
+      Output: Date;
+    };
   };
 }>({
   plugins: [PrismaPlugin, RelayPlugin],
@@ -31,6 +39,10 @@ const builder = new SchemaBuilder<{
     onUnusedQuery: process.env.NODE_ENV === 'production' ? null : 'warn',
   },
 });
+
+builder.addScalarType('Date', DateTimeResolver);
+
+
 
 builder.globalConnectionField('totalCount', (t) =>
   t.int({

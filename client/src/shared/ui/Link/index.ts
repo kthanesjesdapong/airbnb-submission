@@ -12,8 +12,6 @@ export type LinkProps = HTMLAttributes<HTMLLinkElement> & {
 const LinkElement = styled(Link) <LinkProps>`
   text-decoration: none;
   transition: 0.3s ease-in-out;
-  
-
   .hide {
     display: none;
   }

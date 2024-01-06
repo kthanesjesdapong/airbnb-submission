@@ -25,7 +25,7 @@ type Story = StoryObj<typeof LinkElement>;
 
 export const LinkElementStory: Story = {
     args: {
-        to: './about',
+        to: './',
         children: 'link text'
     }
 };

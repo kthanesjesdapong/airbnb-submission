@@ -1,4 +1,4 @@
-import { navigationLinks, logo, navLinkTitles, exploreLinks } from '@shared/constants';
+import { navigationLinks, logo, navLinkTitles, exploreLinks, userActionRole, userActionText } from '@shared/constants';
 import { Logo } from "@shared/ui";
 
 import { NavigationContainer, LogoContainer } from "./Navigation.styled";
@@ -26,6 +26,8 @@ export const Navigation = ({ className }: NavigationProps) => {
                 linkTitles={navLinkTitles}
                 links={navigationLinks}
                 menuItems={exploreLinks}
+                userActionButtonRole={userActionRole}
+                userActionButtonTitle={userActionText}
             />
             <Sidebar
                 linkTitles={navLinkTitles}

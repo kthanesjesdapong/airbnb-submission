@@ -1,7 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { SingleBusiness } from "@pages/single-business";
-import { AboutPage } from "@pages/about";
 import { ContactPage } from "@pages/contact";
 
 const HomePage = lazy(() => import('@pages/home/index.js').then(module => ({ default: module.HomePage })));
@@ -52,7 +51,6 @@ export const AppRouterComponent = () => {
                 } />
 
                 <Route path='explore/bars/:model/:barId' element={<SingleBusiness />} action={({ params }) => { return params; }} />
-                <Route path='about' element={<AboutPage />} />
                 <Route path='contact' element={<ContactPage />} />
                 <Route path="*" element={<NoMatch />} />
             </Route>
