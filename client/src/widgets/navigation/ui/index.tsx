@@ -6,7 +6,7 @@ import { NavigationContainer, LogoContainer } from "./Navigation.styled";
 import { Topbar } from '@shared/ui/top-bar';
 import { Sidebar } from '@shared/ui/side-bar';
 
-import { UserAction } from '@widgets/user-action-form/ui';
+import { UserAction } from '@features/user-action';
 
 import { useToggle } from '@shared/lib/hooks';
 import { useActiveForm } from '..';
@@ -49,12 +49,12 @@ export const Navigation = ({ className }: NavigationProps) => {
                 menuItems={exploreLinks}
             />
             <UserAction
-                
+
                 activeAction={currentUserAction}
                 setActive={handleActive}
                 setSignUpAsActive={setSignUpAsActive}
                 isActiveString={isActiveString}
-            
+
             />
         </NavigationContainer>
     );

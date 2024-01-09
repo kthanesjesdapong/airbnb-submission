@@ -1,5 +1,5 @@
 //Root LayOut
-import { Navigation } from '@features/navigation';
+import { Navigation } from '@widgets/navigation';
 import { BrowserRouter } from 'react-router-dom';
 import { AppRouterComponent } from '@app/routes/AppRouterComponent';
 import { LocationDisplay } from '@shared/lib/hooks';
