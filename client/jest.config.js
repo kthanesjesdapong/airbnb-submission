@@ -24,5 +24,6 @@ module.exports = {
             config
         ]
     },
+    modulePathIgnorePatterns: ["./src/entities/rating/lib/ratingMap.ts"],
     extensionsToTreatAsEsm: ['.ts', '.tsx']
 };

@@ -3,7 +3,7 @@ import { useToggle } from "@shared/lib/hooks";
 import { LinkElement } from "@shared/ui";
 import { DropDown } from "./Dropdown";
 import { TopbarConfig } from "..";
-import { userActionRole, userActionText } from "@shared/constants";
+import { MouseEvent } from "react";
 
 type TopbarProps = {
     linkTitles: string[],
@@ -11,13 +11,23 @@ type TopbarProps = {
     menuItems: string[],
     userActionButtonRole: string[];
     userActionButtonTitle: string[];
+    handleActive: () => void;
+    handleSetActiveAction: (action: string) => void;
 };
-
-export const Topbar = ({ linkTitles, links, menuItems, userActionButtonRole, userActionButtonTitle }: TopbarProps) => {
+//handleActive, 
+export const Topbar = ({ linkTitles, links, menuItems, userActionButtonRole, userActionButtonTitle, handleActive, handleSetActiveAction }: TopbarProps) => {
 
     const { status: expand, toggleStatus: toggleExpand } = useToggle();
 
     const { start, end, dropDownArrowWidth, dropDownArrowDisplay } = TopbarConfig;
+
+
+    const handleSetActives = (event: MouseEvent<HTMLDivElement>) => {
+        handleActive();
+        handleSetActiveAction(event.currentTarget.textContent!);
+    };
+
+
 
     return (
         <LinksContainer>
@@ -45,13 +55,16 @@ export const Topbar = ({ linkTitles, links, menuItems, userActionButtonRole, use
                 />
             ))}
             {userActionButtonRole.map((buttonRole, i) => (
-                <LinkWrapper role={buttonRole} >
-                    <UserActionText >
+                <LinkWrapper role={buttonRole}
+                    key={buttonRole + '' + i}
+                >
+                    <UserActionText
+                        onClick={handleSetActives}>
                         {userActionButtonTitle[i]}
                     </UserActionText>
                 </LinkWrapper>
-
             ))}
+
         </LinksContainer>
     );
 };

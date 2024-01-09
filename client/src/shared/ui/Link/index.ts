@@ -16,7 +16,6 @@ const LinkElement = styled(Link) <LinkProps>`
     display: none;
   }
   
-
   ${props => props.fontSize ? props.fontSize + 'em' : ''};
   &:visited {
     color: inherit;

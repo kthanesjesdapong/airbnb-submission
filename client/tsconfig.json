@@ -2,7 +2,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      // "*": ["./node_modules/*"],
       "@app": ["./src/app"],
       "@app/*": ["./src/app/*"],
       "@assets": ["./src/assets"],
@@ -25,9 +24,9 @@
     "jsx": "react-jsx",
     "outDir": "./dist/",
     "sourceMap": true,
-    "target": "es5",
+    "target": "ES2015",
     "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": ["ES5","ES6","ES2015","DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,

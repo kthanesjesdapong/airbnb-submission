@@ -17,6 +17,7 @@ const LinksContainer = styled.div`
 
 type LinkWrapperProps = {
   role?: string;
+  onClick?: () => void;
 };
 
 const LinkWrapper = styled.div<LinkWrapperProps>`
