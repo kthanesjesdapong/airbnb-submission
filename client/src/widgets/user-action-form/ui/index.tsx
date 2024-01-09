@@ -1,28 +1,22 @@
 import { UserActionForm } from "./UserActionForm";
 import { StyledModal } from "./UserActionForm.styled";
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 import { loginButtonRoles, signupButtonRole, loginLabelInputs, signUpLabelInputs } from '../';
 
 
+
 type UserActionProps = {
-    active: boolean;
     activeAction: string;
-    handleActive: () => void;
+    setActive: () => void;
+    setSignUpAsActive: () => void;
+    isActiveString: string;
+
 };
 
-export const UserAction = ({ active, activeAction, handleActive }: UserActionProps) => {
-
-    const [currentActiveAction, setActiveAction] = useState(activeAction);
-
-    const setActiveSignUp = () => {
-        setActiveAction('Sign Up');
-    };
-
-    const activeString = active ? 'true' : '';
+export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiveString }: UserActionProps) => {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
         const formData = new FormData(event.currentTarget);
         for (let [key, value] of formData.entries()) {
             console.log(`${key} ${value}`);
@@ -30,25 +24,29 @@ export const UserAction = ({ active, activeAction, handleActive }: UserActionPro
     };
 
 
+
+
+
     return (
         <>
-            <StyledModal $active={activeString}
-                onClick={handleActive}
+            <StyledModal $active={isActiveString}
+                onClick={setActive}
             />
-            {currentActiveAction === 'Sign Up' ? (
+            {activeAction === 'Sign Up' ? (
                 <UserActionForm
                     callBack={handleSubmit}
                     labelInputs={signUpLabelInputs}
                     buttonRoles={signupButtonRole}
-                    active={active}
+                    isActiveStr={isActiveString}
+
                 />
             ) : (
                 <UserActionForm
                     callBack={handleSubmit}
                     labelInputs={loginLabelInputs}
                     buttonRoles={loginButtonRoles}
-                    active={active}
-                    setNewActive={setActiveSignUp}
+                    isActiveStr={isActiveString}
+                    setSignUpAsActive={setSignUpAsActive}
                 />
 
             )}

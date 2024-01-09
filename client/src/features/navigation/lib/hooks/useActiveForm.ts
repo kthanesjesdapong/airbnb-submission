@@ -1,9 +1,21 @@
 import { useState } from 'react';
 
 export const useActiveForm = () => {
-  const [activeAction, setActiveAction] = useState('login');
-  const handleActiveAction = (action: string) => {
-    setActiveAction(action);
+  const [currentUserAction, setAction] = useState('login');
+  const setUserAction = (action: string) => {
+    setAction(action);
   };
-  return { activeAction, handleActiveAction };
+  const setSignUpAsActive = () => {
+    setAction('Sign Up');
+  };
+
+  const activeString = (active: boolean): string => {
+    if (active) {
+      return 'true';
+    } else {
+      return '';
+    }
+  };
+
+  return { currentUserAction, setUserAction, setSignUpAsActive, activeString };
 };

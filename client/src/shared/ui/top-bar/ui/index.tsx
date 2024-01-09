@@ -12,10 +12,10 @@ type TopbarProps = {
     userActionButtonRole: string[];
     userActionButtonTitle: string[];
     handleActive: () => void;
-    handleSetActiveAction: (action: string) => void;
+    handleCurrentUserAction: (action: string) => void;
 };
 //handleActive, 
-export const Topbar = ({ linkTitles, links, menuItems, userActionButtonRole, userActionButtonTitle, handleActive, handleSetActiveAction }: TopbarProps) => {
+export const Topbar = ({ linkTitles, links, menuItems, userActionButtonRole, userActionButtonTitle, handleActive, handleCurrentUserAction }: TopbarProps) => {
 
     const { status: expand, toggleStatus: toggleExpand } = useToggle();
 
@@ -24,7 +24,7 @@ export const Topbar = ({ linkTitles, links, menuItems, userActionButtonRole, use
 
     const handleSetActives = (event: MouseEvent<HTMLDivElement>) => {
         handleActive();
-        handleSetActiveAction(event.currentTarget.textContent!);
+        handleCurrentUserAction(event.currentTarget.textContent!);
     };
 
 

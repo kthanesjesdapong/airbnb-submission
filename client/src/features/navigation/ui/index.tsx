@@ -20,7 +20,11 @@ type NavigationProps = {
 export const Navigation = ({ className }: NavigationProps) => {
 
     const { status: active, toggleStatus: handleActive } = useToggle();
-    const { activeAction, handleActiveAction } = useActiveForm();
+    const { currentUserAction, setUserAction, setSignUpAsActive, activeString } = useActiveForm();
+
+
+    const isActiveString = activeString(active);
+
 
     return (
 
@@ -37,7 +41,7 @@ export const Navigation = ({ className }: NavigationProps) => {
                 userActionButtonRole={userActionRole}
                 userActionButtonTitle={userActionText}
                 handleActive={handleActive}
-                handleSetActiveAction={handleActiveAction}
+                handleCurrentUserAction={setUserAction}
             />
             <Sidebar
                 linkTitles={navLinkTitles}
@@ -45,9 +49,12 @@ export const Navigation = ({ className }: NavigationProps) => {
                 menuItems={exploreLinks}
             />
             <UserAction
-                handleActive={handleActive}
-                active={active}
-                activeAction={activeAction}
+                
+                activeAction={currentUserAction}
+                setActive={handleActive}
+                setSignUpAsActive={setSignUpAsActive}
+                isActiveString={isActiveString}
+            
             />
         </NavigationContainer>
     );

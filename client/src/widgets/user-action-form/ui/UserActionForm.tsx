@@ -4,30 +4,28 @@ import { UserLabelInput } from "./UserLabelInput";
 import { LabelInput } from "..";
 
 
+
 type UserActionFormProps = {
   callBack: (event: FormEvent<HTMLFormElement>) => void;
   labelInputs: LabelInput[];
   buttonRoles: string[];
-  active: boolean;
-  setNewActive?: () => void;
+  isActiveStr: string;
+  setSignUpAsActive?: () => void;
 };
 
-
-export const UserActionForm = ({ callBack, labelInputs, buttonRoles, active, setNewActive }: UserActionFormProps) => {
-
-
-  const activeString = active === true ? 'true' : '';
+export const UserActionForm = ({ callBack, labelInputs, buttonRoles, isActiveStr, setSignUpAsActive }: UserActionFormProps) => {
 
 
   return (
 
-    <StyledUserActionForm onSubmit={callBack} $active={activeString}>
-      {labelInputs.map((labelInput, i) => (
+    <StyledUserActionForm onSubmit={callBack} $active={isActiveStr}>
+      {labelInputs.map(({ inputName, labelTitle, inputType }, i) => (
+
         <UserLabelInput
-          key={labelInput.inputName + i}
-          labelTitle={labelInput.labelTitle}
-          inputType={labelInput.inputType}
-          inputName={labelInput.inputName} />
+          key={`${inputName} ${i}`}
+          labelTitle={labelTitle}
+          inputType={inputType}
+          inputName={inputName} />
       ))}
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
 
@@ -36,7 +34,7 @@ export const UserActionForm = ({ callBack, labelInputs, buttonRoles, active, set
           buttonRole === 'signup' ? (
             <StyledButton type='submit' role={buttonRole}
               key={buttonRole + ' ' + i}
-              onClick={setNewActive}
+              onClick={setSignUpAsActive}
             >{buttonRole.toUpperCase()}</StyledButton>
           ) : (
             <StyledButton type='submit' role={buttonRole}
