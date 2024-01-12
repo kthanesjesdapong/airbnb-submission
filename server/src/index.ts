@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import config from 'config';
 
+import { Request } from 'express';
 import { json } from 'express';
 import { expressMiddleware } from '@apollo/server/express4';
 import cors from 'cors';
@@ -17,9 +18,11 @@ import connect from '@config/prisma/connect';
 
 import { Context } from '@types';
 import apolloServerContext from '@config/apollo/context';
+import { prisma } from '$prisma/client';
 
 
 const port = config.get<number>('port');
+
 
 
 
@@ -34,7 +37,11 @@ export const server = async () => {
     cors<cors.CorsRequest>(),
     bodyParser.json(),
     expressMiddleware(apolloServer, {
-      context: async () => (apolloServerContext)
+      context: async ({ req }: { req: Request; }) => {
+        const authToken = req.headers.authorization || '';
+        const role = 'USER';
+        return await apolloServerContext(prisma, authToken, role);
+      }
     })
   );
 

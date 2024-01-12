@@ -1,2 +1,3 @@
-export * from './context.type';
-export * from './mock.type';
+export * from './Context';
+export * from './Mock';
+export * from './SchemaBuilder';

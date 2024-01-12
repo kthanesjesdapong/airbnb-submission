@@ -5,7 +5,8 @@ module.exports = {
     "import/no-named-as-default": 0,
     "import/no-unresolved": 0,
     "@typescript-eslint/no-unsafe-assignment": "off",
-    "@typescript-eslint/no-unsafe-return": "off"
+    "@typescript-eslint/no-unsafe-return": "off",
+    "@typescript-eslint"
   },
   parser: "@typescript-eslint/parser",
   extends: ["plugin:@typescript-eslint/recommended"],
@@ -18,7 +19,6 @@ module.exports = {
       "typescript": {
         "alwaysTryTypes": true,
         "project": "tsconfig.json",
-
       }
     }
   }

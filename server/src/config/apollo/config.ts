@@ -1,4 +1,4 @@
-import { schema } from '@api/schema';
+import { schema } from '@api/graphql/schema';
 import http from 'http';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 import express from 'express';

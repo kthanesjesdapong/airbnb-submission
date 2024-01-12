@@ -1,6 +1,13 @@
+
+
 import { loginButtonRoles, signupButtonRole, loginLabelInputs, signUpLabelInputs, UserActionForm } from '@entities/user-action-form';
 import { StyledModal } from "./UserAction.styled";
-import { FormEvent } from "react";
+import { FormEvent, useState, useEffect } from "react";
+import { createUserMutation, signup } from '..';
+import { SignUpInput, } from '..';
+import { useSignUp } from '../api/useSignUp';
+
+
 
 
 
@@ -14,15 +21,28 @@ type UserActionProps = {
 
 export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiveString }: UserActionProps) => {
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+
+  const { mutate, isLoading, isError, error} = useSignUp();
+
+
+  const handleSignUp = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const signUpInputs: SignUpInput = {
+      email: '',
+      firstName: '',
+      lastName: '',
+      password: ''
+    };
     const formData = new FormData(event.currentTarget);
     for (let [key, value] of formData.entries()) {
-      console.log(`${key} ${value}`);
+      const valueString = String(value);
+      if (key !== 'reEnterPassword') {
+        signUpInputs[key] = valueString;
+      }
     }
+    mutate({ query: createUserMutation, userInput: signUpInputs });
+
   };
-
-
 
 
   return (
@@ -32,19 +52,24 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
       />
       {activeAction === 'Sign Up' ? (
         <UserActionForm
-          callBack={handleSubmit}
+          callBack={handleSignUp}
           labelInputs={signUpLabelInputs}
           buttonRoles={signupButtonRole}
           isActiveStr={isActiveString}
-
+          isLoading={isLoading}
+          isError={isError}
+          
         />
       ) : (
         <UserActionForm
-          callBack={handleSubmit}
+          callBack={handleSignUp}
           labelInputs={loginLabelInputs}
           buttonRoles={loginButtonRoles}
           isActiveStr={isActiveString}
           setSignUpAsActive={setSignUpAsActive}
+          isLoading={isLoading}
+          isError={isError}
+          
         />
 
       )}

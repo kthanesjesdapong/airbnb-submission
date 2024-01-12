@@ -27,6 +27,8 @@
     "@config/*": ["src/config/*"],
     "@constants/": ["src/constants/"],
     "@constants/*": ["src/constants/*"],
+    "@graphql/": ["src/api/graphql"],
+    "@graphql/*": ["src/api/graphql/*"],
     "@seed/*": ["src/seed/*"]
   }
  },

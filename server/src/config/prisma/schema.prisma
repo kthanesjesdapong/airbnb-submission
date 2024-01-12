@@ -165,6 +165,8 @@ model User {
   usersLikedRestaurants UsersLikedRestaurants[]
   usersLikedBars UsersLikedBars[]
 
+  tokens Token[]
+
   @@map("user")
 }
 
@@ -204,4 +206,26 @@ model UsersLikedBars {
 enum Role {
   USER
   ADMIN
+}
+
+model Token {
+ id         Int       @id @default(autoincrement())
+ createdAt  DateTime  @default(now())
+ updatedAt  DateTime  @updatedAt
+ type       TokenType
+ valid      Boolean   @default(true)
+ expiration DateTime
+
+ // Relation fields
+ user   User @relation(fields: [userId], references: [id])
+ userId Int
+
+ @@map("token")
+}
+
+
+
+
+enum TokenType {
+ API
 }
