@@ -12,12 +12,12 @@ type UserActionFormProps = {
   isActiveStr: string;
   setSignUpAsActive?: () => void;
   isLoading: boolean;
-
-  isError: boolean;
+  error: string;
+  status: string;
 
 };
 
-export const UserActionForm = ({ callBack, labelInputs, buttonRoles, isActiveStr, setSignUpAsActive, isLoading, isError }: UserActionFormProps) => {
+export const UserActionForm = ({ callBack, labelInputs, buttonRoles, isActiveStr, setSignUpAsActive, isLoading, error, status }: UserActionFormProps) => {
 
   return (
 
@@ -34,7 +34,8 @@ export const UserActionForm = ({ callBack, labelInputs, buttonRoles, isActiveStr
 
         <Status
           isLoading={isLoading}
-          isError={isError}
+          error={error}
+          status={status}
         />
 
         {buttonRoles.map((buttonRole, i) => (

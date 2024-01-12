@@ -1,21 +1,23 @@
 type StatusProps = {
     isLoading: boolean;
-    isError: boolean;
-    // isSuccess: boolean
+    error: string;
+    status: string;
 };
 
-export const Status = ({ isLoading, isError }: StatusProps) => {
+export const Status = ({ isLoading, error, status }: StatusProps) => {
+
+    
 
     return (
         <>
             {isLoading ? (<div>
                 <span>...loading</span>
-            </div>) : isError ? (<div>
-                <span>...there was an error</span>
-            </div>) : (
+            </div>) : status === 'error' ? (<div>
+                <span>{error}</span>
+            </div>) : status === 'success' ? (
                 <div>
                     <span>success</span>
-                </div>)}
+                </div>) : (<></>)}
         </>
     );
 };

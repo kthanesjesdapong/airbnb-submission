@@ -14,6 +14,9 @@ export type SignUpRes = {
       email: string;
       createdAt: string;
     };
+  } | {
+    createUser: {
+      message: string;
+    }
   };
 };
-

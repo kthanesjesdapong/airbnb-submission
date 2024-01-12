@@ -2,8 +2,8 @@
 
 import { loginButtonRoles, signupButtonRole, loginLabelInputs, signUpLabelInputs, UserActionForm } from '@entities/user-action-form';
 import { StyledModal } from "./UserAction.styled";
-import { FormEvent, useState, useEffect } from "react";
-import { createUserMutation, signup } from '..';
+import { FormEvent } from "react";
+import { createUserMutation, } from '..';
 import { SignUpInput, } from '..';
 import { useSignUp } from '../api/useSignUp';
 
@@ -22,7 +22,7 @@ type UserActionProps = {
 export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiveString }: UserActionProps) => {
 
 
-  const { mutate, isLoading, isError, error} = useSignUp();
+  const { mutate, isLoading, isError, error, status } = useSignUp();
 
 
   const handleSignUp = (event: FormEvent<HTMLFormElement>) => {
@@ -42,6 +42,7 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
     }
     mutate({ query: createUserMutation, userInput: signUpInputs });
 
+
   };
 
 
@@ -57,8 +58,9 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
           buttonRoles={signupButtonRole}
           isActiveStr={isActiveString}
           isLoading={isLoading}
-          isError={isError}
-          
+          error={String(error)}
+          status={status}
+
         />
       ) : (
         <UserActionForm
@@ -68,8 +70,9 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
           isActiveStr={isActiveString}
           setSignUpAsActive={setSignUpAsActive}
           isLoading={isLoading}
-          isError={isError}
-          
+          error={String(error)}
+          status={status}
+
         />
 
       )}
