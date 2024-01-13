@@ -1,16 +1,5 @@
-import axios, { AxiosInstance, AxiosResponse, AxiosRequestConfig } from "axios";
-
-
-export type variablesOptions = {
-  variables: { [index: string]: string | number; };
-};
-
-export type OptionsConfig = {
-  query: string;
-  variables: { [index: string]: string | number; };
-} & AxiosRequestConfig & variablesOptions;
-
-
+import axios, { AxiosInstance, AxiosResponse } from "axios";
+import type { OptionsConfig, UserActionResponseData, UserActionResponse } from './index';
 
 export const API_URL = 'http://localhost:8009/graphql';
 
@@ -23,16 +12,25 @@ class ApiInstance {
     });
   }
 
-  async post<T>(endpoint: string, options: OptionsConfig): Promise<T | undefined> {
+  //Promise<T | undefined>
+  async post<T>(endpoint: string, options: OptionsConfig): Promise<T | UserActionResponse<T>> {
     try {
-
-      const response: AxiosResponse<T> = await this.axios.post(
+      const response: AxiosResponse<UserActionResponseData<T>> = await this.axios.post(
         endpoint,
         options
       );
-      return response.data;
+      if (response && response.data.errors) {
+        const errorMessage = response.data.errors[0].message;
+        throw new Error(errorMessage);
+      }
+      else {
+        return response.data;
+      }
     } catch (e: unknown) {
-      console.error(e);
+      if (e instanceof Error) {
+        console.log(e);
+        throw new Error((e as Error).message);
+      }
     }
   }
 

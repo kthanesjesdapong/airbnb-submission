@@ -41,8 +41,6 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
       }
     }
     mutate({ query: createUserMutation, userInput: signUpInputs });
-
-
   };
 
 
@@ -58,9 +56,7 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
           buttonRoles={signupButtonRole}
           isActiveStr={isActiveString}
           isLoading={isLoading}
-          error={String(error)}
-          status={status}
-
+          errors={String(error)}
         />
       ) : (
         <UserActionForm
@@ -70,9 +66,7 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
           isActiveStr={isActiveString}
           setSignUpAsActive={setSignUpAsActive}
           isLoading={isLoading}
-          error={String(error)}
-          status={status}
-
+          errors={String(error)}
         />
 
       )}

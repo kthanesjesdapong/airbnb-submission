@@ -2,19 +2,31 @@ import { User } from "@prisma/client";
 import builder from "@api/graphql/schema/builder";
 import { Role } from "@prisma/client";
 import { hashPW } from "@api/utils/bcrypt";
-import { errorMessage } from "@api/utils/pothosErrorHandler";
 import 'dotenv';
 import config from 'config';
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 
 const salt_rounds = config.get<string>('salt_rounds');
 
-
-
 builder.mutationField('createUser', (t) => t.prismaField({
   type: 'User',
+  errors: {
+
+  },
   args: {
-    email: t.arg.string({ required: true }),
-    password: t.arg.string({ required: true }),
+
+    email: t.arg.string({
+      validate: {
+        email: [true, { message: 'Invalid email address' }],
+      },
+      required: true
+    }),
+    password: t.arg.string({
+      validate: {
+        minLength: [6, { message: 'Password must be at least 8 characters long' }],
+      },
+      required: true
+    }),
     role: t.arg({
       type: Role,
       required: false
@@ -24,7 +36,6 @@ builder.mutationField('createUser', (t) => t.prismaField({
   },
   resolve: async (_query, _parent, _args, _context): Promise<User> => {
     try {
-      console.log({ salt_rounds });
       const createdUser = await _context.prisma.user.create({
         data: {
           email: _args.email,
@@ -38,9 +49,17 @@ builder.mutationField('createUser', (t) => t.prismaField({
           role: _args.role ?? Role.USER
         }
       });
-      return createdUser;
+      if (createdUser === null) {
+        throw new Error('This email has already been used to register an account');
+      }
+      else {
+        return createdUser;
+      }
     } catch (e: unknown) {
-      errorMessage(e);
+      if (e instanceof PrismaClientKnownRequestError && e.code === 'P2002' && e.meta && (e.meta.target as Array<string>).length > 0 && (e.meta.target as Array<string>)[0] === 'email') {
+        throw new Error(`email:An account already exists with that email`);
+      }
+      console.log(e);
       throw e;
     }
   }

@@ -48,6 +48,18 @@ const StyledLabel = styled.label`
 	opacity: .8;
 `;
 
+
+const StyledInputError = styled.p`
+  color: ${p => p.theme.colors.closedRed};
+  font-family: ${p => p.theme.fonts.content};
+  font-weight: semi-bold;
+	text-transform: uppercase;
+	font-size:.75em;
+	opacity: 1;
+  
+`;
+
+
 type StyledButtonProps = {
   role?: string;
 };
@@ -84,4 +96,4 @@ const StyledButton = styled(Button) <StyledButtonProps>`
 `;
 
 
-export { StyledUserActionForm, StyledInput, StyledLabel, StyledButton };
+export { StyledUserActionForm, StyledLabel, StyledInputError, StyledInput, StyledButton };

@@ -14,7 +14,6 @@ export const signup = async (
     }) as SignUpRes;
 
     const { data } = signUpResponse;
-
     if ('message' in data.createUser) {
       throw new Error(data.createUser.message);
     } else {

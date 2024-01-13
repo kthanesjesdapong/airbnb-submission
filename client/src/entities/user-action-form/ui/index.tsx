@@ -1,8 +1,8 @@
-import { FormEvent } from "react";
-import { StyledUserActionForm, StyledButton } from "./UserActionForm.styled";
-import { UserLabelInput } from "./UserLabelInput";
+import React, { FormEvent } from "react";
+
+import { StyledUserActionForm, StyledInputError, StyledButton, StyledInput, StyledLabel } from "./UserActionForm.styled";
 import { LabelInput } from "..";
-import { Status } from "@features/user-action/ui/Status";
+import { formatErrors } from "@shared/lib";
 
 
 type UserActionFormProps = {
@@ -12,37 +12,42 @@ type UserActionFormProps = {
   isActiveStr: string;
   setSignUpAsActive?: () => void;
   isLoading: boolean;
-  error: string;
-  status: string;
-
+  errors: string;
 };
 
-export const UserActionForm = ({ callBack, labelInputs, buttonRoles, isActiveStr, setSignUpAsActive, isLoading, error, status }: UserActionFormProps) => {
+export const UserActionForm = ({ callBack, labelInputs, buttonRoles, isActiveStr, setSignUpAsActive, isLoading, errors}: UserActionFormProps) => {
+
+  const formattedErrors = formatErrors(errors);
+
+
+
 
   return (
 
     <StyledUserActionForm onSubmit={callBack} $active={isActiveStr}>
-      {labelInputs.map(({ inputName, labelTitle, inputType }, i) => (
+      {labelInputs.map(({ inputName, labelTitle, inputType }, i) =>
+      (
+        formattedErrors && formattedErrors[inputName] !== undefined ? (
+          <React.Fragment key={`${labelTitle} fragment error`}>
+            <StyledLabel key={`${labelTitle} label ${i}`}>{labelTitle}</StyledLabel>
+            <StyledInput key={`${inputName} input ${i}`} type={inputType} name={inputName} />
+            <StyledInputError key={`${inputName} ${i} INPUT ERROR ${formattedErrors[inputName]}`}>{formattedErrors[inputName]}</StyledInputError>
+          </React.Fragment>
 
-        <UserLabelInput
-          key={`${inputName} ${i}`}
-          labelTitle={labelTitle}
-          inputType={inputType}
-          inputName={inputName} />
-      ))}
+        ) : (
+          <React.Fragment key={`${labelTitle} fragment`}>
+            <StyledLabel key={`${labelTitle} label ${i}`}>{labelTitle}</StyledLabel>
+            <StyledInput key={`${inputName} input ${i}`} type={inputType} name={inputName} />
+          </React.Fragment>
+
+        )
+      )
+      )}
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-
-        <Status
-          isLoading={isLoading}
-          error={error}
-          status={status}
-        />
-
         {buttonRoles.map((buttonRole, i) => (
-
           buttonRole === 'signup' ? (
             <StyledButton type='submit' role={buttonRole}
-              key={buttonRole + ' ' + i}
+              key={buttonRole + ' ' + i + 'signup'}
               onClick={setSignUpAsActive}
             >{buttonRole.toUpperCase()}</StyledButton>
           ) : (
