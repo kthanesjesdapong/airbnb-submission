@@ -3,6 +3,7 @@ import React, { FormEvent } from "react";
 import { StyledUserActionForm, StyledInputError, StyledButton, StyledInput, StyledLabel } from "./UserActionForm.styled";
 import { LabelInput } from "..";
 import { formatErrors } from "@shared/lib";
+import { Spinner } from "@shared/ui";
 
 
 type UserActionFormProps = {
@@ -11,16 +12,17 @@ type UserActionFormProps = {
   buttonRoles: string[];
   isActiveStr: string;
   setSignUpAsActive?: () => void;
+
   isLoading: boolean;
   errors: string;
+  status: string;
 };
 
-export const UserActionForm = ({ callBack, labelInputs, buttonRoles, isActiveStr, setSignUpAsActive, isLoading, errors}: UserActionFormProps) => {
+export const UserActionForm = ({ callBack, labelInputs, buttonRoles, isActiveStr, setSignUpAsActive, isLoading, errors, status }: UserActionFormProps) => {
 
   const formattedErrors = formatErrors(errors);
-
-
-
+  console.log({ status });
+  // {status === 'success'}
 
   return (
 
@@ -43,22 +45,33 @@ export const UserActionForm = ({ callBack, labelInputs, buttonRoles, isActiveStr
         )
       )
       )}
-      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-        {buttonRoles.map((buttonRole, i) => (
-          buttonRole === 'signup' ? (
-            <StyledButton type='submit' role={buttonRole}
-              key={buttonRole + ' ' + i + 'signup'}
-              onClick={setSignUpAsActive}
-            >{buttonRole.toUpperCase()}</StyledButton>
-          ) : (
-            <StyledButton type='submit' role={buttonRole}
-              key={buttonRole + ' ' + i}
-            >{buttonRole.toUpperCase()}</StyledButton>
 
-          )
+      {isLoading ? (
+        <Spinner
+          width={'30px'}
+          height={'30px'}
 
-        ))}
-      </div>
+        />
+
+      ) : (
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          {buttonRoles.map((buttonRole, i) => (
+            buttonRole === 'signup' ? (
+              <StyledButton type='submit' role={buttonRole}
+                key={buttonRole + ' ' + i + 'signup'}
+                onClick={setSignUpAsActive}
+              >{buttonRole.toUpperCase()}</StyledButton>
+            ) : (
+              <StyledButton type='submit' role={buttonRole}
+                key={buttonRole + ' ' + i}
+
+              >{buttonRole.toUpperCase()}</StyledButton>
+
+            )
+
+          ))}
+        </div>
+      )}
     </StyledUserActionForm>
   );
 };

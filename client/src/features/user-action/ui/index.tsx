@@ -25,6 +25,7 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
   const { mutate, isLoading, isError, error, status } = useSignUp();
 
 
+
   const handleSignUp = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const signUpInputs: SignUpInput = {
@@ -55,8 +56,13 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
           labelInputs={signUpLabelInputs}
           buttonRoles={signupButtonRole}
           isActiveStr={isActiveString}
+
+
+
           isLoading={isLoading}
           errors={String(error)}
+
+          status={status}
         />
       ) : (
         <UserActionForm
@@ -64,9 +70,14 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
           labelInputs={loginLabelInputs}
           buttonRoles={loginButtonRoles}
           isActiveStr={isActiveString}
+
+
+
           setSignUpAsActive={setSignUpAsActive}
           isLoading={isLoading}
           errors={String(error)}
+
+          status={status}
         />
 
       )}
