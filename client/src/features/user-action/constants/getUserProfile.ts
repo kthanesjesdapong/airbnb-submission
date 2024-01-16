@@ -1,6 +1,6 @@
 import { gql } from "graphql-request";
 
-const getUserProfileQuery = gql`
+export const getUserProfileQuery = gql`
 query Query {
   getUserProfile {
     ... on BaseError {

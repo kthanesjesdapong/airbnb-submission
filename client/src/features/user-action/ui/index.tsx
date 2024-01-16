@@ -3,7 +3,7 @@
 import { loginButtonRoles, signupButtonRole, loginLabelInputs, signUpLabelInputs, UserActionForm } from '@entities/user-action-form';
 import { StyledModal } from "./UserAction.styled";
 import { FormEvent } from "react";
-import { createUserMutation, SignUpInput, useSignUp, LoginInput, loginMutation, useLogin } from '..';
+import { createUserMutation, SignUpInput, useSignUp, LoginInput, loginMutation, useLogin, getUserProfileQuery, useUserProfile } from '..';
 import Cookies from 'js-cookie';
 
 
@@ -20,14 +20,11 @@ type UserActionProps = {
 
 export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiveString }: UserActionProps) => {
 
-
   const { data: signUpData, mutate: signUpMutate, isLoading: signUpIsLoading, isError: signUpIsError, error: signUpError, status: signUpStatus } = useSignUp();
 
   const { data: loginData, mutate: loginMutate, isLoading: loginIsLoading, isError: loginIsError, error: loginError, status: loginStatus } = useLogin();
 
-
-  const jwtToken = Cookies.get('token');
-
+  const { data: userProfile } = useUserProfile(getUserProfileQuery, Cookies.get('token'));
 
 
 
@@ -63,7 +60,10 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
       const valueString = String(value);
       loginInputs[key] = valueString;
     }
-    loginMutate({ query: loginMutation, userInput: loginInputs });
+    loginMutate({ loginMutation: loginMutation, userInput: loginInputs });
+    if (loginStatus === 'success') {
+      console.log({ userProfile }, 'line 70 form features/ handleLogin');
+    }
   };
 
 

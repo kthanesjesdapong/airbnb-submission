@@ -41,7 +41,7 @@ builder.mutationField('login', (t) => t.field({
         // const currentDateTime = new Date().toISOString();
         const jwt_secret = process.env.JWT_SECRET;
         const accessToken = jwt.sign({ userId: id }, jwt_secret as string, { expiresIn: '20000m' });
-        console.log({ accessToken });
+        // console.log({ accessToken });
         return new Token(accessToken);
       }
     } catch (e: unknown) {

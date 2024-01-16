@@ -3,8 +3,12 @@ import { login } from "./login";
 import { LoginInput } from "..";
 
 export const useLogin = () => useMutation(
+
   (variables: {
-    query: string,
+    loginMutation: string,
     userInput: LoginInput;
-  }
-  ) => login(variables.query, variables.userInput));
+  },
+  ) => login(variables.loginMutation, variables.userInput));
+
+
+

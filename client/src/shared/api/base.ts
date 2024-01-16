@@ -5,20 +5,26 @@ export const API_URL = 'http://localhost:8009/graphql';
 
 class ApiInstance {
   public axios: AxiosInstance;
-  constructor() {
+
+  constructor(Authorization?: string) {
     this.axios = axios.create({
       headers: {
-
+        Authorization: Authorization
       },
     });
   }
 
   //Promise<T | undefined>
-  async post<T>(endpoint: string, options: OptionsConfig): Promise<T | UserActionResponse<T>> {
+  async post<T>(endpoint: string, options: OptionsConfig, jwtToken?: string): Promise<T | UserActionResponse<T>> {
     try {
       const response: AxiosResponse<UserActionResponseData<T>> = await this.axios.post(
         endpoint,
-        options
+        options,
+        {
+          headers: {
+            Authorization: jwtToken
+          }
+        }
       );
       if (response && response.data.errors) {
         const errorMessage = response.data.errors[0].message;

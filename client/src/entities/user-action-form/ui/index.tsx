@@ -6,6 +6,7 @@ import { formatErrors } from "@shared/lib";
 import { Spinner } from "@shared/ui";
 
 
+
 type UserActionFormProps = {
   callBack: (event: FormEvent<HTMLFormElement>) => void;
   labelInputs: LabelInput[];

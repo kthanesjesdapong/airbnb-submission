@@ -1,17 +1,18 @@
-import { LoginInput, LoginRes } from '..';
+import { LoginInput, LoginRes, } from '..';
 import { apiInstance, API_URL } from '@shared/api';
+
 import Cookies from 'js-cookie';
 
-type LoginReturn = { token: string; };
+
+export type LoginReturn = { token: string; };
 
 //Returns to us the token
-export const login = async (query: string, { email, password }: LoginInput): Promise<LoginReturn> => {
+export const login = async (mutation: string, { email, password }: LoginInput): Promise<LoginReturn> => {
   try {
     const loginResponse = await apiInstance.post(API_URL, {
-      query: query,
+      query: mutation,
       variables: { email, password }
     }) as LoginRes;
-
     const { data } = loginResponse;
     if ('message' in data.login) {
       throw new Error(data.login.message);
