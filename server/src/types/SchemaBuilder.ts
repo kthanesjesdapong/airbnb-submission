@@ -17,5 +17,6 @@ export type SchemaBuilderType = {
     public: boolean;
     user: boolean;
     admin: boolean;
+    loggedIn: boolean;
   };
 };

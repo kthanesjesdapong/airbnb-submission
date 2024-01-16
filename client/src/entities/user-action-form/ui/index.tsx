@@ -21,8 +21,9 @@ type UserActionFormProps = {
 export const UserActionForm = ({ callBack, labelInputs, buttonRoles, isActiveStr, setSignUpAsActive, isLoading, errors, status }: UserActionFormProps) => {
 
   const formattedErrors = formatErrors(errors);
-  console.log({ status });
-  // {status === 'success'}
+  // console.log({ status });
+  // if (status === 'success') console.log({ token }, 'LINE 26 USERACTIONFORM');
+
 
   return (
 

@@ -1,16 +1,16 @@
 import { SignUpRes, SignUpInput } from "../types";
 import { apiInstance, API_URL } from "@shared/api";
 
-type SignUpReturn = { id: number; email: string; };
+type SignUpReturn = { id: number; email: string; userName: string; };
 
 export const signup = async (
   query: string,
-  { firstName, lastName, email, password }: SignUpInput
+  { firstName, userName, lastName, email, password }: SignUpInput
 ): Promise<SignUpReturn> => {
   try {
     const signUpResponse = await apiInstance.post(API_URL, {
       query: query,
-      variables: { firstName, lastName, email, password },
+      variables: { email, firstName, lastName, password, userName },
     }) as SignUpRes;
 
     const { data } = signUpResponse;
@@ -20,6 +20,7 @@ export const signup = async (
       return {
         id: data.createUser.id,
         email: data.createUser.email,
+        userName: data.createUser.userName
       };
     }
   } catch (e: unknown) {

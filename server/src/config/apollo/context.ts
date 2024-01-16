@@ -33,7 +33,7 @@ const apolloServerContext = async (prisma: PrismaClient, authorizationToken?: st
       console.error('Error fetching user:', e);
     }
   }
-  return { prisma, user, role: role ?? 'USER' };
+  return { prisma, user, loggedIn: user ? true : false, role: role ?? 'USER' };
 };
 
 export default apolloServerContext;

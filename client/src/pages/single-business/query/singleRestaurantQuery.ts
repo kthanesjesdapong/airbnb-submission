@@ -1,44 +1,50 @@
 import { gql } from 'graphql-request';
 
-export const singleBarQuery = gql`
-query getBar($barId: Int!) {
-  getBar(bar_id: $barId) {
-    id
-    name
-    rating
-    price {
-      edges {
-        node {
-          priceStr
-        }
-      }
+export const singleRestaurantQuery = gql`
+query getRestaurant($restaurantId: Int!) {
+  getRestaurant(restaurant_id: $restaurantId) {
+    ... onBaseError {
+      message
     }
-    photos
-    hours {
-      edges {
-        node {
-          start
-          end
-          day
+    ... QueryGetRestaurantSuccess {
+      data {
+        id
+        name
+        rating
+        price {
+          edges {
+            node {
+              priceStr
+            }
+          }
         }
-      }
-    }
-    location {
-      edges {
-        node {
-          locationAddress
+        photos
+        hours {
+          edges {
+            node {
+              start
+              end
+              day
+            }
+          }
         }
-      }
-    }
-    display_phone
-    category {
-      edges {
-        node {
-          categoryAlias
+        location {
+          edges {
+            node {
+              locationAddress
+            }
+          }
+        }
+        display_phone
+        category {
+          edges {
+            node {
+              categoryAlias
+            }
+          }
         }
       }
     }
   }
 }
-`
-
+`;

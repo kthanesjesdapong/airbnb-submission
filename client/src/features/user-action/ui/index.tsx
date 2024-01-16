@@ -3,9 +3,8 @@
 import { loginButtonRoles, signupButtonRole, loginLabelInputs, signUpLabelInputs, UserActionForm } from '@entities/user-action-form';
 import { StyledModal } from "./UserAction.styled";
 import { FormEvent } from "react";
-import { createUserMutation, } from '..';
-import { SignUpInput, } from '..';
-import { useSignUp } from '../api/useSignUp';
+import { createUserMutation, SignUpInput, useSignUp, LoginInput, loginMutation, useLogin } from '..';
+import Cookies from 'js-cookie';
 
 
 
@@ -22,7 +21,13 @@ type UserActionProps = {
 export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiveString }: UserActionProps) => {
 
 
-  const { mutate, isLoading, isError, error, status } = useSignUp();
+  const { data: signUpData, mutate: signUpMutate, isLoading: signUpIsLoading, isError: signUpIsError, error: signUpError, status: signUpStatus } = useSignUp();
+
+  const { data: loginData, mutate: loginMutate, isLoading: loginIsLoading, isError: loginIsError, error: loginError, status: loginStatus } = useLogin();
+
+
+  const jwtToken = Cookies.get('token');
+
 
 
 
@@ -30,6 +35,7 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
     event.preventDefault();
     const signUpInputs: SignUpInput = {
       email: '',
+      userName: '',
       firstName: '',
       lastName: '',
       password: ''
@@ -41,8 +47,25 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
         signUpInputs[key] = valueString;
       }
     }
-    mutate({ query: createUserMutation, userInput: signUpInputs });
+    signUpMutate({ query: createUserMutation, userInput: signUpInputs });
   };
+
+
+  const handleLogin = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const loginInputs: LoginInput = {
+      email: '',
+      password: ''
+    };
+
+    const formData = new FormData(event.currentTarget);
+    for (let [key, value] of formData.entries()) {
+      const valueString = String(value);
+      loginInputs[key] = valueString;
+    }
+    loginMutate({ query: loginMutation, userInput: loginInputs });
+  };
+
 
 
   return (
@@ -57,27 +80,23 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
           buttonRoles={signupButtonRole}
           isActiveStr={isActiveString}
 
+          isLoading={signUpIsLoading}
+          errors={String(signUpError)}
 
-
-          isLoading={isLoading}
-          errors={String(error)}
-
-          status={status}
+          status={signUpStatus}
         />
       ) : (
         <UserActionForm
-          callBack={handleSignUp}
+          callBack={handleLogin}
           labelInputs={loginLabelInputs}
           buttonRoles={loginButtonRoles}
           isActiveStr={isActiveString}
 
-
-
           setSignUpAsActive={setSignUpAsActive}
-          isLoading={isLoading}
-          errors={String(error)}
+          isLoading={loginIsLoading}
+          errors={String(loginError)}
 
-          status={status}
+          status={loginStatus}
         />
 
       )}

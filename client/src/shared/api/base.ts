@@ -8,6 +8,7 @@ class ApiInstance {
   constructor() {
     this.axios = axios.create({
       headers: {
+
       },
     });
   }
@@ -33,7 +34,6 @@ class ApiInstance {
       }
     }
   }
-
 }
 
 export const apiInstance = new ApiInstance();

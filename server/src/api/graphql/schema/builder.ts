@@ -34,8 +34,9 @@ const builder = new SchemaBuilder<SchemaBuilderType>({
   },
   authScopes: (context) => ({
     public: !!context.role,
-    user: context.role === 'USER',
-    admin: context.role === 'ADMIN'
+    user: context.user?.role === 'USER',
+    admin: context.user?.role === 'ADMIN',
+    loggedIn: context.user?.id ? true : false
   }),
   // scopeAuthOptions: {
   //   authorizeOnSubscribe: true,

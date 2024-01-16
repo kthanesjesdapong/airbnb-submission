@@ -6,6 +6,12 @@ export const email: LabelInput = {
   inputName: 'email'
 };
 
+export const userName: LabelInput = {
+  labelTitle: 'Username',
+  inputType: 'text',
+  inputName: 'userName'
+};
+
 export const firstName: LabelInput = {
   labelTitle: 'First Name',
   inputType: 'text',
@@ -29,4 +35,4 @@ export const passwordReentry: LabelInput = {
 
 export const loginLabelInputs = [...[email], ...[password]];
 
-export const signUpLabelInputs = [...[firstName], ...[lastName], ...[...loginLabelInputs], ...[passwordReentry]];
+export const signUpLabelInputs = [...[firstName], ...[lastName], ...[userName], ...[...loginLabelInputs], ...[passwordReentry]];

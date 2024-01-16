@@ -10,11 +10,8 @@ const salt_rounds = config.get<string>('salt_rounds');
 
 builder.mutationField('createUser', (t) => t.prismaField({
   type: 'User',
-  errors: {
-
-  },
+  errors: {},
   args: {
-
     email: t.arg.string({
       validate: {
         email: [true, { message: 'Invalid email address' }],
@@ -23,7 +20,13 @@ builder.mutationField('createUser', (t) => t.prismaField({
     }),
     password: t.arg.string({
       validate: {
-        minLength: [6, { message: 'Password must be at least 8 characters long' }],
+        minLength: [6, { message: 'Password must be at least 6 characters long' }],
+      },
+      required: true
+    }),
+    userName: t.arg.string({
+      validate: {
+        minLength: [4, { message: 'Username must be at least 4 characters long' }],
       },
       required: true
     }),
@@ -42,8 +45,9 @@ builder.mutationField('createUser', (t) => t.prismaField({
           password: hashPW(parseInt(salt_rounds), _args.password),
           userProfile: {
             create: {
+              userName: _args.userName,
               firstName: _args.firstName,
-              lastName: _args.lastName
+              lastName: _args.lastName,
             }
           },
           role: _args.role ?? Role.USER
@@ -58,6 +62,9 @@ builder.mutationField('createUser', (t) => t.prismaField({
     } catch (e: unknown) {
       if (e instanceof PrismaClientKnownRequestError && e.code === 'P2002' && e.meta && (e.meta.target as Array<string>).length > 0 && (e.meta.target as Array<string>)[0] === 'email') {
         throw new Error(`email:An account already exists with that email`);
+      }
+      if (e instanceof PrismaClientKnownRequestError && e.code === 'P2002' && e.meta && (e.meta.target as Array<string>).length > 0 && (e.meta.target as Array<string>)[0] === 'userName') {
+        throw new Error(`userName:Username not available`);
       }
       console.log(e);
       throw e;

@@ -161,6 +161,8 @@ model User {
   createdAt DateTime @default(now())
   role Role
 
+  
+
   userProfile UserProfile?
   usersLikedRestaurants UsersLikedRestaurants[]
   usersLikedBars UsersLikedBars[]
@@ -172,9 +174,10 @@ model User {
 
 model UserProfile {
   id Int @id @default(autoincrement())
-  
+  userName String @unique
   firstName String
   lastName String
+  imgUrl String?
   user User @relation(fields: [userId], references: [id])
   userId Int @unique
 

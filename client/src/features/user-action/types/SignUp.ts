@@ -4,6 +4,7 @@ export type SignUpInput = {
   lastName: string;
   email: string;
   password: string;
+  userName: string;
 };
 
 export type SignUpRes = {
@@ -12,11 +13,12 @@ export type SignUpRes = {
       id: number;
       role: string;
       email: string;
+      userName: string;
       createdAt: string;
     };
   } | {
     createUser: {
       message: string;
-    }
+    };
   };
 };

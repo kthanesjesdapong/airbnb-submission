@@ -1,2 +1,2 @@
-export * from './singleBarQuery';
 export * from './singleRestaurantQuery';
+export * from './singleBarQuery';

@@ -49,7 +49,6 @@ export const Navigation = ({ className }: NavigationProps) => {
                 menuItems={exploreLinks}
             />
             <UserAction
-
                 activeAction={currentUserAction}
                 setActive={handleActive}
                 setSignUpAsActive={setSignUpAsActive}
