@@ -10,7 +10,6 @@ export type HourArr = (string | number)[];
 
 export type HoursArr = HourArr[];
 
-
 export type BusinessResponse = {
   price: {
     edges: {
@@ -97,7 +96,9 @@ export type SingleBusiness = {
 
 export type SingleBusinessQueryResult = {
   data: {
-    [index: string]: BusinessResponse;
+    [index: string]: {
+      [index: string]: BusinessResponse;
+    };
   };
 };
 export type FormattedSingleBusiness = {

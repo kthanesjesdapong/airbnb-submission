@@ -1,12 +1,12 @@
 import { gql } from 'graphql-request';
 
 export const singleBarQuery = gql`
-query getBar($barId: Int!) {
+query GetBar($barId: Int!) {
   getBar(bar_id: $barId) {
-    ... onBaseError {
+    ... on BaseError {
       message
     }
-    ... QueryGetBarSuccess {
+    ... on QueryGetBarSuccess {
       data {
         id
         name
@@ -22,9 +22,9 @@ query getBar($barId: Int!) {
         hours {
           edges {
             node {
-              start
-              end
-              day
+            start
+            end
+            day
             }
           }
         }
