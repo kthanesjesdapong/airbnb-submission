@@ -2,31 +2,34 @@
 
 import { loginButtonRoles, signupButtonRole, loginLabelInputs, signUpLabelInputs, UserActionForm } from '@entities/user-action-form';
 import { StyledModal } from "./UserAction.styled";
-import { FormEvent } from "react";
+import { FormEvent, useEffect } from "react";
 import { createUserMutation, SignUpInput, useSignUp, LoginInput, loginMutation, useLogin, getUserProfileQuery, useUserProfile } from '..';
-import Cookies from 'js-cookie';
 
 
-
-
+import { useAppDispatch } from '@shared/lib/hooks';
+import { login, User } from '@shared/store/userProfile';
 
 type UserActionProps = {
   activeAction: string;
   setActive: () => void;
   setSignUpAsActive: () => void;
   isActiveString: string;
-
+  handleActive: () => void;
 };
 
-export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiveString }: UserActionProps) => {
-
-  const { data: signUpData, mutate: signUpMutate, isLoading: signUpIsLoading, isError: signUpIsError, error: signUpError, status: signUpStatus } = useSignUp();
-
-  const { data: loginData, mutate: loginMutate, isLoading: loginIsLoading, isError: loginIsError, error: loginError, status: loginStatus } = useLogin();
-
-  const { data: userProfile } = useUserProfile(getUserProfileQuery, Cookies.get('token'));
 
 
+
+export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiveString, handleActive }: UserActionProps) => {
+
+  const dispatch = useAppDispatch();
+
+
+  const { mutate: signUpMutate, isLoading: signUpIsLoading, error: signUpError, status: signUpStatus } = useSignUp();
+
+  const { mutate: loginMutate, isLoading: loginIsLoading, error: loginError, status: loginStatus } = useLogin();
+
+  const { data: userProfile } = useUserProfile(getUserProfileQuery, loginStatus);
 
   const handleSignUp = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -61,11 +64,16 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
       loginInputs[key] = valueString;
     }
     loginMutate({ loginMutation: loginMutation, userInput: loginInputs });
-    if (loginStatus === 'success') {
-      console.log({ userProfile }, 'line 70 form features/ handleLogin');
-    }
   };
 
+
+  useEffect(() => {
+    if (loginStatus === 'success' || signUpStatus === 'success') {
+      dispatch(login(userProfile as User));
+      handleActive();
+
+    }
+  }, [loginStatus, signUpStatus, userProfile]);
 
 
   return (
@@ -82,8 +90,6 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
 
           isLoading={signUpIsLoading}
           errors={String(signUpError)}
-
-          status={signUpStatus}
         />
       ) : (
         <UserActionForm
@@ -95,8 +101,6 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
           setSignUpAsActive={setSignUpAsActive}
           isLoading={loginIsLoading}
           errors={String(loginError)}
-
-          status={loginStatus}
         />
 
       )}

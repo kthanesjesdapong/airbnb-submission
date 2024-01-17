@@ -13,18 +13,14 @@ type UserActionFormProps = {
   buttonRoles: string[];
   isActiveStr: string;
   setSignUpAsActive?: () => void;
-
   isLoading: boolean;
   errors: string;
-  status: string;
+
 };
 
-export const UserActionForm = ({ callBack, labelInputs, buttonRoles, isActiveStr, setSignUpAsActive, isLoading, errors, status }: UserActionFormProps) => {
+export const UserActionForm = ({ callBack, labelInputs, buttonRoles, isActiveStr, setSignUpAsActive, isLoading, errors }: UserActionFormProps) => {
 
   const formattedErrors = formatErrors(errors);
-  // console.log({ status });
-  // if (status === 'success') console.log({ token }, 'LINE 26 USERACTIONFORM');
-
 
   return (
 
@@ -47,14 +43,12 @@ export const UserActionForm = ({ callBack, labelInputs, buttonRoles, isActiveStr
         )
       )
       )}
-
       {isLoading ? (
         <Spinner
           width={'30px'}
           height={'30px'}
 
         />
-
       ) : (
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           {buttonRoles.map((buttonRole, i) => (
@@ -68,9 +62,7 @@ export const UserActionForm = ({ callBack, labelInputs, buttonRoles, isActiveStr
                 key={buttonRole + ' ' + i}
 
               >{buttonRole.toUpperCase()}</StyledButton>
-
             )
-
           ))}
         </div>
       )}

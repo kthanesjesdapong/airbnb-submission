@@ -1,10 +1,10 @@
 import { useQuery } from "react-query";
 import { userprofile } from ".";
 
-export const useUserProfile = (query: string, jwtToken?: string) => useQuery(
+export const useUserProfile = (query: string, loginStatus: string) => useQuery(
   {
-    queryKey: ['userProfile', jwtToken],
+    queryKey: ['userProfile'],
     queryFn: () => userprofile(query),
-    enabled: !!jwtToken
+    enabled: loginStatus === 'success'
   }
 );
