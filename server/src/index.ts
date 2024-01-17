@@ -39,7 +39,6 @@ export const server = async () => {
     expressMiddleware(apolloServer, {
       context: async ({ req }: { req: Request; }) => {
         const authToken = req.headers.authorization || '';
-        console.log(req.headers.authorization);
         const role = 'USER';
         return await apolloServerContext(prisma, authToken, role);
       }

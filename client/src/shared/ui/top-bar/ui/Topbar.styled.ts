@@ -22,6 +22,9 @@ type LinkWrapperProps = {
 
 const LinkWrapper = styled.div<LinkWrapperProps>`
 
+  display:flex;
+  align-items: center;
+
   margin: 0.4rem;
 
   ${p => p.role === 'login' ?

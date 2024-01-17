@@ -8,8 +8,6 @@ import { Sidebar } from '@shared/ui/side-bar';
 
 import { UserAction } from '@features/user-action';
 
-import { RootState } from '@shared/store';
-
 import { useToggle, useAppSelector } from '@shared/lib/hooks';
 import { useActiveForm } from '..';
 
@@ -26,8 +24,6 @@ type NavigationProps = {
 //MAP THROUGH ARRAY OF LINKS FOR LINK ELEMENT.
 export const Navigation = ({ className }: NavigationProps) => {
 
-    const currentUser = useAppSelector((state: RootState) => state.user);
-    console.log({ currentUser });
 
     const { status: active, toggleStatus: handleActive, toggleOff } = useToggle();
     const { currentUserAction, setUserAction, setSignUpAsActive, activeString } = useActiveForm();

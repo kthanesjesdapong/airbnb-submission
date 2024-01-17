@@ -1,9 +1,15 @@
 import { LinksContainer, LinkWrapper, UserActionText } from "./Topbar.styled";
-import { useToggle } from "@shared/lib/hooks";
-import { LinkElement } from "@shared/ui";
+import { useToggle, useAppSelector } from "@shared/lib/hooks";
+import { LinkElement, UserSuite } from "@shared/ui";
 import { DropDown } from "./Dropdown";
 import { TopbarConfig } from "..";
 import { MouseEvent } from "react";
+
+
+import { RootState } from '@shared/store';
+
+
+
 
 type TopbarProps = {
     linkTitles: string[],
@@ -16,6 +22,11 @@ type TopbarProps = {
 };
 //handleActive, 
 export const Topbar = ({ linkTitles, links, menuItems, userActionButtonRole, userActionButtonTitle, handleActive, handleCurrentUserAction }: TopbarProps) => {
+
+    const currentUser = useAppSelector((state: RootState) => state.user);
+    const { userName, firstName, lastName } = currentUser;
+
+    console.log(userName, firstName, lastName, 'this is the currentUser within navigation');
 
     const { status: expand, toggleStatus: toggleExpand } = useToggle();
 
@@ -54,16 +65,27 @@ export const Topbar = ({ linkTitles, links, menuItems, userActionButtonRole, use
                     dropDownArrowDisplay={dropDownArrowDisplay}
                 />
             ))}
-            {userActionButtonRole.map((buttonRole, i) => (
-                <LinkWrapper role={buttonRole}
-                    key={buttonRole + '' + i}
-                >
-                    <UserActionText
-                        onClick={handleSetActives}>
-                        {userActionButtonTitle[i]}
-                    </UserActionText>
-                </LinkWrapper>
-            ))}
+
+            {userName === null ? (
+                userActionButtonRole.map((buttonRole, i) => (
+                    <LinkWrapper role={buttonRole}
+                        key={buttonRole + '' + i}
+                    >
+                        <UserActionText
+                            onClick={handleSetActives}>
+                            {userActionButtonTitle[i]}
+                        </UserActionText>
+                    </LinkWrapper>
+                ))
+            ) : (
+                <UserSuite
+                    imgUrl={'https://ih1.redbubble.net/image.5184662015.9367/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.webp'}
+                    imgWidth={'35px'}
+                    imgHeight={'35px'}
+                    userName={userName}
+
+                />
+            )}
 
         </LinksContainer>
     );
