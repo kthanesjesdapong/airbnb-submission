@@ -12,26 +12,16 @@ export const fetchSingleBusiness = async (businessId: number, query: string, bus
       variables: { [queryVariable]: businessId }
     }) as SingleBusinessQueryResult;
 
-
-
-
     const formattedSingleBusinessResponse = singleBusinessDataResponse?.data[businessType];
 
     if (formattedSingleBusinessResponse.message) {
       throw new Error('Opps an Error has occurred');
     }
-
-
-    console.log(formattedSingleBusinessResponse, 'singleBusinessDataResponse?.data[businessType]');
-
     const { id, name, rating, price, photos, hours, display_phone, category, location, latitude, longitude } = formattedSingleBusinessResponse.data;
-
     const businessPrice = price.edges[0].node.priceStr;
-
     const businessHours = hours.edges.map((hour) => {
       return [hour.node.day, hour.node.start, hour.node.end];
     });
-
     const businessLocation = location.edges[0].node.locationAddress;
     const businessCategories = category.edges.map((category) => {
       return category.node.categoryAlias;
