@@ -47,17 +47,19 @@ const ListItem = styled.li<ListItemProps>`
 export type ListItemLinkProps = HTMLAttributes<HTMLLinkElement> & {
   content: string;
   href: string;
+
 };
 
 const ListItemLink = styled(Link) <ListItemLinkProps>`
   cursor: pointer;
-  transition: color 0.4s ease-in-out;
+  transition: color height 0.4s ease-in-out;
   font-size: 1.25em;
   color: ${props => props.color ? props.color : props.theme.colors.categorySub} !important;
   color: red;
   margin:.25em 0;
   padding: .2em .5em;
   text-align: start;
+
 
   &:active, 
   &:hover {

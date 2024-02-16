@@ -87,10 +87,21 @@ export const GlobalStyle = createGlobalStyle`
         flex-direction: column;
     }
 
+
     .flex-row-center {
         display: flex;
         justify-content: center;
 
+    }
+
+    .flex-row-align-items-center{
+        display:flex;
+        align-items: center;
+    }
+
+    .flex-column {
+        display:flex;
+        flex-direction: column;
     }
 
     .flex-column-center {

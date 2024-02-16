@@ -24,9 +24,8 @@ type TopbarProps = {
 export const Topbar = ({ linkTitles, links, menuItems, userActionButtonRole, userActionButtonTitle, handleActive, handleCurrentUserAction }: TopbarProps) => {
 
     const currentUser = useAppSelector((state: RootState) => state.user);
-    const { userName, firstName, lastName } = currentUser;
+    const { userName } = currentUser;
 
-    console.log(userName, firstName, lastName, 'this is the currentUser within navigation');
 
     const { status: expand, toggleStatus: toggleExpand } = useToggle();
 

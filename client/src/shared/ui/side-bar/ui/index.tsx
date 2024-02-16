@@ -1,10 +1,13 @@
 import { useEffect } from "react";
 import { Bars3Icon } from "@heroicons/react/24/solid";
-import { SidebarContainer, SidebarWrapper } from "./Sidebar.styled";
+import { SidebarContainer, SidebarWrapper, CancelButton, LinkText } from "./Sidebar.styled";
 import { SideUnorderedList, ListItem, LinkElement, ListItemLink } from "@shared/ui";
-import { useToggle } from "@shared/lib/hooks";
+import { useToggle, useAppSelector } from "@shared/lib/hooks";
+import { RootState } from '@shared/store';
 import { SidebarConfig } from "..";
 import { useLocation } from "react-router-dom";
+
+import { DropDownArrow } from "@shared/ui";
 
 
 type SideBarProps = {
@@ -16,11 +19,17 @@ type SideBarProps = {
 };
 
 
+
+
 export const Sidebar = ({ linkTitles, links, role, menuItems }: SideBarProps) => {
+
+    const currentUser = useAppSelector((state: RootState) => state.user);
+    const { userName } = currentUser;
 
     const { start, end, marginRight, top, width, height, fontSize, color } = SidebarConfig;
 
     const { status: expand, toggleStatus: toggleExpand, toggleOff } = useToggle();
+    const { status: dropDownExpand, toggleStatus: toggleDropDownArrow } = useToggle();
 
     const location = useLocation();
 
@@ -35,6 +44,7 @@ export const Sidebar = ({ linkTitles, links, role, menuItems }: SideBarProps) =>
         >
 
             <SidebarWrapper >
+
                 <Bars3Icon onClick={toggleExpand} style={!expand ? { zIndex: '200' } : { zIndex: '150', opacity: 0 }} />
                 <SideUnorderedList
                     $visible={expand}
@@ -47,25 +57,27 @@ export const Sidebar = ({ linkTitles, links, role, menuItems }: SideBarProps) =>
                     $expand={expand ? expand.toString() : undefined}
                     className={expand ? 'show' : 'hide'}
                 >
-                    <span onClick={toggleOff} style={{ color: 'white', fontSize: '2em', marginLeft: '.5em', marginTop: '5em' }}>X</span>
+                    <CancelButton onClick={toggleOff}>X</CancelButton>
+                    {userName ? (<h1 style={{ color: 'white' }}>{userName}</h1>) : (<></>)}
                     {links && linkTitles.map((linkTitle, i) => (
                         (linkTitle !== 'Explore' ? (
-                            <ListItem
-                                key={'key' + linkTitle}
-                                fontSize={fontSize}
-                                color={color}
-                                style={{ paddingLeft: '3em', }}
-                                fontFamily="content"
-                                className={expand ? '' : 'hide'}
-                            >
-                                <LinkElement
-                                    to={'/' + links[i]}
+                            <div>
+                                <ListItem
+                                    key={'key' + linkTitle}
+                                    fontSize={fontSize}
+                                    color={color}
+                                    style={{ paddingLeft: '3em', }}
+                                    fontFamily="content"
                                     className={expand ? '' : 'hide'}
                                 >
-                                    {linkTitle}
-                                </LinkElement>
-                            </ListItem>
-
+                                    <LinkElement
+                                        to={'/' + links[i]}
+                                        className={expand ? '' : 'hide'}
+                                    >
+                                        {linkTitle}
+                                    </LinkElement>
+                                </ListItem>
+                            </div>
                         ) : (
                             <ListItem
                                 key={'key' + linkTitle}
@@ -75,31 +87,60 @@ export const Sidebar = ({ linkTitles, links, role, menuItems }: SideBarProps) =>
                                 fontFamily="content"
                                 className={expand ? '' : 'hide'}
                             >
-                                <LinkElement
-                                    to={'/' + links[i]}
-                                    className={expand ? '' : 'hide'}
-                                >
-                                    {linkTitle}
-                                </LinkElement>
-                                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                <div onClick={() => toggleDropDownArrow()} className="flex-row-align-items-center">
+                                    <LinkText
+                                        className={expand ? '' : 'hide'}
+                                    >
+                                        {linkTitle}
+                                    </LinkText>
+                                    <DropDownArrow
+                                        width={'1.2em'}
+                                        display={'inline-block'}
+                                        active={dropDownExpand ? 'active' : undefined}
+                                    />
+                                </div>
+                                <div className={dropDownExpand ? 'flex-column expanded' : 'flex-column collapsed'}>
                                     {menuItems.map((menuItem, mIKey) => (
-
                                         <ListItemLink
                                             style={{ fontSize: '.8em', color: '808080' }}
                                             key={mIKey.toString()}
                                             to={`/explore/${menuItem.toLowerCase()}`}
-                                            className={expand ? '' : 'hide'}
                                         >
-                                            {menuItem}
+                                            {'- ' + menuItem}
                                         </ListItemLink>
                                     ))}
                                 </div>
                             </ListItem>
                         ))
                     ))}
+                    {userName ? (<></>) : (<>
+                        <div>
+                            <ListItem
+                                fontSize={fontSize}
+                                color={color}
+                                style={{ paddingLeft: '3em', }}
+                                fontFamily="content"
+                                className={expand ? '' : 'hide'}
+                            >
+                                <LinkText >Login</LinkText>
+                            </ListItem>
+                        </div>
+                        <div>
+                            <ListItem
+                                fontSize={fontSize}
+                                color={color}
+                                style={{ paddingLeft: '3em', }}
+                                fontFamily="content"
+                                className={expand ? '' : 'hide'}
+                            >
+                                <LinkText >SignUp</LinkText>
+                            </ListItem>
+                        </div>
+
+                    </>)}
                 </SideUnorderedList>
             </SidebarWrapper>
 
-        </SidebarContainer>
+        </SidebarContainer >
     );
 };
