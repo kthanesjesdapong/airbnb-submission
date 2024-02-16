@@ -2,15 +2,14 @@ import styled from 'styled-components';
 import { media } from '@shared/lib';
 
 const ExplorePageContainer = styled.div`
-  
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   align-items: center;
   margin-top: 0%;
   margin-bottom: 1em;
-  gap: .4rem;
+  gap: 0.4rem;
 
   ${media.tablet} {
     margin-top: 10em;
@@ -19,7 +18,7 @@ const ExplorePageContainer = styled.div`
   }
 
   ${media.desktop} {
-    margin-top :10em;
+    margin-top: 10em;
   }
 `;
 

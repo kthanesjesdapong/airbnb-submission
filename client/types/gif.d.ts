@@ -1,5 +1,4 @@
-declare module "*.gif" {
+declare module '*.gif' {
   const content: sting;
   export default content;
 }
-

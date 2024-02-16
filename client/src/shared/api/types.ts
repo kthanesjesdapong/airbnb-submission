@@ -1,14 +1,14 @@
-import { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig } from 'axios';
 
 export type variablesOptions = {
-  variables: { [index: string]: string | number; };
+  variables: { [index: string]: string | number };
 };
 
 export type OptionsConfig = {
   query: string;
-  variables: { [index: string]: string | number; };
-} & AxiosRequestConfig & variablesOptions;
-
+  variables: { [index: string]: string | number };
+} & AxiosRequestConfig &
+  variablesOptions;
 
 export type UserActionResponseData<T> = {
   errors?: any[]; // Adjust the type of 'errors' based on what you expect
@@ -17,5 +17,3 @@ export type UserActionResponseData<T> = {
 };
 
 export type UserActionResponse<T> = UserActionResponseData<T> | undefined;
-
-

@@ -11,5 +11,5 @@ export const SidebarConfig = {
   //added
   height: 100,
   fontSize: 1.5,
-  color: 'grey'
+  color: 'grey',
 };

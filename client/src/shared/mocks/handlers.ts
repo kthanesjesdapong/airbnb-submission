@@ -11,8 +11,6 @@ graphql.mutation(predicate, resolver)
 
 */
 
-
-
 const singleBar = {
   data: {
     getBar: {
@@ -24,13 +22,13 @@ const singleBar = {
           edges: [
             {
               node: {
-                priceStr: "$$"
-              }
-            }
-          ]
+                priceStr: '$$',
+              },
+            },
+          ],
         },
         photos: [
-          "https://s3-media3.fl.yelpcdn.com/bphoto/GGpX0LB3_XFttIGXnmZAYw/o.jpg"
+          'https://s3-media3.fl.yelpcdn.com/bphoto/GGpX0LB3_XFttIGXnmZAYw/o.jpg',
         ],
         hours: {
           edges: [
@@ -38,68 +36,68 @@ const singleBar = {
               node: {
                 start: 1100,
                 end: 2200,
-                day: 0
-              }
+                day: 0,
+              },
             },
             {
               node: {
                 start: 1100,
                 end: 2200,
-                day: 0
-              }
+                day: 0,
+              },
             },
             {
               node: {
                 start: 1100,
                 end: 2200,
-                day: 0
-              }
+                day: 0,
+              },
             },
             {
               node: {
                 start: 1100,
                 end: 2200,
-                day: 0
-              }
+                day: 0,
+              },
             },
             {
               node: {
                 start: 1100,
                 end: 2200,
-                day: 0
-              }
+                day: 0,
+              },
             },
             {
               node: {
                 start: 1100,
                 end: 2200,
-                day: 0
-              }
+                day: 0,
+              },
             },
             {
               node: {
                 start: 1100,
                 end: 2200,
-                day: 0
-              }
+                day: 0,
+              },
             },
             {
               node: {
                 start: 1100,
                 end: 2200,
-                day: 0
-              }
+                day: 0,
+              },
             },
-          ]
+          ],
         },
         location: {
           edges: [
             {
               node: {
-                locationAddress: '523 Fremont St'
-              }
-            }
-          ]
+                locationAddress: '523 Fremont St',
+              },
+            },
+          ],
         },
         display_phone: '(702) 778-0888',
         category: {
@@ -107,29 +105,26 @@ const singleBar = {
             {
               node: {
                 categoryAlias: {
-                  categoryAlias: "beergardens"
-                }
-              }
+                  categoryAlias: 'beergardens',
+                },
+              },
             },
             {
               node: {
                 categoryAlias: {
-                  categoryAlias: "thai"
-                }
+                  categoryAlias: 'thai',
+                },
               },
-            }
-          ]
-        }
-      }
-    }
-  }
+            },
+          ],
+        },
+      },
+    },
+  },
 };
-
-
 
 export const handlers = [
   graphql.query('GetBar', ({ query, variables }) => {
-    console.log('Intercepted a /"GetBar"/ GraphQL query:', query,
-      variables);
-  })
+    console.log('Intercepted a /"GetBar"/ GraphQL query:', query, variables);
+  }),
 ];

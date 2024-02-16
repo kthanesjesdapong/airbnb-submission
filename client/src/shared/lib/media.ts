@@ -6,7 +6,6 @@ export const media = {
   widescreen: customMedia(1366),
   desktop: customMedia(1024),
   tablet: customMedia(768),
-
 };
 
 //Ex:
@@ -15,4 +14,3 @@ ${media.desktop`
   styling goes here
 `}
 */
-

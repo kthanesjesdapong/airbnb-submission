@@ -1,6 +1,5 @@
-import styled from "styled-components";
-import { media } from "@shared/lib";
-
+import styled from 'styled-components';
+import { media } from '@shared/lib';
 
 const SingleBusinessContainer = styled.div`
   display: flex;

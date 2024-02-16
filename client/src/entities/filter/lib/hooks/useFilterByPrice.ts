@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export const useFilterByPrice = () => {
   const [prices, setPrices] = useState<string[]>([]);
@@ -7,5 +7,4 @@ export const useFilterByPrice = () => {
   };
 
   return { prices, handlePriceChange };
-
 };

@@ -9,4 +9,15 @@ import four from './4.png';
 import four_five from './4_5.png';
 import five from './5.png';
 
-export { zero, one, one_five, two, two_five, three, three_five, four, four_five, five };
+export {
+  zero,
+  one,
+  one_five,
+  two,
+  two_five,
+  three,
+  three_five,
+  four,
+  four_five,
+  five,
+};

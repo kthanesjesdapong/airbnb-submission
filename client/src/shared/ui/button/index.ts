@@ -1,15 +1,15 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Button = styled.button`
-  background-color: ${props => props.theme.colors.lighterOlive};
+  background-color: ${(props) => props.theme.colors.lighterOlive};
   border: 1px solid transparent;
-  color: ${props => props.theme.colors.textMain};
-  font-family: ${props => props.theme.fonts.content};
+  color: ${(props) => props.theme.colors.textMain};
+  font-family: ${(props) => props.theme.fonts.content};
   font-size: 0.85em;
   padding: 0.25em 1em;
   cursor: pointer;
   margin: 2px;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 `;
 
 export { Button };

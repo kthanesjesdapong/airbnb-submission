@@ -9,20 +9,20 @@ export type LinkProps = HTMLAttributes<HTMLLinkElement> & {
   className?: string;
 };
 
-const LinkElement = styled(Link) <LinkProps>`
+const LinkElement = styled(Link)<LinkProps>`
   text-decoration: none;
   transition: 0.3s ease-in-out;
   .hide {
     display: none;
   }
-  
-  ${props => props.fontSize ? props.fontSize + 'em' : ''};
+
+  ${(props) => (props.fontSize ? props.fontSize + 'em' : '')};
   &:visited {
     color: inherit;
   }
   &:active,
   &:hover {
-    color: ${props => props.theme.colors.textHoverHighlight};
+    color: ${(props) => props.theme.colors.textHoverHighlight};
   }
 `;
 

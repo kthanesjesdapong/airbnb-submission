@@ -10,40 +10,40 @@ type SidebarContainerProps = {
 
 const SidebarContainer = styled.div<SidebarContainerProps>`
   height: 100%;
-  display:flex;
+  display: flex;
   transition: all 0.4s ease-in-out;
   flex-direction: column;
   align-items: flex-end;
   opacity: 1;
 
-  ${p => p.$expand ? css`
-  z-index:199;
-  position:fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  `
-    : css`
-  z-index: 0;
-  `}
+  ${(p) =>
+    p.$expand
+      ? css`
+          z-index: 199;
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        `
+      : css`
+          z-index: 0;
+        `}
 
-
-   ${media.tablet} {
-    display:none;
+  ${media.tablet} {
+    display: none;
     opacity: 0;
-    } 
-  `;
+  }
+`;
 
 const SidebarWrapper = styled.div`
-  display:flex;
+  display: flex;
   transition: all 0.4s ease-in-out;
   justify-content: center;
   align-items: center;
 
-
   span {
-    font-family: ${p => p.theme.fonts.content};
+    font-family: ${(p) => p.theme.fonts.content};
     padding-left: 0.25em;
     padding-top: 0.25em;
   }
@@ -53,25 +53,24 @@ const SidebarWrapper = styled.div`
     height: 27px;
   }
   ${media.tablet} {
-    display:none;
+    display: none;
     opacity: 0;
-    }
+  }
 `;
 
-
 const CancelButton = styled.p`
-    color: white;
-    font-size: 2em;
-    margin-left: 1em;
-    margin-top: 1em; 
-    font-family: ${p => p.theme.fonts.content};
-    margin-bottom: 0;
+  color: white;
+  font-size: 2em;
+  margin-left: 1em;
+  margin-top: 1em;
+  font-family: ${(p) => p.theme.fonts.content};
+  margin-bottom: 0;
 `;
 
 const LinkText = styled(UserActionText)`
-cursor: pointer;
-  font-size: clamp(1.2em,1.5em,2vw);
-  font-family: ${p => p.theme.fonts.content};
+  cursor: pointer;
+  font-size: clamp(1.2em, 1.5em, 2vw);
+  font-family: ${(p) => p.theme.fonts.content};
   text-decoration: none;
   transition: 0.3s ease-in-out;
   margin: 0;
@@ -80,15 +79,14 @@ cursor: pointer;
   .hide {
     display: none;
   }
-  
+
   &:visited {
     color: inherit;
   }
   &:active,
   &:hover {
-    color: ${props => props.theme.colors.textHoverHighlight};
+    color: ${(props) => props.theme.colors.textHoverHighlight};
   }
 `;
-
 
 export { SidebarContainer, SidebarWrapper, CancelButton, LinkText };

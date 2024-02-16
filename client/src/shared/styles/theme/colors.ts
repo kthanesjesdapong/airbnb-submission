@@ -17,6 +17,5 @@ export const colors = {
   categorySub: '#323232',
   openGreen: 'rgb(4, 197, 133)',
   closedRed: 'rgba(255,139,135,1)',
-  priceBlue: 'rgba(88,180,255,1)'
+  priceBlue: 'rgba(88,180,255,1)',
 };
-

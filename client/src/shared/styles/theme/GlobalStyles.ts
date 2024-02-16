@@ -19,8 +19,8 @@ export const GlobalStyle = createGlobalStyle`
         -moz-osx-font-smoothing: grayscale;
         width: 100%;
         height: 100%;
-        background:${props => props.theme.colors.oliveMainBg};
-        color: ${props => props.theme.colors.textMain};
+        background:${(props) => props.theme.colors.oliveMainBg};
+        color: ${(props) => props.theme.colors.textMain};
         padding: 0em 1em;
         /* overflow: hidden; */
 
@@ -78,7 +78,7 @@ export const GlobalStyle = createGlobalStyle`
         }
         &:active, 
         &:hover {
-        color: ${props => props.theme.colors.textHoverHighlight};
+        color: ${(props) => props.theme.colors.textHoverHighlight};
         }
     }
 

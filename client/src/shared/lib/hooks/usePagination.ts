@@ -1,9 +1,6 @@
 import { useMemo } from 'react';
 import { range, DOTS } from '..';
 
-
-
-
 export type usePaginationProps = {
   totalCount: number; // total count of data available from the source
   currentPage: number; //represents the current active page. Using 1-based index instead of traditional 0-based index for our currentPage value.
@@ -15,10 +12,9 @@ export const usePagination = ({
   totalCount,
   pageSize,
   siblingCount = 1,
-  currentPage
+  currentPage,
 }: usePaginationProps) => {
   const paginationRange = useMemo(() => {
-
     const totalPageCount = Math.ceil(totalCount / pageSize);
 
     const totalPageNumbers = siblingCount + 5;
@@ -29,7 +25,10 @@ export const usePagination = ({
     }
 
     const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
-    const rightSiblingIndex = Math.min(currentPage + siblingCount, totalPageCount);
+    const rightSiblingIndex = Math.min(
+      currentPage + siblingCount,
+      totalPageCount
+    );
 
     const shouldShowLeftDots = leftSiblingIndex > 2;
     const shouldShowRightDots = rightSiblingIndex < totalPageCount - 2;
@@ -48,7 +47,10 @@ export const usePagination = ({
     //3.no right dots to show, but left dots to be shown
     if (shouldShowLeftDots && !shouldShowRightDots) {
       const rightItemCount = 3 + 2 * siblingCount;
-      const rightRange = range(totalPageCount - rightItemCount + 1, totalPageCount);
+      const rightRange = range(
+        totalPageCount - rightItemCount + 1,
+        totalPageCount
+      );
       return [firstPageIndex, DOTS, ...rightRange];
     }
     //4. both left and right dots to be shown
@@ -57,7 +59,6 @@ export const usePagination = ({
       const middleRange = range(leftSiblingIndex, rightSiblingIndex);
       return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex];
     }
-
   }, [totalCount, pageSize, siblingCount, currentPage]);
   return paginationRange;
 };

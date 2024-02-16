@@ -5,15 +5,17 @@ export type LoginInput = {
 };
 
 export type LoginRes = {
-  data: {
-    login: {
-      data: {
-        token: string;
+  data:
+    | {
+        login: {
+          data: {
+            token: string;
+          };
+        };
+      }
+    | {
+        login: {
+          message: string;
+        };
       };
-    };
-  } | {
-    login: {
-      message: string;
-    };
-  };
 };

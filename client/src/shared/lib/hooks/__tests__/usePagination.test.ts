@@ -4,13 +4,13 @@ import { usePagination, usePaginationProps } from '..';
 
 type usePaginateValsType = usePaginationProps;
 
-describe(('usePagination'), () => {
+describe('usePagination', () => {
   let usePaginateVals: usePaginateValsType;
   beforeEach(() => {
     usePaginateVals = {
       totalCount: 0,
       currentPage: 0,
-      pageSize: 0
+      pageSize: 0,
     };
   });
 
@@ -18,7 +18,7 @@ describe(('usePagination'), () => {
     usePaginateVals = {
       totalCount: 65,
       currentPage: 1,
-      pageSize: 10
+      pageSize: 10,
     };
     const { result } = renderHook(() => usePagination(usePaginateVals));
     if (result && result.current) {
@@ -53,7 +53,7 @@ describe(('usePagination'), () => {
     usePaginateVals = {
       totalCount: 45,
       currentPage: 6,
-      pageSize: 7
+      pageSize: 7,
     };
     const { result } = renderHook(() => usePagination(usePaginateVals));
     if (result && result.current) {
@@ -66,7 +66,7 @@ describe(('usePagination'), () => {
     usePaginateVals = {
       totalCount: 70,
       currentPage: 4,
-      pageSize: 7
+      pageSize: 7,
     };
     const { result } = renderHook(() => usePagination(usePaginateVals));
     if (result && result.current) {
@@ -77,5 +77,3 @@ describe(('usePagination'), () => {
     }
   });
 });
-
-

@@ -1,7 +1,14 @@
 import { keyframes, css } from 'styled-components';
 
-
-export const createKeyFrames = ({ startProperty, endProperty }: { startProperty: string, endProperty?: string; }) => ({ startValue, endValue }: { startValue: any, endValue: any; }) => keyframes`
+export const createKeyFrames =
+  ({
+    startProperty,
+    endProperty,
+  }: {
+    startProperty: string;
+    endProperty?: string;
+  }) =>
+  ({ startValue, endValue }: { startValue: any; endValue: any }) => keyframes`
   0% {
     ${startProperty}: ${startValue}
   }
@@ -10,12 +17,12 @@ export const createKeyFrames = ({ startProperty, endProperty }: { startProperty:
   }
 `;
 
-export const createCssInterpolation = (animationKeyFrames: ReturnType<typeof keyframes>, duration: number) =>
-  css`
-  animation: ${animationKeyFrames} ${duration}s ease-in-out
+export const createCssInterpolation = (
+  animationKeyFrames: ReturnType<typeof keyframes>,
+  duration: number
+) => css`
+  animation: ${animationKeyFrames} ${duration}s ease-in-out;
 `;
-
-
 
 /*
 

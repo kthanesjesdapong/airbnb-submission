@@ -1,1 +1,1 @@
-declare module "mq-polyfill";
+declare module 'mq-polyfill';

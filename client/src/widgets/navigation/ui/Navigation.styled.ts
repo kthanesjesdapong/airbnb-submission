@@ -6,11 +6,7 @@ const NavigationContainer = styled.header`
   align-items: center;
 `;
 
-const LogoContainer = styled.div`
-
-`;
-
-
+const LogoContainer = styled.div``;
 
 const LinkWrapper = styled.div`
   margin: 0.3rem;

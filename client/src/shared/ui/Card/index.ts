@@ -7,9 +7,9 @@ type CardProps = {
 } & HTMLAttributes<HTMLDivElement>;
 
 const Card = styled.div<CardProps>`
- width: ${props => props.$width}px;
- height: ${props => props.$height}px;
- box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+  width: ${(props) => props.$width}px;
+  height: ${(props) => props.$height}px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
 `;
 
 export { Card };

@@ -7,17 +7,15 @@ import { userReducer } from '.';
 //This is for testing purposes
 const rootReducer: Reducer = combineReducers({
   feature: featureReducer,
-  user: userReducer
+  user: userReducer,
 });
 
 //This store is for development
 export const store = configureStore({
   reducer: {
     feature: featureReducer,
-    user: userReducer
+    user: userReducer,
   },
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
-
-

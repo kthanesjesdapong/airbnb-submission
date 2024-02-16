@@ -1,18 +1,26 @@
-import { UserProfileRes } from "..";
-import { apiInstance, API_URL } from "@shared/api";
+import { UserProfileRes } from '..';
+import { apiInstance, API_URL } from '@shared/api';
 
+import Cookies from 'js-cookie';
 
-import Cookies from "js-cookie";
+type UserProfileReturn = {
+  userName: string;
+  firstName: string;
+  lastName: string;
+};
 
-type UserProfileReturn = { userName: string, firstName: string, lastName: string; };
-
-export const userprofile = async (query: string): Promise<UserProfileReturn> => {
+export const userprofile = async (
+  query: string
+): Promise<UserProfileReturn> => {
   try {
-
-    const userProfileResponse = await apiInstance.post(API_URL, {
-      query: query,
-      variables: {},
-    }, Cookies.get('token')) as UserProfileRes;
+    const userProfileResponse = (await apiInstance.post(
+      API_URL,
+      {
+        query: query,
+        variables: {},
+      },
+      Cookies.get('token')
+    )) as UserProfileRes;
     const { data } = userProfileResponse;
     if ('message' in data.getUserProfile) {
       throw new Error(data.getUserProfile.message);

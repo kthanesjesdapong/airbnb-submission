@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { renderHook, waitFor } from '@testing-library/react';
 import { useNavigatePages } from '..';
 
-describe(('useNavigatePages'), () => {
+describe('useNavigatePages', () => {
   it('should have a default state of 0', () => {
     const { result } = renderHook(() => useNavigatePages(3));
     expect(result.current.currentIndex).toBe(0);
@@ -30,7 +30,6 @@ describe(('useNavigatePages'), () => {
     });
     expect(result.current.currentIndex).toBe(0);
   });
-
 
   it('calling navigatePrev should  decrement currentIndex by amount of times it is called', async () => {
     const { result } = renderHook(() => useNavigatePages(3));

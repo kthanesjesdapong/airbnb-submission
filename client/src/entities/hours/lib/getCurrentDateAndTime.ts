@@ -9,6 +9,6 @@ export const getCurrentDateAndTime = () => {
     currentDay: day,
     currentHour: hour,
     currentMinute: formattedMinute,
-    currentTime: '' + hour + formattedMinute
+    currentTime: '' + hour + formattedMinute,
   };
 };

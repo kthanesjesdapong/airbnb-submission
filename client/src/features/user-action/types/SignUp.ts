@@ -8,17 +8,19 @@ export type SignUpInput = {
 };
 
 export type SignUpRes = {
-  data: {
-    createUser: {
-      id: number;
-      role: string;
-      email: string;
-      userName: string;
-      createdAt: string;
-    };
-  } | {
-    createUser: {
-      message: string;
-    };
-  };
+  data:
+    | {
+        createUser: {
+          id: number;
+          role: string;
+          email: string;
+          userName: string;
+          createdAt: string;
+        };
+      }
+    | {
+        createUser: {
+          message: string;
+        };
+      };
 };

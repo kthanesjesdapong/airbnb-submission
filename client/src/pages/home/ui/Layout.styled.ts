@@ -1,6 +1,5 @@
-import styled from "styled-components";
-import { media } from "@shared/lib";
-
+import styled from 'styled-components';
+import { media } from '@shared/lib';
 
 const HomeLayoutContainer = styled.div`
   display: flex;
@@ -14,7 +13,7 @@ const FirstRowContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
-  
+
   ${media.tablet} {
     flex-direction: row;
     justify-content: space-between;
@@ -24,7 +23,7 @@ const FirstRowContainer = styled.div`
 `;
 
 const SecondRowContainer = styled.div`
-  display:flex;
+  display: flex;
   justify-content: center;
 `;
 

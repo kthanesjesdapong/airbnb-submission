@@ -1,10 +1,22 @@
-
-
-import { loginButtonRoles, signupButtonRole, loginLabelInputs, signUpLabelInputs, UserActionForm } from '@entities/user-action-form';
-import { StyledModal } from "./UserAction.styled";
-import { FormEvent, useEffect } from "react";
-import { createUserMutation, SignUpInput, useSignUp, LoginInput, loginMutation, useLogin, getUserProfileQuery, useUserProfile } from '..';
-
+import {
+  loginButtonRoles,
+  signupButtonRole,
+  loginLabelInputs,
+  signUpLabelInputs,
+  UserActionForm,
+} from '@entities/user-action-form';
+import { StyledModal } from './UserAction.styled';
+import { FormEvent, useEffect } from 'react';
+import {
+  createUserMutation,
+  SignUpInput,
+  useSignUp,
+  LoginInput,
+  loginMutation,
+  useLogin,
+  getUserProfileQuery,
+  useUserProfile,
+} from '..';
 
 import { useAppDispatch } from '@shared/lib/hooks';
 import { login, User } from '@shared/store/userProfile';
@@ -17,19 +29,33 @@ type UserActionProps = {
   handleActive: () => void;
 };
 
-
-
-
-export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiveString, handleActive }: UserActionProps) => {
-
+export const UserAction = ({
+  activeAction,
+  setActive,
+  setSignUpAsActive,
+  isActiveString,
+  handleActive,
+}: UserActionProps) => {
   const dispatch = useAppDispatch();
 
+  const {
+    mutate: signUpMutate,
+    isLoading: signUpIsLoading,
+    error: signUpError,
+    status: signUpStatus,
+  } = useSignUp();
 
-  const { mutate: signUpMutate, isLoading: signUpIsLoading, error: signUpError, status: signUpStatus } = useSignUp();
+  const {
+    mutate: loginMutate,
+    isLoading: loginIsLoading,
+    error: loginError,
+    status: loginStatus,
+  } = useLogin();
 
-  const { mutate: loginMutate, isLoading: loginIsLoading, error: loginError, status: loginStatus } = useLogin();
-
-  const { data: userProfile } = useUserProfile(getUserProfileQuery, loginStatus);
+  const { data: userProfile } = useUserProfile(
+    getUserProfileQuery,
+    loginStatus
+  );
 
   const handleSignUp = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -38,7 +64,7 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
       userName: '',
       firstName: '',
       lastName: '',
-      password: ''
+      password: '',
     };
     const formData = new FormData(event.currentTarget);
     for (let [key, value] of formData.entries()) {
@@ -50,12 +76,11 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
     signUpMutate({ query: createUserMutation, userInput: signUpInputs });
   };
 
-
   const handleLogin = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const loginInputs: LoginInput = {
       email: '',
-      password: ''
+      password: '',
     };
 
     const formData = new FormData(event.currentTarget);
@@ -66,28 +91,22 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
     loginMutate({ loginMutation: loginMutation, userInput: loginInputs });
   };
 
-
   useEffect(() => {
     if (loginStatus === 'success' || signUpStatus === 'success') {
       dispatch(login(userProfile as User));
       handleActive();
-
     }
   }, [loginStatus, signUpStatus, userProfile]);
 
-
   return (
     <>
-      <StyledModal $active={isActiveString}
-        onClick={setActive}
-      />
+      <StyledModal $active={isActiveString} onClick={setActive} />
       {activeAction === 'Sign Up' ? (
         <UserActionForm
           callBack={handleSignUp}
           labelInputs={signUpLabelInputs}
           buttonRoles={signupButtonRole}
           isActiveStr={isActiveString}
-
           isLoading={signUpIsLoading}
           errors={String(signUpError)}
         />
@@ -97,12 +116,10 @@ export const UserAction = ({ activeAction, setActive, setSignUpAsActive, isActiv
           labelInputs={loginLabelInputs}
           buttonRoles={loginButtonRoles}
           isActiveStr={isActiveString}
-
           setSignUpAsActive={setSignUpAsActive}
           isLoading={loginIsLoading}
           errors={String(loginError)}
         />
-
       )}
     </>
   );

@@ -45,9 +45,6 @@ export type BusinessResponse = {
   longitude?: number;
 } & BaseBusiness;
 
-
-
-
 export type BusinessEdge = {
   node: BusinessResponse;
 };
@@ -75,7 +72,7 @@ export type FormattedBusiness = {
 } & BaseBusiness;
 
 export type FormattedBusinessList = {
-  business: FormattedBusiness[],
+  business: FormattedBusiness[];
 };
 
 export type FormattedBusinessResponse = {
@@ -110,8 +107,6 @@ export type FormattedSingleBusiness = {
   longitude?: number;
 } & BaseBusiness;
 
-
 export type FormattedSingleBusinessResponse = {
   data: SingleBusiness;
 };
-

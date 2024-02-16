@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { media } from '@shared/lib';
 import { Link } from 'react-router-dom';
 
-
 type ListItemProps = {
   fontSize: number;
   color: string;
@@ -14,57 +13,53 @@ type ListItemProps = {
 const ListItem = styled.li<ListItemProps>`
   cursor: pointer;
   transition: color 0.4s ease-in-out;
-  font-size: ${props => `${props.fontSize}em`};
-  color: ${props => props.color ? props.color : props.theme.colors.categorySub};
-  margin:.25em 0;
-  padding: .2em .5em;
-  
-  
+  font-size: ${(props) => `${props.fontSize}em`};
+  color: ${(props) =>
+    props.color ? props.color : props.theme.colors.categorySub};
+  margin: 0.25em 0;
+  padding: 0.2em 0.5em;
 
-  .hide{
+  .hide {
     display: none;
   }
 
   a {
-    font-family: ${p => p.fontFamily ? p.theme.fonts.content : p.theme.fonts.primary};
+    font-family: ${(p) =>
+      p.fontFamily ? p.theme.fonts.content : p.theme.fonts.primary};
   }
 
   text-align: start;
-  &:hover, 
-  &:active, 
+  &:hover,
+  &:active,
   &:visited {
     color: blue;
   }
 
   ${media.tablet} {
-    margin: .2em 0;
+    margin: 0.2em 0;
     padding: 0;
   }
-
 `;
-
 
 export type ListItemLinkProps = HTMLAttributes<HTMLLinkElement> & {
   content: string;
   href: string;
-
 };
 
-const ListItemLink = styled(Link) <ListItemLinkProps>`
+const ListItemLink = styled(Link)<ListItemLinkProps>`
   cursor: pointer;
   transition: color height 0.4s ease-in-out;
   font-size: 1.25em;
-  color: ${props => props.color ? props.color : props.theme.colors.categorySub} !important;
+  color: ${(props) =>
+    props.color ? props.color : props.theme.colors.categorySub} !important;
   color: red;
-  margin:.25em 0;
-  padding: .2em .5em;
+  margin: 0.25em 0;
+  padding: 0.2em 0.5em;
   text-align: start;
 
-
-  &:active, 
+  &:active,
   &:hover {
     color: blue !important;
-
   }
 
   ${media.tablet} {
@@ -74,8 +69,6 @@ const ListItemLink = styled(Link) <ListItemLinkProps>`
   ${media.widescreen} {
     font-size: 1.45em;
   }
-
 `;
-
 
 export { ListItem, ListItemLink };

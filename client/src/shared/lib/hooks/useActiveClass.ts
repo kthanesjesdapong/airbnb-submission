@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler } from 'react';
 
 export const useActiveClass = () => {
   let currentClassName = '';
@@ -16,10 +16,13 @@ export const useActiveClass = () => {
 
   const clearActiveClass: MouseEventHandler<HTMLParagraphElement> = (event) => {
     const listOfSiblingElements = event.currentTarget.parentElement?.children;
-    for (const sibling of listOfSiblingElements!) sibling.className = currentClassName;
+    for (const sibling of listOfSiblingElements!)
+      sibling.className = currentClassName;
   };
 
-  const handleActiveClass: MouseEventHandler<HTMLParagraphElement> = event => {
+  const handleActiveClass: MouseEventHandler<HTMLParagraphElement> = (
+    event
+  ) => {
     setCurrentClass(event);
     clearActiveClass(event);
     addActiveClass(event);

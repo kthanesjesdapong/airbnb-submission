@@ -11,7 +11,18 @@ import five from '@assets/png/yelp-star/small/five.png';
 
 const ratingKeys = [0, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
 
-const ratingImgSrcs = [zero, one, onefive, two, twofive, three, threefive, four, fourfive, five];
+const ratingImgSrcs = [
+  zero,
+  one,
+  onefive,
+  two,
+  twofive,
+  three,
+  threefive,
+  four,
+  fourfive,
+  five,
+];
 
 export const ratingMap = () => {
   type RatingMap = {
@@ -19,14 +30,10 @@ export const ratingMap = () => {
   };
 
   const map: RatingMap = {};
-  ratingImgSrcs.forEach((ratingImgSrc, i) => map[ratingKeys[i]] = ratingImgSrc);
+  ratingImgSrcs.forEach(
+    (ratingImgSrc, i) => (map[ratingKeys[i]] = ratingImgSrc)
+  );
   return map;
 };
 
 export const ratingsMap = ratingMap();
-
-
-
-
-
-

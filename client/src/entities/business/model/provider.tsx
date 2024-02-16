@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { useFetchAllBusiness, CurrentBusinessContext } from "..";
+import { ReactNode } from 'react';
+import { useFetchAllBusiness, CurrentBusinessContext } from '..';
 
 type CurrentBusinessContextProviderProps = {
   children: ReactNode;
@@ -8,9 +8,18 @@ type CurrentBusinessContextProviderProps = {
   modelType: string;
 };
 
-export const CurrentBusinessContextProvider = ({ children, cursorId, query, modelType }: CurrentBusinessContextProviderProps) => {
-
-  const { data: businessData, isLoading, isError, error } = useFetchAllBusiness(cursorId, query, modelType);
+export const CurrentBusinessContextProvider = ({
+  children,
+  cursorId,
+  query,
+  modelType,
+}: CurrentBusinessContextProviderProps) => {
+  const {
+    data: businessData,
+    isLoading,
+    isError,
+    error,
+  } = useFetchAllBusiness(cursorId, query, modelType);
 
   if (isLoading) {
     return <span> is Loading ....</span>;

@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 export type SelectedFeaturedCategory = {
   selected: string;
@@ -8,7 +8,7 @@ export type SelectedFeaturedCategory = {
 
 const initialState: SelectedFeaturedCategory = {
   selected: 'Events',
-  prevSelected: 'Events'
+  prevSelected: 'Events',
 };
 
 export const featureSlice = createSlice({
@@ -22,13 +22,9 @@ export const featureSlice = createSlice({
       if (state.selected === action.payload) return;
       state.prevSelected = state.selected;
       state.selected = action.payload;
-
-    }
-  }
+    },
+  },
 });
-
-
-
 
 export const { selectFeature } = featureSlice.actions;
 

@@ -1,4 +1,4 @@
 export const hourTablesConfigs = {
   margin: '1px',
-  width: 500
+  width: 500,
 };

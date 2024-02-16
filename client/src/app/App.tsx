@@ -5,19 +5,16 @@ import { AppRouterComponent } from '@app/routes/AppRouterComponent';
 import { LocationDisplay } from '@shared/lib/hooks';
 import { Footer } from '@shared/ui';
 const App = () => {
-
-
-
-    return (
-        <BrowserRouter >
-            <Navigation />
-            <main>
-                <AppRouterComponent />
-            </main>
-            <Footer />
-            <LocationDisplay />
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Navigation />
+      <main>
+        <AppRouterComponent />
+      </main>
+      <Footer />
+      <LocationDisplay />
+    </BrowserRouter>
+  );
 };
 
 export default App;

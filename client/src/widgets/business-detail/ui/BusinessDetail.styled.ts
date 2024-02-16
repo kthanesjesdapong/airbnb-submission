@@ -1,14 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import { Card } from '@shared/ui';
-import { HTMLAttributes } from "react";
-import { media } from "@shared/lib";
-
+import { HTMLAttributes } from 'react';
+import { media } from '@shared/lib';
 
 type BusinessDetailCardProps = {
   $url: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-const BusinessDetailCard = styled(Card) <BusinessDetailCardProps>`
+const BusinessDetailCard = styled(Card)<BusinessDetailCardProps>`
   position: relative;
   overflow: hidden;
   width: 360px;
@@ -18,38 +17,36 @@ const BusinessDetailCard = styled(Card) <BusinessDetailCardProps>`
     content: '';
     position: absolute;
     z-index: 0;
-    width: 100%; 
-    height: 100%; 
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: center;
-    background-image: url(${props => props.$url});
+    background-image: url(${(props) => props.$url});
   }
   border-radius: 1px;
   .content-container {
     position: absolute;
     left: 2%;
     bottom: 5%;
-    text-shadow: 1px 1px .5px #0a0a0abf;
+    text-shadow: 1px 1px 0.5px #0a0a0abf;
     color: white;
-      .category-price-container, 
-      .hours-container {
+    .category-price-container,
+    .hours-container {
       display: flex;
       flex-direction: row;
     }
     .price {
-      margin-left:.25em;
-      color: ${props => props.theme.colors.priceBlue};
+      margin-left: 0.25em;
+      color: ${(props) => props.theme.colors.priceBlue};
       font-weight: bolder;
     }
     p {
       margin: 0 1px;
-      font: 700 1.2rem ${props => props.theme.fonts.secondary};
-
+      font: 700 1.2rem ${(props) => props.theme.fonts.secondary};
     }
     img {
       margin: 0 2px;
-    /* box-shadow: 1px 1px .5px #0a0a0abf; */
-
+      /* box-shadow: 1px 1px .5px #0a0a0abf; */
     }
     span {
       margin: 0 0.25em;
@@ -57,37 +54,37 @@ const BusinessDetailCard = styled(Card) <BusinessDetailCardProps>`
     .open,
     .closed {
       font-weight: bolder;
-      font-size: .9em;
+      font-size: 0.9em;
     }
-    
+
     .open {
-      color: ${p => p.theme.colors.openGreen}; 
+      color: ${(p) => p.theme.colors.openGreen};
     }
 
     .closed {
-      color: ${p => p.theme.colors.closedRed};
+      color: ${(p) => p.theme.colors.closedRed};
     }
     .hours {
-      margin-left: .2em;
-      font-size: .9em;
+      margin-left: 0.2em;
+      font-size: 0.9em;
     }
   }
 
   ${media.tablet} {
-    width: ${props => props.$width}px;
-    height: ${props => props.$height}px;
+    width: ${(props) => props.$width}px;
+    height: ${(props) => props.$height}px;
   }
   ${media.widescreen} {
-    width: ${props => props.$width + 100}px;
-    height: ${props => props.$height + 50}px;
+    width: ${(props) => props.$width + 100}px;
+    height: ${(props) => props.$height + 50}px;
     .content-container {
-    .open,
-    .closed {
-      font-size: 1.15em;
-    }
-    .hours {
-      font-size: 1.15em;
-    }
+      .open,
+      .closed {
+        font-size: 1.15em;
+      }
+      .hours {
+        font-size: 1.15em;
+      }
     }
   }
 `;

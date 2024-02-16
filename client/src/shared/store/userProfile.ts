@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 export type User = {
   userName: string | null;
@@ -7,11 +7,10 @@ export type User = {
   lastName: string | null;
 };
 
-
 const initialState: User = {
   userName: null,
   firstName: null,
-  lastName: null
+  lastName: null,
 };
 
 export const userSlice = createSlice({
@@ -27,13 +26,11 @@ export const userSlice = createSlice({
       }
     },
     logout: (state) => {
-      
-
       state.userName = null;
       state.firstName = null;
       state.lastName = null;
-    }
-  }
+    },
+  },
 });
 
 export const { login, logout } = userSlice.actions;

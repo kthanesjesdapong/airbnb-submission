@@ -1,5 +1,5 @@
 export const exploreSelectionConfigs = {
   $width: 200,
   $height: 350,
-  $maxwidth: 400
+  $maxwidth: 400,
 };

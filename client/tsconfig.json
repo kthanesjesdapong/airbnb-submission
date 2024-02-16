@@ -26,7 +26,7 @@
     "sourceMap": true,
     "target": "ES2015",
     "useDefineForClassFields": true,
-    "lib": ["ES5","ES6","ES2015","DOM", "DOM.Iterable", "ESNext"],
+    "lib": ["ES5", "ES6", "ES2015", "DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -36,12 +36,7 @@
     "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true 
+    "noEmit": true
   },
-  "include": [
-    "src/*",
-    "src/**/*",
-    "types/*.d.ts",
-    "storybook"
-  ]
+  "include": ["src/*", "src/**/*", "types/*.d.ts", "storybook"]
 }

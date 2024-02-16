@@ -1,7 +1,8 @@
 export const heroSectionConfigs = {
   className: 'main',
   sectionTitle: 'Your Passport To Urban Excitement',
-  sectionParagraph: 'Your guide to Las Vegas. Browse our explore tab to find hidden gems within the city.'
+  sectionParagraph:
+    'Your guide to Las Vegas. Browse our explore tab to find hidden gems within the city.',
 };
 
 export const sliderOptions = ['Events', 'Restaurants', 'Bars'];

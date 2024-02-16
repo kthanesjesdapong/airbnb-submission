@@ -5,11 +5,11 @@ export const useNavigatePages = (upperBounds: number) => {
 
   const navigateNext = () => {
     if (currentIndex === upperBounds - 1) setCurrentIndex(0);
-    else setCurrentIndex((prev) => prev += 1);
+    else setCurrentIndex((prev) => (prev += 1));
   };
   const navigatePrev = () => {
     if (currentIndex === 0) setCurrentIndex(upperBounds - 1);
-    else setCurrentIndex((prev) => prev -= 1);
+    else setCurrentIndex((prev) => (prev -= 1));
   };
 
   return { currentIndex, setCurrentIndex, navigateNext, navigatePrev };

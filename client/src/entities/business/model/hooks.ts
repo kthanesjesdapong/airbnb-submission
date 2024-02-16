@@ -1,6 +1,6 @@
 //hook to instantiate the context
-import { useContext } from "react";
-import { CurrentBusinessContext } from ".";
+import { useContext } from 'react';
+import { CurrentBusinessContext } from '.';
 
 export const useCurrentBusinessContext = () => {
   const currentBusiness = useContext(CurrentBusinessContext);

@@ -6,10 +6,9 @@
       "tsx": true,
       "decorators": false,
       "dynamicImport": true
-
     },
     "baseUrl": "./src",
-    "paths":{
+    "paths": {
       "@app": ["./app"],
       "@app/*": ["./app/*"],
       "@assets": ["./assets"],
@@ -26,7 +25,7 @@
       "@shared/*": ["./shared/*"]
     },
     "transform": {
-      "react":{
+      "react": {
         "runtime": "automatic",
         "refresh": true
       }
